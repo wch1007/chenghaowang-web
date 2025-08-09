@@ -1,0 +1,180 @@
+Uri: http://xing.design/about/
+File Name: E:\Personal Website\xing.design\about\index.htm
+Content Type: text/html
+
+Uri: http://xing.design/comments/feed/
+File Name: E:\Personal Website\xing.design\comments\feed\index-1.htm
+Content Type: application/rss+xml
+
+Uri: http://xing.design/feed/
+File Name: E:\Personal Website\xing.design\feed\index-1.htm
+Content Type: application/rss+xml
+
+Uri: http://xing.design/works/
+File Name: E:\Personal Website\xing.design\works\index.htm
+Content Type: text/html
+
+Uri: http://xing.design/wp-content/themes/rhythm/style.css
+File Name: E:\Personal Website\xing.design\wp-content\themes\rhythm\style-1.css
+Content Type: text/css
+
+Uri: http://xing.design/wp-includes/js/jquery/jquery-migrate.min.js
+File Name: E:\Personal Website\xing.design\wp-includes\js\jquery\jquery-migrate.min-1.js
+Content Type: application/javascript
+
+Uri: http://xing.design/wp-includes/js/jquery/jquery.min.js
+File Name: E:\Personal Website\xing.design\wp-includes\js\jquery\jquery.min-1.js
+Content Type: application/javascript
+
+Uri: http://xing.design/wp-json/
+File Name: E:\Personal Website\xing.design\wp-json\index-1.htm
+Content Type: application/json
+
+Uri: http://xing.design/xmlrpc.php?rsd
+File Name: E:\Personal Website\xing.design\xmlrpc-1.php
+Content Type: text/xml
+
+Uri: https://xing.design/
+File Name: E:\Personal Website\xing.design\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/comments/feed/
+File Name: E:\Personal Website\xing.design\comments\feed\index.htm
+Content Type: application/rss+xml
+
+Uri: https://xing.design/feed/
+File Name: E:\Personal Website\xing.design\feed\index.htm
+Content Type: application/rss+xml
+
+Uri: https://xing.design/portfolio/2008_light_festival/
+File Name: E:\Personal Website\xing.design\portfolio\2008_light_festival\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2009_shaking_houses/
+File Name: E:\Personal Website\xing.design\portfolio\2009_shaking_houses\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2009_sloping_airport/
+File Name: E:\Personal Website\xing.design\portfolio\2009_sloping_airport\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2010_hongkong_gate/
+File Name: E:\Personal Website\xing.design\portfolio\2010_hongkong_gate\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2010_spiral_ark/
+File Name: E:\Personal Website\xing.design\portfolio\2010_spiral_ark\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2010_traces/
+File Name: E:\Personal Website\xing.design\portfolio\2010_traces\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2011_clock_room/
+File Name: E:\Personal Website\xing.design\portfolio\2011_clock_room\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2011_ferris-tower/
+File Name: E:\Personal Website\xing.design\portfolio\2011_ferris-tower\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2011_horizon/
+File Name: E:\Personal Website\xing.design\portfolio\2011_horizon\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2011_parking_tower/
+File Name: E:\Personal Website\xing.design\portfolio\2011_parking_tower\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2012_smoke_cage/
+File Name: E:\Personal Website\xing.design\portfolio\2012_smoke_cage\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2014_prying_helsinki/
+File Name: E:\Personal Website\xing.design\portfolio\2014_prying_helsinki\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2016_oct_tower/
+File Name: E:\Personal Website\xing.design\portfolio\2016_oct_tower\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/2017_vip_building/
+File Name: E:\Personal Website\xing.design\portfolio\2017_vip_building\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/ai-park/
+File Name: E:\Personal Website\xing.design\portfolio\ai-park\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/big-5/
+File Name: E:\Personal Website\xing.design\portfolio\big-5\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/birdge-hotel/
+File Name: E:\Personal Website\xing.design\portfolio\birdge-hotel\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/bluepha-biofab/
+File Name: E:\Personal Website\xing.design\portfolio\bluepha-biofab\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/floating-hangzhou-adm-2016/
+File Name: E:\Personal Website\xing.design\portfolio\floating-hangzhou-adm-2016\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/kaleidoscope/
+File Name: E:\Personal Website\xing.design\portfolio\kaleidoscope\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/look-at-pixels/
+File Name: E:\Personal Website\xing.design\portfolio\look-at-pixels\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/magnet-u/
+File Name: E:\Personal Website\xing.design\portfolio\magnet-u\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/motorized_classroom/
+File Name: E:\Personal Website\xing.design\portfolio\motorized_classroom\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/s-h-d-901/
+File Name: E:\Personal Website\xing.design\portfolio\s-h-d-901\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/the-ring/
+File Name: E:\Personal Website\xing.design\portfolio\the-ring\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/the-wall-maze/
+File Name: E:\Personal Website\xing.design\portfolio\the-wall-maze\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/wave/
+File Name: E:\Personal Website\xing.design\portfolio\wave\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/portfolio/yuyuan-station/
+File Name: E:\Personal Website\xing.design\portfolio\yuyuan-station\index.htm
+Content Type: text/html
+
+Uri: https://xing.design/wp-content/themes/rhythm/style.css
+File Name: E:\Personal Website\xing.design\wp-content\themes\rhythm\style.css
+Content Type: text/css
+
+Uri: https://xing.design/wp-includes/js/jquery/jquery-migrate.min.js
+File Name: E:\Personal Website\xing.design\wp-includes\js\jquery\jquery-migrate.min.js
+Content Type: application/javascript
+
+Uri: https://xing.design/wp-includes/js/jquery/jquery.min.js
+File Name: E:\Personal Website\xing.design\wp-includes\js\jquery\jquery.min.js
+Content Type: application/javascript
+
+Uri: https://xing.design/wp-json/
+File Name: E:\Personal Website\xing.design\wp-json\index.htm
+Content Type: application/json
+
+Uri: https://xing.design/xmlrpc.php?rsd
+File Name: E:\Personal Website\xing.design\xmlrpc.php
+Content Type: text/xml
+
