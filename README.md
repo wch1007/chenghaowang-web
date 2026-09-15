@@ -1,34 +1,37 @@
-## 个人网站（Personal Website）
+# Chenghao Wang — Personal Portfolio
 
-### 概述
-这是我的个人网站静态源码与资源，用于在线展示简介、作品与项目。站点为纯静态页面，可直接在浏览器中打开。
+王城昊（Caelan）的双语个人网站，聚焦产品、AI Agent、智能硬件、机器人与跨学科创业实践。
 
-### 学习与来源说明
-- 在学习优秀网站的信息架构与样式时，我使用 WebCopy 等工具抓取公开页面作为学习参考。
-- 在此基础上进行了重构与个性化开发：根据自身内容重新组织信息、调整布局与交互、定制样式与资源结构，并非简单镜像。
-- 站点中引用的第三方主题/脚本/字体/图标等均保留其原有版权与许可；如有不当引用造成的版权问题，请联系我，我会尽快处理。
+在线访问：<https://wch1007.github.io/chenghaowang-web/>
 
-### 技术与工具
-- 前端：HTML、CSS、JavaScript（含 jQuery）
-- UI/样式：Bootstrap、Font Awesome、Google Fonts
-- 主题风格来源：参考 Rhythm 等优秀主题风格并做静态化与自定义
-- 开发与托管：VS Code/Cursor、Git（静态托管/自有服务器、含 CNAME 配置）
+## 内容结构
 
-### 使用与预览
-- 本地预览：直接双击 `index.htm`，或使用任意静态服务器（如 VS Code 的 Live Server）。
-- 在线访问：可在个人域名下访问本项目部署版本（例如：`https://www.chenghaowang.top`）。
+- **Now**：阿里巴巴 Accio Work 团队的 Agent / Skill 产品与工作流实践
+- **Selected Ventures**：汤问具身智能机器人、AI English Studio、HerOS 智能美妆镜
+- **Capability Atlas**：把建筑、数据、HCI、机器人与原型项目整合为可迁移的能力图谱
+- **About**：教育、研究、创业与个人经历
 
-### 目录概览（节选）
-- 根目录：`index.htm`、`about/`、`works/`、`portfolio/`、`assets/`、`wp-*` 等静态资源
-- `assets/files/`：简历与下载文件
-- `wp-content/`、`wp-includes/`、`wp-json/`：静态化后的依赖资源，仅作前端引用
+## 体验
 
-### 版权与声明
-- 本仓库仅用于个人展示与学习研究，不作商业用途。
-- 网站中的文字、图片与视频素材，如无特别说明，归本人或原作者所有；第三方库遵循其各自协议与版权条款。
-- 如对内容或素材使用有异议，请与我联系处理。
+- 中文 / English 一键切换，并支持 `?lang=en` 直达英文版
+- 响应式桌面与移动端布局
+- 原生 Canvas 粒子、滚动揭示、视差、数字计数与微交互
+- 尊重系统的 `prefers-reduced-motion` 动效偏好
+- 无构建步骤、无外部前端依赖，适合 GitHub Pages 直接托管
 
-### 联系
-- Email：18501284401@163.com / wch1007@uw.edu
-- 主页：`https://www.chenghaowang.top`
+## 本地预览
+
+在仓库根目录启动任意静态服务器，然后打开首页。例如：
+
+```bash
+python -m http.server 4173
+```
+
+主入口为 `index.html`。旧站文件仍保留在仓库中作为历史归档，但不会覆盖新版首页。
+
+## 联系
+
+- Email: 18501284401@163.com
+- GitHub: <https://github.com/wch1007>
+- Portfolio archive: <https://flowus.cn/share/3e3108b0-6b78-4ec3-9e72-011baad222e9>
 

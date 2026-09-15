@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050807">
+  <meta name="description" content="王城昊（Chenghao Wang / Caelan）的个人网站：产品、AI Agent、AI 硬件、机器人与跨学科创新实践。">
+  <meta property="og:title" content="Chenghao Wang — Product, AI & Robotics">
+  <meta property="og:description" content="Turning ambiguous problems into products, agents and systems that work.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wch1007.github.io/chenghaowang-web/">
+  <meta property="og:image" content="https://wch1007.github.io/chenghaowang-web/assets/images/chenghao-portrait.webp">
+  <link rel="canonical" href="https://wch1007.github.io/chenghaowang-web/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/images/chenghao-portrait.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="assets/styles.css">
+  <title>Chenghao Wang — Product, AI & Robotics</title>
+</head>
+<body>
+  <div class="site-loader" aria-hidden="true">
+    <div class="loader-mark">CW<span>/</span></div>
+    <div class="loader-track"><i></i></div>
+  </div>
+  <canvas id="constellation" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><i></i></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main" data-zh="跳到正文" data-en="Skip to content">跳到正文</a>
+
+  <header class="site-header" id="top">
+    <a class="brand magnetic" href="#home" aria-label="Chenghao Wang home">
+      <span>CW</span><i>/</i>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#work" data-zh="现在" data-en="Now">现在</a>
+      <a href="#ventures" data-zh="重点项目" data-en="Ventures">重点项目</a>
+      <a href="#atlas" data-zh="能力图谱" data-en="Atlas">能力图谱</a>
+      <a href="#about" data-zh="关于" data-en="About">关于</a>
+    </nav>
+    <div class="header-actions">
+      <button class="language-toggle magnetic" type="button" aria-label="Switch language">EN</button>
+      <a class="nav-cta magnetic" href="#contact"><span data-zh="聊一聊" data-en="Let's talk">聊一聊</span><i>↗</i></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#work"><em>01</em><span data-zh="现在" data-en="Now">现在</span></a>
+    <a href="#ventures"><em>02</em><span data-zh="重点项目" data-en="Ventures">重点项目</span></a>
+    <a href="#atlas"><em>03</em><span data-zh="能力图谱" data-en="Atlas">能力图谱</span></a>
+    <a href="#about"><em>04</em><span data-zh="关于" data-en="About">关于</span></a>
+    <a href="#contact"><em>05</em><span data-zh="联系" data-en="Contact">联系</span></a>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-aurora aurora-a" aria-hidden="true"></div>
+      <div class="hero-aurora aurora-b" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <div class="eyebrow reveal">
+          <span class="status-dot"></span>
+          <span data-zh="王城昊 / CAELAN · 北京" data-en="CHENGHAO WANG / CAELAN · BEIJING">王城昊 / CAELAN · 北京</span>
+        </div>
+        <h1 class="hero-title reveal">
+          <span data-zh="把复杂问题" data-en="I turn complex">把复杂问题</span>
+          <span><strong data-zh="做成" data-en="problems into">做成</strong> <b data-zh="真正有用" data-en="products that">真正有用</b></span>
+          <span data-zh="的产品与系统。" data-en="actually work.">的产品与系统。</span>
+        </h1>
+        <p class="hero-lead reveal" data-zh="产品人、AI 实践者与连续创业者。横跨 Agent、AI 硬件、机器人、设计与商业，把模糊需求推进为可验证、可交付、可增长的产品。" data-en="Product builder, AI practitioner and serial entrepreneur working across agents, AI hardware, robotics, design and business—from ambiguous needs to validated products.">
+          产品人、AI 实践者与连续创业者。横跨 Agent、AI 硬件、机器人、设计与商业，把模糊需求推进为可验证、可交付、可增长的产品。
+        </p>
+        <div class="hero-actions reveal">
+          <a class="primary-button magnetic" href="#ventures"><span data-zh="看重点项目" data-en="Explore ventures">看重点项目</span><i>↘</i></a>
+          <a class="text-link" href="assets/files/王城昊简历_2503.pdf" target="_blank" rel="noopener"><span data-zh="查看简历" data-en="View résumé">查看简历</span><i>↗</i></a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" data-parallax-root>
+        <div class="portrait-halo" aria-hidden="true"></div>
+        <div class="portrait-grid" aria-hidden="true"></div>
+        <div class="portrait-frame">
+          <div class="portrait-index">NO. 001 / BUILDER</div>
+          <img src="assets/images/chenghao-portrait.webp" alt="王城昊 Chenghao Wang" width="1000" height="1250">
+        </div>
+        <div class="orbit orbit-one" aria-hidden="true"></div>
+        <div class="orbit orbit-two" aria-hidden="true"></div>
+        <div class="float-chip chip-a" data-depth="18">AI AGENTS</div>
+        <div class="float-chip chip-b" data-depth="11">PRODUCT</div>
+        <div class="float-chip chip-c" data-depth="15">ROBOTICS</div>
+        <div class="float-chip chip-d" data-depth="9">DESIGN × BUSINESS</div>
+        <div class="hero-coordinate" aria-hidden="true">39.9042° N<br>116.4074° E</div>
+      </div>
+
+      <div class="hero-ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>PRODUCT STRATEGY</span><i>✦</i><span>AGENT SYSTEMS</span><i>✦</i><span>AI HARDWARE</span><i>✦</i><span>HUMAN–COMPUTER INTERACTION</span><i>✦</i><span>ROBOTICS</span><i>✦</i><span>0→1 VENTURES</span><i>✦</i>
+          <span>PRODUCT STRATEGY</span><i>✦</i><span>AGENT SYSTEMS</span><i>✦</i><span>AI HARDWARE</span><i>✦</i><span>HUMAN–COMPUTER INTERACTION</span><i>✦</i><span>ROBOTICS</span><i>✦</i><span>0→1 VENTURES</span><i>✦</i>
+        </div>
+      </div>
+    </section>
+
+    <section class="section now-section" id="work">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <div class="section-kicker"><span>01</span><span data-zh="正在发生" data-en="Happening now">正在发生</span></div>
+          <h2 data-zh="让 AI 从“会回答”，<br>走向“能把事做完”。" data-en="Moving AI from answers<br>to finished work.">让 AI 从“会回答”，<br>走向“能把事做完”。</h2>
+          <p data-zh="目前在阿里巴巴 Accio Work 团队，连接客户需求、Agent 能力与真实经营结果。" data-en="Currently with Alibaba's Accio Work team, connecting customer needs, agent capability and real business outcomes.">目前在阿里巴巴 Accio Work 团队，连接客户需求、Agent 能力与真实经营结果。</p>
+        </div>
+
+        <div class="work-stage reveal" data-tilt>
+          <div class="stage-topbar">
+            <div class="traffic-lights"><i></i><i></i><i></i></div>
+            <div class="stage-title">ACCIO WORK / PRODUCT SYSTEM</div>
+            <div class="live-pill"><span></span> LIVE</div>
+          </div>
+          <div class="work-layout">
+            <div class="work-copy">
+              <span class="role-label" data-zh="ALIBABA.COM · ACCIO WORK 团队" data-en="ALIBABA.COM · ACCIO WORK TEAM">ALIBABA.COM · ACCIO WORK 团队</span>
+              <h3 data-zh="把客户问题翻译成<br>可执行的 AI 能力" data-en="Translating customer problems<br>into executable AI capability">把客户问题翻译成<br>可执行的 AI 能力</h3>
+              <p data-zh="工作细节仍在持续沉淀，当前聚焦三个相互咬合的环节：定义、评测、落地。" data-en="The story is still unfolding. My work currently centers on three connected loops: definition, evaluation and adoption.">工作细节仍在持续沉淀，当前聚焦三个相互咬合的环节：定义、评测、落地。</p>
+              <div class="work-tags">
+                <span>AGENT</span><span>SKILL</span><span>EVALUATION</span><span>WORKFLOW</span>
+              </div>
+            </div>
+            <div class="work-flows">
+              <article class="flow-card">
+                <div class="flow-number">01</div>
+                <div>
+                  <h4 data-zh="从需求到能力" data-en="Need → Capability">从需求到能力</h4>
+                  <p data-zh="洞察客户需求，转换为 Agent / Skill 开发项目。" data-en="Discover customer needs and translate them into agent and skill projects.">洞察客户需求，转换为 Agent / Skill 开发项目。</p>
+                </div>
+                <div class="flow-signal"><i></i><i></i><i></i></div>
+              </article>
+              <article class="flow-card">
+                <div class="flow-number">02</div>
+                <div>
+                  <h4 data-zh="从评测到治理" data-en="Evaluation → Governance">从评测到治理</h4>
+                  <p data-zh="测评 Agent / Skill 表现，沿 Bad Case 追到根因并治理。" data-en="Evaluate agent and skill performance, then trace bad cases to root causes.">测评 Agent / Skill 表现，沿 Bad Case 追到根因并治理。</p>
+                </div>
+                <div class="flow-signal"><i></i><i></i><i></i></div>
+              </article>
+              <article class="flow-card">
+                <div class="flow-number">03</div>
+                <div>
+                  <h4 data-zh="从数据到经营结果" data-en="Data → Business outcomes">从数据到经营结果</h4>
+                  <p data-zh="优化数据 → AI 解释 → 商家消费 → 经营提效的完整工作流。" data-en="Improve the full loop from data and AI explanation to merchant adoption and operating efficiency.">优化数据 → AI 解释 → 商家消费 → 经营提效的完整工作流。</p>
+                </div>
+                <div class="flow-signal"><i></i><i></i><i></i></div>
+              </article>
+            </div>
+          </div>
+          <div class="stage-footer">
+            <span data-zh="细节持续补充中" data-en="More details coming soon">细节持续补充中</span>
+            <div class="stage-route"><b>DATA</b><i>→</i><b>AI</b><i>→</i><b>MERCHANT</b><i>→</i><b>IMPACT</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ventures-section" id="ventures">
+      <div class="section-shell">
+        <div class="section-heading split reveal">
+          <div>
+            <div class="section-kicker"><span>02</span><span data-zh="重点项目" data-en="Selected ventures">重点项目</span></div>
+            <h2 data-zh="不是概念，<br>是做过的产品。" data-en="Not concepts.<br>Products built.">不是概念，<br>是做过的产品。</h2>
+          </div>
+          <p data-zh="三段创业实践，分别落在具身智能、AI 内容工作流与消费级智能硬件。这里强调我真正承担的角色、推进的系统和留下的结果。" data-en="Three venture chapters spanning embodied intelligence, AI content workflows and consumer hardware—focused on real ownership, systems and outcomes.">三段创业实践，分别落在具身智能、AI 内容工作流与消费级智能硬件。这里强调我真正承担的角色、推进的系统和留下的结果。</p>
+        </div>
+
+        <article class="venture-card tangwen-card reveal" data-tilt>
+          <div class="venture-media">
+            <img class="media-main" src="assets/images/tangwen-pitch.webp" alt="王城昊路演汤问智能机器人项目" loading="lazy" width="1800" height="1201">
+            <img class="media-float" src="assets/images/tangwen-product.webp" alt="汤问智能机器人产品介绍" loading="lazy" width="708" height="384">
+            <div class="media-caption"><span>BEIJING HIGH-TECH EXPO</span><span>2024</span></div>
+          </div>
+          <div class="venture-body">
+            <div class="venture-meta"><span>01 / 03</span><span data-zh="具身智能 · 创业实践" data-en="Embodied AI · Venture">具身智能 · 创业实践</span></div>
+            <h3><span class="cn">汤问</span><span class="en">TangWen</span></h3>
+            <p class="venture-subtitle" data-zh="让 IP 手办成为可感知、会动作、能长期陪伴的桌面机器人。" data-en="Turning an IP figurine into a perceptive, expressive desktop robot companion.">让 IP 手办成为可感知、会动作、能长期陪伴的桌面机器人。</p>
+            <p class="venture-role" data-zh="产品负责人 · 项目管理者 · 路演主讲人 / 2023—2025" data-en="Product Lead · Project Manager · Pitch Lead / 2023—2025">产品负责人 · 项目管理者 · 路演主讲人 / 2023—2025</p>
+            <div class="metric-row">
+              <div><strong data-count="4">4</strong><span data-zh="代样机迭代" data-en="prototype generations">代样机迭代</span></div>
+              <div><strong data-count="300" data-suffix="+">300+</strong><span data-zh="标准化动作" data-en="standardized actions">标准化动作</span></div>
+              <div><strong>$300K</strong><span data-zh="奇绩创坛种子融资" data-en="seed funding by MiraclePlus">奇绩创坛种子融资</span></div>
+            </div>
+            <p class="venture-summary" data-zh="主导交互方案、动作库、IP 人格与语音体系，以及 PRD / MVP 定义；协调跨校研发、供应链与合作方，把技术能力推进到样机、路演和商业验证。" data-en="Led interaction design, a 300+ motion library, IP personality and voice systems, plus PRD/MVP definition; aligned cross-university R&D, supply chain and partners from technology to prototypes and validation.">主导交互方案、动作库、IP 人格与语音体系，以及 PRD / MVP 定义；协调跨校研发、供应链与合作方，把技术能力推进到样机、路演和商业验证。</p>
+            <div class="venture-actions">
+              <a class="case-link magnetic" href="https://flowus.cn/share/36489b76-ca8c-46e4-94cf-5f2af3994713" target="_blank" rel="noopener"><span data-zh="完整案例" data-en="Full case">完整案例</span><i>↗</i></a>
+              <span class="press-note" data-zh="新华社 · 环球时报 · 央视网等报道" data-en="Covered by Xinhua, Global Times, CCTV and more">新华社 · 环球时报 · 央视网等报道</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="venture-card english-card-block reveal" data-tilt>
+          <div class="venture-media english-media">
+            <div class="material-stack">
+              <img class="material-back" src="assets/images/english-card.webp" alt="场景化英语学习资料示例" loading="lazy" width="777" height="1036">
+              <img class="material-front" src="assets/images/english-cover.webp" alt="K老师 Caelen 英语学习资料封面" loading="lazy" width="960" height="540">
+              <div class="automation-code" aria-hidden="true">
+                <div><span>01</span> INPUT / SCENE</div>
+                <div><span>02</span> GENERATE / JSON</div>
+                <div><span>03</span> RENDER / IMAGE</div>
+                <div><span>04</span> SYNTHESIZE / AUDIO</div>
+              </div>
+            </div>
+          </div>
+          <div class="venture-body">
+            <div class="venture-meta"><span>02 / 03</span><span data-zh="AI 应用 · 独立开发与运营" data-en="AI application · Solo build & operation">AI 应用 · 独立开发与运营</span></div>
+            <h3><span class="cn">K 老师</span><span class="en">AI English Studio</span></h3>
+            <p class="venture-subtitle" data-zh="一套从场景配置到图文、音频、发布素材的 AI 英语内容生产系统。" data-en="An AI content system that turns scenario configs into visual, audio and publish-ready English learning materials.">一套从场景配置到图文、音频、发布素材的 AI 英语内容生产系统。</p>
+            <p class="venture-role" data-zh="独立开发者与运营者 / 2025" data-en="Solo developer & operator / 2025">独立开发者与运营者 / 2025</p>
+            <div class="metric-row">
+              <div><strong data-count="20" data-suffix="+">20+</strong><span data-zh="篇 / 小时" data-en="pieces / hour">篇 / 小时</span></div>
+              <div><strong data-count="80" data-suffix="+">80+</strong><span data-zh="真实场景" data-en="real-life scenarios">真实场景</span></div>
+              <div><strong data-count="3000" data-suffix="+">3000+</strong><span data-zh="首月累计点赞" data-en="likes in month one">首月累计点赞</span></div>
+            </div>
+            <p class="venture-summary" data-zh="用 Python、GPT 与语音 API 搭建配置驱动工作流，把单套材料的制作从约 30 分钟压缩到 3 分钟；上线“小红书 K 老师 Caelen”，完成内容付费闭环。" data-en="Built a config-driven workflow with Python, GPT and a voice API, compressing production from roughly 30 minutes to 3; launched the K Teacher Caelen account and closed the loop with paid content.">用 Python、GPT 与语音 API 搭建配置驱动工作流，把单套材料的制作从约 30 分钟压缩到 3 分钟；上线“小红书 K 老师 Caelen”，完成内容付费闭环。</p>
+            <div class="venture-actions">
+              <a class="case-link magnetic" href="https://flowus.cn/share/881f66aa-a879-4b7e-ba4a-d1842d8bea38" target="_blank" rel="noopener"><span data-zh="完整案例" data-en="Full case">完整案例</span><i>↗</i></a>
+              <a class="secondary-case-link" href="https://github.com/wch1007/auto-english-material-for-rednote" target="_blank" rel="noopener"><span>GitHub</span><i>↗</i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="venture-card heros-card reveal" data-tilt>
+          <div class="venture-media mirror-media" aria-hidden="true">
+            <div class="mirror-orbit mirror-orbit-a"></div>
+            <div class="mirror-orbit mirror-orbit-b"></div>
+            <div class="smart-mirror">
+              <div class="mirror-shine"></div>
+              <div class="mirror-ui top"><span>08:42</span><span>SKIN / 78</span></div>
+              <div class="face-map"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="mirror-ui bottom"><span>ANALYZE</span><b>→</b><span>RECOMMEND</span></div>
+            </div>
+            <div class="mirror-caption">MIRROR × AI × BEAUTY</div>
+          </div>
+          <div class="venture-body">
+            <div class="venture-meta"><span>03 / 03</span><span data-zh="AI 硬件 · 创业实践" data-en="AI hardware · Venture">AI 硬件 · 创业实践</span></div>
+            <h3><span class="cn">HerOS</span><span class="en">Smart Beauty Mirror</span></h3>
+            <p class="venture-subtitle" data-zh="把镜面变成理解用户、提供美妆体验的智能硬件入口。" data-en="Reimagining the mirror as an intelligent entry point for personalized beauty experiences.">把镜面变成理解用户、提供美妆体验的智能硬件入口。</p>
+            <p class="venture-role" data-zh="硬件创业项目 / 阶段资料整理中" data-en="Hardware venture / Case material in progress">硬件创业项目 / 阶段资料整理中</p>
+            <div class="heros-pillars">
+              <span data-zh="用户需求" data-en="User insight">用户需求</span>
+              <span data-zh="产品定义" data-en="Product definition">产品定义</span>
+              <span data-zh="硬件原型" data-en="Hardware prototype">硬件原型</span>
+              <span data-zh="镜面交互" data-en="Mirror UX">镜面交互</span>
+            </div>
+            <p class="venture-summary" data-zh="在 HerOS 参与智能美妆镜硬件创业实践，围绕用户需求、产品定义、硬件原型与镜面交互体验展开探索。为避免过度包装，更多项目过程与阶段成果将在资料补齐后更新。" data-en="Worked on HerOS's smart beauty mirror venture across user needs, product definition, hardware prototyping and mirror interaction. More process and outcomes will be added as the case material is completed.">在 HerOS 参与智能美妆镜硬件创业实践，围绕用户需求、产品定义、硬件原型与镜面交互体验展开探索。为避免过度包装，更多项目过程与阶段成果将在资料补齐后更新。</p>
+            <div class="venture-actions"><span class="coming-soon"><i></i><span data-zh="案例待补充" data-en="Case study incoming">案例待补充</span></span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section atlas-section" id="atlas">
+      <div class="section-shell">
+        <div class="section-heading split reveal">
+          <div>
+            <div class="section-kicker"><span>03</span><span data-zh="能力图谱" data-en="Capability atlas">能力图谱</span></div>
+            <h2 data-zh="一次次跨界，<br>长成同一个系统。" data-en="Many disciplines.<br>One operating system.">一次次跨界，<br>长成同一个系统。</h2>
+          </div>
+          <p data-zh="学生时代的建筑、数据、HCI、机器人与原型项目不再逐个堆砌；它们被重新组织为六种可迁移的能力，并持续服务于今天的产品工作。" data-en="Architecture, data, HCI, robotics and prototyping projects are recomposed into six transferable capabilities that continue to power my product work today.">学生时代的建筑、数据、HCI、机器人与原型项目不再逐个堆砌；它们被重新组织为六种可迁移的能力，并持续服务于今天的产品工作。</p>
+        </div>
+
+        <div class="atlas-grid">
+          <div class="capability-map reveal" data-tilt>
+            <div class="map-grid" aria-hidden="true"></div>
+            <div class="map-orbit orbit-a" aria-hidden="true"></div>
+            <div class="map-orbit orbit-b" aria-hidden="true"></div>
+            <div class="map-center"><small>CORE</small><strong data-zh="产品创新" data-en="PRODUCT<br>INNOVATION">产品创新</strong><span>DESIGN × TECH × BUSINESS</span></div>
+            <div class="map-node node-1"><i></i><strong data-zh="需求洞察" data-en="INSIGHT">需求洞察</strong><span>USER RESEARCH</span></div>
+            <div class="map-node node-2"><i></i><strong data-zh="AI 与数据" data-en="AI & DATA">AI 与数据</strong><span>AGENT / PIPELINE</span></div>
+            <div class="map-node node-3"><i></i><strong data-zh="机器人" data-en="ROBOTICS">机器人</strong><span>ROS / CONTROL</span></div>
+            <div class="map-node node-4"><i></i><strong data-zh="原型验证" data-en="PROTOTYPING">原型验证</strong><span>BUILD / TEST</span></div>
+            <div class="map-node node-5"><i></i><strong data-zh="空间与视觉" data-en="SPATIAL DESIGN">空间与视觉</strong><span>SYSTEM / STORY</span></div>
+            <div class="map-node node-6"><i></i><strong data-zh="商业落地" data-en="BUSINESS">商业落地</strong><span>0→1 / GROWTH</span></div>
+          </div>
+
+          <div class="capability-list reveal">
+            <article><span>01</span><div><h3 data-zh="发现值得解决的问题" data-en="Find the problem worth solving">发现值得解决的问题</h3><p data-zh="访谈、场景观察、机会识别与需求优先级。" data-en="Interviews, contextual inquiry, opportunity framing and prioritization.">访谈、场景观察、机会识别与需求优先级。</p></div></article>
+            <article><span>02</span><div><h3 data-zh="把复杂系统讲清楚" data-en="Make complex systems legible">把复杂系统讲清楚</h3><p data-zh="产品架构、信息设计、交互逻辑与跨团队语言。" data-en="Product architecture, information design, interaction logic and shared language.">产品架构、信息设计、交互逻辑与跨团队语言。</p></div></article>
+            <article><span>03</span><div><h3 data-zh="用原型快速碰撞现实" data-en="Collide ideas with reality, early">用原型快速碰撞现实</h3><p data-zh="从代码、智能体到硬件与空间，多介质快速验证。" data-en="Rapid validation through code, agents, hardware and spatial prototypes.">从代码、智能体到硬件与空间，多介质快速验证。</p></div></article>
+            <article><span>04</span><div><h3 data-zh="闭环到可持续价值" data-en="Close the loop to durable value">闭环到可持续价值</h3><p data-zh="评测、迭代、项目推进、路演与商业化。" data-en="Evaluation, iteration, delivery, storytelling and commercialization.">评测、迭代、项目推进、路演与商业化。</p></div></article>
+          </div>
+        </div>
+
+        <div class="archive-heading reveal">
+          <div><span data-zh="学生时代作品精选" data-en="Selected student work">学生时代作品精选</span><small>2020—2025</small></div>
+          <p data-zh="点击打开原始案例" data-en="Open the original case">点击打开原始案例 ↗</p>
+        </div>
+
+        <div class="project-index reveal">
+          <a class="project-row" href="https://flowus.cn/share/c658ade6-5808-4e14-a8cc-0384dfcf67ca" target="_blank" rel="noopener">
+            <span class="project-num">01</span><span class="project-title">ROS 2 Robotic Delivery</span><span class="project-cat">ROBOTICS · 2025</span><span class="project-arrow">↗</span>
+            <span class="project-preview"><img src="assets/images/robotics-prototype.webp" alt="ROS 2 delivery robot prototype" loading="lazy" width="1000" height="1169"></span>
+          </a>
+          <a class="project-row" href="https://flowus.cn/share/47be1033-2db5-43d3-9674-604cc1068289" target="_blank" rel="noopener">
+            <span class="project-num">02</span><span class="project-title">Visual Diary Cloud</span><span class="project-cat">DATA · CODING · 2025</span><span class="project-arrow">↗</span>
+          </a>
+          <a class="project-row" href="https://flowus.cn/share/d25beaca-1ff5-45f4-8802-1026bd9e47b9" target="_blank" rel="noopener">
+            <span class="project-num">03</span><span class="project-title">Frame Flow</span><span class="project-cat">DIGITAL JOURNAL · 2025</span><span class="project-arrow">↗</span>
+          </a>
+          <a class="project-row" href="https://flowus.cn/share/7420e646-a3a4-4570-aa7c-f58ba2d8c00e" target="_blank" rel="noopener">
+            <span class="project-num">04</span><span class="project-title">X-WBT</span><span class="project-cat">HCI · HARDWARE · 2024</span><span class="project-arrow">↗</span>
+          </a>
+          <a class="project-row" href="https://flowus.cn/share/b0fea0eb-1e09-48c1-91de-6c1ae042e010" target="_blank" rel="noopener">
+            <span class="project-num">05</span><span class="project-title">GottaGo</span><span class="project-cat">PRODUCT · PROTOTYPE · 2024</span><span class="project-arrow">↗</span>
+          </a>
+          <a class="project-row" href="https://flowus.cn/share/c1e38e8a-70a6-428b-8d05-377a373ac757" target="_blank" rel="noopener">
+            <span class="project-num">06</span><span class="project-title">Hyper Student City</span><span class="project-cat">ARCHITECTURE · 2023</span><span class="project-arrow">↗</span>
+          </a>
+          <a class="project-row" href="https://flowus.cn/share/1032295d-7f54-40ff-aaca-8c2deca2e6f4" target="_blank" rel="noopener">
+            <span class="project-num">07</span><span class="project-title">Monolith</span><span class="project-cat">COMPUTATIONAL DESIGN · 2022</span><span class="project-arrow">↗</span>
+          </a>
+          <a class="project-row" href="https://flowus.cn/share/495d8a4a-d329-4c82-819f-8374a8ea52f4" target="_blank" rel="noopener">
+            <span class="project-num">08</span><span class="project-title">Bubble-Verse</span><span class="project-cat">BUSINESS · URBAN IP · 2021</span><span class="project-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <div class="section-kicker"><span>04</span><span data-zh="关于我" data-en="About me">关于我</span></div>
+          <h2 data-zh="Think as a poet.<br>Act as a scientist." data-en="Think as a poet.<br>Act as a scientist.">Think as a poet.<br>Act as a scientist.</h2>
+        </div>
+
+        <div class="about-layout">
+          <div class="photo-story reveal">
+            <figure class="photo-large"><img src="assets/images/tsinghua-graduation.webp" alt="王城昊清华大学毕业照" loading="lazy" width="1800" height="2700"><figcaption>TSINGHUA / 2023</figcaption></figure>
+            <figure class="photo-small"><img src="assets/images/campus-marathon.webp" alt="王城昊参加清华校园马拉松" loading="lazy" width="1000" height="1498"><figcaption>RUN / ITERATE</figcaption></figure>
+            <div class="photo-stamp" aria-hidden="true"><span>BUILD</span><span>LEARN</span><span>REPEAT</span></div>
+          </div>
+          <div class="about-copy reveal">
+            <p class="about-intro" data-zh="我是王城昊，也叫 Caelan。我的路径从建筑学的空间思维出发，经过数据科学、HCI 与机器人，最后汇入产品与创业。" data-en="I'm Chenghao, also known as Caelan. My path began with architectural systems thinking, moved through data science, HCI and robotics, and converged in product and entrepreneurship.">我是王城昊，也叫 Caelan。我的路径从建筑学的空间思维出发，经过数据科学、HCI 与机器人，最后汇入产品与创业。</p>
+            <p data-zh="这种看似跳跃的经历，训练了我在陌生领域快速建立模型的能力：先看人，再看系统；先抓关键矛盾，再决定用设计、代码、硬件还是组织协作去解。" data-en="That nonlinear path trained me to build useful mental models in unfamiliar domains: start with people, understand the system, identify the real constraint, then choose design, code, hardware or coordination as the medium.">这种看似跳跃的经历，训练了我在陌生领域快速建立模型的能力：先看人，再看系统；先抓关键矛盾，再决定用设计、代码、硬件还是组织协作去解。</p>
+
+            <div class="timeline">
+              <div class="timeline-item"><time>NOW</time><div><strong data-zh="阿里巴巴 · Accio Work" data-en="Alibaba · Accio Work">阿里巴巴 · Accio Work</strong><span data-zh="Agent / Skill 产品与工作流" data-en="Agent / skill product and workflows">Agent / Skill 产品与工作流</span></div></div>
+              <div class="timeline-item"><time>2023—26</time><div><strong data-zh="清华大学 × 华盛顿大学 GIX" data-en="Tsinghua × University of Washington GIX">清华大学 × 华盛顿大学 GIX</strong><span data-zh="数据科学、计算机与机器人交叉培养" data-en="Interdisciplinary training in data science, computing and robotics">数据科学、计算机与机器人交叉培养</span></div></div>
+              <div class="timeline-item"><time>2024</time><div><strong>ACM/IEEE HRI</strong><span data-zh="第一作者论文 · PI Lab" data-en="First-author paper · PI Lab">第一作者论文 · PI Lab</span></div></div>
+              <div class="timeline-item"><time>2019—23</time><div><strong data-zh="清华大学新雅书院" data-en="Tsinghua University, Xinya College">清华大学新雅书院</strong><span data-zh="建筑学工学学士" data-en="B.Eng. in Architecture">建筑学工学学士</span></div></div>
+            </div>
+
+            <div class="recognition">
+              <span data-zh="挑战杯全国银奖 / 铜奖" data-en="Challenge Cup · National Silver / Bronze">挑战杯全国银奖 / 铜奖</span>
+              <span data-zh="iCAN 全国二等奖" data-en="iCAN · National 2nd Prize">iCAN 全国二等奖</span>
+              <span data-zh="中国国际大学生创新大赛全国银奖" data-en="China International College Students' Innovation Competition · Silver">中国国际大学生创新大赛全国银奖</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-orb orb-a" aria-hidden="true"></div>
+      <div class="contact-orb orb-b" aria-hidden="true"></div>
+      <div class="section-shell contact-inner reveal">
+        <div class="section-kicker light"><span>05</span><span data-zh="下一件值得做的事" data-en="What's worth building next">下一件值得做的事</span></div>
+        <h2 data-zh="一起把“应该存在”，<br>变成“已经发生”。" data-en="Let's turn “should exist”<br>into “already working.”">一起把“应该存在”，<br>变成“已经发生”。</h2>
+        <p data-zh="如果你正在做 AI 产品、智能硬件、机器人或一件尚未被定义的事，欢迎来聊。" data-en="If you're building in AI products, intelligent hardware, robotics—or something still undefined—let's talk.">如果你正在做 AI 产品、智能硬件、机器人或一件尚未被定义的事，欢迎来聊。</p>
+        <div class="contact-links">
+          <a class="contact-email magnetic" href="mailto:18501284401@163.com"><span>18501284401@163.com</span><i>↗</i></a>
+          <div class="social-links">
+            <a href="https://github.com/wch1007" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://flowus.cn/share/3e3108b0-6b78-4ec3-9e72-011baad222e9" target="_blank" rel="noopener">FlowUs ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="#home" class="footer-brand">CW<span>/</span></a>
+    <p>© 2026 CHENGHAO WANG</p>
+    <p>BEIJING · BUILT WITH CURIOSITY</p>
+    <a href="#top" data-zh="回到顶部 ↑" data-en="Back to top ↑">回到顶部 ↑</a>
+  </footer>
+
+  <noscript><div class="noscript">This site is best experienced with JavaScript enabled.</div></noscript>
+  <script src="assets/site.js" defer></script>
+</body>
+</html>
