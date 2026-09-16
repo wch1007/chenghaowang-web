@@ -16,19 +16,24 @@ for (const [, value] of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
   }
 }
 const projects = section('projects');
-assert.equal((projects.match(/class="project-record/g) || []).length, 9);
-assert.equal((projects.match(/class="dial-item/g) || []).length, 18); // button and inner label
-assert.equal((projects.match(/class="project-record[^>]* hidden/g) || []).length, 8);
-assert.equal((projects.match(/class="project-gallery"/g) || []).length, 9);
+assert.equal((projects.match(/class="project-record/g) || []).length, 11);
+assert.equal((projects.match(/class="dial-item/g) || []).length, 22); // button and inner label
+assert.equal((projects.match(/class="project-record[^>]* hidden/g) || []).length, 10);
+assert.equal((projects.match(/class="project-gallery"/g) || []).length, 11);
 assert(!projects.includes('href="https://flowus.cn'), 'Case studies must stay local');
 const journey = section('journey');
 const chronological = ['NOW', '2023—2026', '2019—2023', '2013—2019'].map(year => journey.indexOf(year));
 assert(chronological.every((value, i) => value >= 0 && (!i || value > chronological[i - 1])));
 assert(journey.includes('journey-now reveal is-open'));
-assert.equal((section('ventures').match(/class="venture-record/g) || []).length, 5);
+assert.equal((section('ventures').match(/class="venture-record/g) || []).length, 6);
 assert(!section('ventures').includes('inline-toggle'), 'Practice details are always open');
 assert(section('ventures').includes('HerOS（SkinPilot）'));
 assert(section('ventures').includes('高原智卫'));
+assert(section('ventures').includes('Pyroscope'));
+assert(projects.includes('HOW MASTER') && projects.includes('Foodio'));
+for (const url of ['https://github.com/wch1007/Ros-Perception','https://happier-let-913626.framer.app/','https://mp.weixin.qq.com/s/szKht0ga1rDsQSkKegMVPQ','https://github.com/wch1007/TECHIN-516']) {
+  assert(projects.includes(url), `Missing project evidence: ${url}`);
+}
 assert.equal((section('honors').match(/class="honor-row"/g) || []).length, 22);
 assert(section('honors').includes('HRI 2026'));
 assert(section('honors').includes('1:30:31'));
@@ -37,7 +42,7 @@ assert(!section('contact').includes('about-timeline'), 'About should map experie
 assert(section('contact').includes('linkedin.com/in/chenghao-wang-caelen/'));
 assert(!html.includes('Caelan') && !html.includes('CAELAN'));
 assert.equal((section('contact').match(/class="life-frame"/g) || []).length, 19);
-for (const id of ['journey','ventures','projects','capabilities','honors']) {
+for (const id of ['ventures','projects','capabilities','honors']) {
   assert(section(id).split('>')[0].includes('chapter'));
 }
 assert(!section('honors').includes('<h2'), 'Honors have no oversized headline');
@@ -51,4 +56,4 @@ assert(section('contact').includes('Think as a poet.'));
 assert(section('contact').includes('18501284401'));
 assert(css.includes('--bg:#050807') && css.includes('--mint:#59f3c5'), 'Preserve the Accio palette');
 assert(css.includes('prefers-reduced-motion'));
-console.log('PASS: assets, anchors, five full-screen chapters, 9 local projects and galleries, 5 ventures, 22 honors, 19 life photos, contact and Accio palette.');
+console.log('PASS: assets, anchors, restored journey, 11 local projects and galleries, 6 ventures, project links, 22 honors, 19 life photos, contact and Accio palette.');

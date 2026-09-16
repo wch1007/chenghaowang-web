@@ -8,18 +8,27 @@ future iterations unless the owner explicitly changes it.
 
 ## Content and interaction
 
-- Journey is reverse chronological and opens Alibaba by default.
+- Journey is reverse chronological and opens Alibaba by default. Restore the
+  previous vertically expanding accordion (35aa275), with in-flow photos and
+  optional collapse. Its height follows its content instead of a fixed screen.
 - Practice starts with Alibaba, followed by TangWen, K Teacher, HerOS and
-  Plateau Guard (高原智卫). One always-expanded case is selected at a time.
+  Plateau Guard (高原智卫) and Pyroscope. One always-expanded case is selected
+  at a time; video playback stops when switching to another case.
 - HerOS is SkinPilot, confirmed by the owner. Keep their work in one case.
 - The owner's English name is Caelen, not Caelan.
-- Journey, practice, student work, capabilities and honors occupy full-height
+- Practice, student work, capabilities and honors occupy full-height
   chapters with native scroll snapping. Small viewports prioritize readability
   with scrollable panels. Never intercept wheel events over the honor carousel.
 - Student projects share one display stage and a rotatable index dial.
+- Include HOW MASTER (2022, earliest AI application exploration) and Foodio
+  (2024, graduate wearable eating-awareness project). Project code, product
+  sites and press links are visible alongside the overview when available.
+- Wide-screen hero portraits extend to the footer, with an infinite ticker
+  passing behind the transparent figure to connect the two compositions.
 - Project stories and media are local. FlowUs is only an optional archive link.
 - Honors loop vertically, newest first, without a large headline. Keep accessible
   controls to pause and step; disable autoplay when reduced motion is requested.
+  Accelerate smoothly over 2.4 seconds to 63 pixels/second (three times 21).
 - Last page preserves the original narrative, motto and contact invitation,
   with a capability origin story, an infinite horizontal life photo journal,
   WeChat and LinkedIn. Do not repeat the chronological résumé on this page.

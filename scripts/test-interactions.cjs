@@ -6,13 +6,16 @@ const path=require('node:path');
 const base=path.resolve(__dirname,'..');
 const html=readFileSync(path.join(base,'index.html'),'utf8');
 const js=readFileSync(path.join(base,'assets/site.js'),'utf8');
-function fixture(reduced=false) {
+function fixture(reduced=false, animate=false) {
   const dom=new JSDOM(html,{url:'https://example.test/',runScripts:'outside-only',pretendToBeVisual:true});
   const w=dom.window;
   w.matchMedia=()=>({matches:reduced,addEventListener(){}});
   w.IntersectionObserver=class {constructor(cb){this.cb=cb;}observe(el){this.cb([{target:el,isIntersecting:true}]);}unobserve(){}};
   w.ResizeObserver=class {constructor(cb){this.cb=cb;}observe(){this.cb();}};
-  w.requestAnimationFrame=()=>0;
+  const frames=[];
+  w.requestAnimationFrame=callback=>{if(animate)frames.push(callback);return frames.length;};
+  w.tick=time=>{const callbacks=frames.splice(0);callbacks.forEach(callback=>callback(time));};
+  w.HTMLElement.prototype.getBoundingClientRect=function(){return {top:100,left:0,width:100,height:this.classList.contains('honors-list') ? 2200 : 100};};
   w.scrollTo=()=>{};
   w.HTMLElement.prototype.getAnimations=()=>[];
   w.HTMLElement.prototype.animate=()=>({cancel(){}});
@@ -33,19 +36,25 @@ for(const reduced of [false,true]) {
   assert.equal(q('#journey-detail-3').inert,false);
   assert.equal(q('#journey-detail-0').inert,true);
   click('.journey-card:nth-child(4) .journey-summary');
-  assert.equal(qa('.journey-card.is-open').length,1,'One journey always stays open');
-  for(let i=0;i<5;i++) {
+  assert.equal(qa('.journey-card.is-open').length,0,'Restored accordion supports closing the selected entry');
+  for(let i=0;i<6;i++) {
     click(`[data-venture="${i}"]`);
     assert.equal(qa('.venture-record').filter(x=>!x.hidden).length,1);
     assert.equal(qa('.venture-record')[i].hidden,false);
     assert.equal(qa('.venture-record')[i].querySelector('.venture-detail').inert,false);
   }
   click('[data-venture-direction="1"]');
-  assert.equal(q('.venture-counter').textContent,'01 / 05');
+  assert.equal(q('.venture-counter').textContent,'01 / 06');
   key('.venture-tabs','ArrowLeft');
-  assert.equal(q('.venture-counter').textContent,'05 / 05');
-  assert.equal(d.activeElement.dataset.venture,'4');
-  for(let i=0;i<9;i++) {
+  assert.equal(q('.venture-counter').textContent,'06 / 06');
+  assert.equal(d.activeElement.dataset.venture,'5');
+  const player=q('#venture-pyroscope video');
+  let videoPaused=false;
+  Object.defineProperty(player,'paused',{get:()=>false});
+  player.pause=()=>{videoPaused=true;};
+  click('[data-venture="0"]');
+  assert(videoPaused,'Switching projects stops the previous demo');
+  for(let i=0;i<11;i++) {
     qa('.dial-item')[i].click();
     const record=qa('.project-record')[i];
     assert.equal(qa('.project-record').filter(x=>!x.hidden).length,1);
@@ -56,7 +65,7 @@ for(const reduced of [false,true]) {
     assert(!record.classList.contains('is-open'));
   }
   click('.project-next');
-  assert.equal(q('.project-counter').textContent,'01 / 09');
+  assert.equal(q('.project-counter').textContent,'01 / 11');
   for(const b of qa('.skill-select')){b.click();assert.equal(b.getAttribute('aria-pressed'),'true');}
   assert.equal(qa('.honors-list').length,2);
   assert.equal(qa('.honors-list')[1].getAttribute('aria-hidden'),'true');
@@ -78,4 +87,24 @@ for(const reduced of [false,true]) {
   assert.equal(q('.motion-toggle').getAttribute('aria-pressed'),String(reduced));
   dom.window.close();
 }
-console.log('PASS: journey, 5-case carousel, wraparound and keyboard, 9 project disclosures, capability selection, loop clones, pause, languages, mobile menu, reduced motion.');
+// Measure the carousel's real frame integration: slow start, 63px/s cruise,
+// explicit pause, wraparound, and no autoplay under a reduced-motion preference.
+for(const reduced of [false,true]) {
+  const dom=fixture(reduced,true), w=dom.window, d=w.document;
+  const belt=d.querySelector('.honor-belt');
+  const offset=()=>Number(belt.style.transform.match(/translateY\(-([\d.]+)px\)/)?.[1] || 0);
+  let time=0;
+  const advance=milliseconds=>{for(let i=0;i<milliseconds/40;i++){time+=40;w.tick(time);}};
+  advance(240);
+  assert(offset()<2,'Initial carousel speed ramps up gently');
+  advance(3760);
+  const before=offset();advance(1000);
+  assert(Math.abs(offset()-before-(reduced ? 0 : 63))<.001,'Cruise speed is three times the former 21px/s');
+  d.querySelector('.honor-pause').click();
+  const pausedOffset=offset();advance(1000);
+  assert.equal(offset(),pausedOffset,'Paused carousel stays in place');
+  d.querySelector('.honor-pause').click();advance(48000);
+  assert(offset()>=0&&offset()<2200,'Long playback wraps within a single content period');
+  dom.window.close();
+}
+console.log('PASS: restored accordion, 6-case carousel, wraparound and keyboard, 11 project disclosures, capability selection, loop clones, pause, languages, mobile menu, reduced motion.');

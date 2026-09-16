@@ -110,14 +110,19 @@
     button.setAttribute('aria-expanded', String(open));
     panel.inert = !open;
     button.addEventListener('click', () => {
-      const willOpen = true;
+      const willOpen = !card.classList.contains('is-open');
       journeyCards.forEach(other => {
         const active = other === card && willOpen;
         other.classList.toggle('is-open', active);
         other.querySelector('.journey-summary').setAttribute('aria-expanded', String(active));
         other.querySelector('.journey-detail').inert = !active;
       });
-      panel.scrollTop = 0;
+      if (willOpen) {
+        setTimeout(() => {
+          const top = button.getBoundingClientRect().top;
+          if (top < 90) window.scrollBy({ top:top - 100, behavior:motionAllowed() ? 'smooth' : 'instant' });
+        }, motionAllowed() ? 670 : 0);
+      }
     });
   });
   const ventures = [...doc.querySelectorAll('.venture-record')];
@@ -129,6 +134,7 @@
     ventures.forEach((record, i) => {
       record.hidden = i !== ventureIndex;
       record.inert = i !== ventureIndex;
+      if (i !== ventureIndex) record.querySelectorAll('video').forEach(video => { if (!video.paused) video.pause(); });
       record.classList.add('is-open');
       record.querySelector('.venture-detail').inert = false;
       ventureButtons[i].setAttribute('aria-pressed', String(i === ventureIndex));
@@ -136,7 +142,7 @@
     const current = ventures[ventureIndex];
     current.scrollTop = 0;
     current.querySelector('.venture-copy').scrollTop = 0;
-    doc.querySelector('.venture-counter').textContent = String(ventureIndex + 1).padStart(2,'0') + ' / 05';
+    doc.querySelector('.venture-counter').textContent = String(ventureIndex + 1).padStart(2,'0') + ' / ' + String(ventures.length).padStart(2,'0');
     if (animate && previous !== ventureIndex && motionAllowed()) {
       const direction = Math.sign(index - previous) || 1;
       current.getAnimations().forEach(a => a.cancel());
@@ -149,7 +155,7 @@
     if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
     event.preventDefault();
     selectVenture(event.key === 'Home' ? 0 : event.key === 'End' ? ventures.length - 1 : ventureIndex + (event.key === 'ArrowRight' ? 1 : -1));
-    ventureButtons[ventureIndex].focus();
+    ventureButtons[ventureIndex].focus({preventScroll:true});
   });
   let ventureTouch = null;
   const ventureList = doc.querySelector('.venture-list');
@@ -213,7 +219,7 @@
       event.preventDefault();
       selectProject(event.key === 'Home' ? 0 : event.key === 'End' ? count - 1 :
         selected + (['ArrowDown','ArrowRight'].includes(event.key) ? 1 : -1));
-      dialButtons[selected].focus();
+      dialButtons[selected].focus({preventScroll:true});
     }
   });
   let wheelAmount = 0, lastWheel = 0;
@@ -312,7 +318,7 @@
   body.appendChild(lightbox);
   lightbox.querySelector('button').addEventListener('click', () => lightbox.close());
   lightbox.addEventListener('click', event => { if (event.target === lightbox) lightbox.close(); });
-  doc.querySelectorAll('.project-gallery img').forEach(img => {
+  doc.querySelectorAll('.project-gallery img, .case-gallery img').forEach(img => {
     img.tabIndex = 0;
     img.setAttribute('role', 'button');
     img.setAttribute('aria-label', img.alt + '，查看大图');
@@ -362,7 +368,7 @@
     clone.dataset.loopClone='true';
     film.append(clone);
   });
-  let honorOffset=0, lifeOffset=0, honorPeriod=1, lifePeriod=1;
+  let honorOffset=0, lifeOffset=0, honorPeriod=1, lifePeriod=1, honorRunTime=0;
   const loopState = { honor:{visible:false,hover:false,focus:false,paused:false}, life:{visible:false,hover:false,focus:false,paused:false} };
   function measureLoops() {
     honorPeriod = Math.max(1, honorList.getBoundingClientRect().height);
@@ -421,9 +427,15 @@
     const elapsed=Math.min(now-loopTime,40); loopTime=now;
     if(motionAllowed()&&!doc.hidden) {
       const canPlay=state=>state.visible&&!state.hover&&!state.focus&&!state.paused;
-      if(canPlay(loopState.honor)) {honorOffset+=elapsed*.021;renderHonor();}
+      if(canPlay(loopState.honor)) {
+        honorRunTime=Math.min(honorRunTime+elapsed,2400);
+        const ramp=honorRunTime/2400;
+        const acceleration=ramp*ramp*(3-2*ramp);
+        honorOffset+=elapsed*.063*acceleration;
+        renderHonor();
+      } else honorRunTime=0;
       if(canPlay(loopState.life)&&now>=lifeManualUntil) {lifeOffset+=elapsed*.032;renderLife();}
-    }
+    } else honorRunTime=0;
     requestAnimationFrame(animateLoops);
   }
   requestAnimationFrame(animateLoops);
