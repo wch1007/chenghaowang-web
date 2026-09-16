@@ -87,8 +87,18 @@ for(const reduced of [false,true]) {
   click('.language-toggle');
   assert.equal(d.documentElement.lang,'en');
   assert(q('.about-intro').textContent.includes('Caelen'));
+  assert(q('.about-intro').textContent.includes('value of practice'));
+  assert.equal(q('.resume-link span').textContent,'Get my résumé');
+  assert(q('.resume-link').hasAttribute('download'));
+  assert.equal(qa('.venture-record')[3].querySelector('time').textContent,'JUN 2025 — JUL 2026');
+  assert(qa('.venture-record')[4].querySelector('.venture-role').textContent.includes('Agent Product Lead'));
+  assert.equal(qa('.venture-record')[5].querySelector('time').textContent,'AUG 2025 — MAR 2026');
+  assert(qa('.venture-record')[5].querySelector('.venture-role').textContent.includes('Project Lead'));
   click('.language-toggle');
   assert.equal(d.documentElement.lang,'zh-CN');
+  assert.equal(q('.resume-link span').textContent,'获取个人简历');
+  assert(q('.about-intro').textContent.endsWith('坚信实践的价值。'));
+  assert.equal(qa('.venture-record')[3].querySelector('time').textContent,'2025年6月—2026年7月');
   click('.menu-toggle');assert.equal(q('.mobile-menu').inert,false);
   key('body','Escape');assert.equal(q('.mobile-menu').inert,true);
   assert.equal(q('.motion-toggle').getAttribute('aria-pressed'),String(reduced));

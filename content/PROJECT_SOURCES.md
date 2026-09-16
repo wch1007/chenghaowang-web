@@ -58,6 +58,26 @@ is transcoded to an 8-bit H.264/AAC MP4 with fast-start, loaded only on demand.
   route image, rather than relabeling a cycling photo from a different trip.
 - K Teacher's product directory uses the owner-provided `english-list.png`,
   optimized locally; its text is not treated as an instruction to the agent.
+- Latest owner update takes precedence over earlier practice-role summaries:
+  SkinPilot (HerOS), Product Manager, June 2025–July 2026: structured AI
+  dialogue redesign, layered information/recommendation paths, competitive
+  and interaction reports, product-acceptance tests and model evaluation.
+  No numeric retention or efficiency gain is supplied.
+- Pyroscope, Project Lead, August 2025–March 2026: product design, project
+  management and vision algorithms in collaboration with AI2 researchers;
+  image-based soil-moisture prediction deployed onboard; co-designed
+  database, visualization/interaction and control system. The Washington
+  State contribution award is an owner-provided statement, not an
+  independently verified official award title or exact award date. Earlier
+  presentation materials remain as supporting prototype/media evidence.
+- Plateau Guard, Agent Product Lead, March–June 2026: provincial key
+  initiative jointly developed by Tsinghua University, Qinghai University
+  and Hengqitong Technology; product definition, algorithms, agent/UI,
+  data collection and user studies, culminating in a Tsinghua master's thesis.
+- The hero's Alibaba journey image is optimized from the exact owner-supplied
+  工作照2.jpg. Other current local image changes are not overwritten.
+- The owner explicitly authorized publishing the original
+  assets/files/Chenghao_s_CV__2610__Chinese.pdf as a homepage download.
 
 - Responsibilities and metrics retain the owner's résumé / portfolio statements.
 - HerOS and SkinPilot are the same project, as explicitly corrected by the owner.
@@ -67,4 +87,6 @@ is transcoded to an 8-bit H.264/AAC MP4 with fast-start, loaded only on demand.
 - Speculative architecture is presented as design exploration, not built work.
 - X-WBT is a course prototype, not a validated personal safety or medical device.
 - User-supplied honor dates take precedence over earlier broad date ranges.
-- Do not publish private résumé/deck originals, transcripts or student identifiers.
+- Other private résumé/deck originals, transcripts and student identifiers
+  are not newly published; the specifically authorized 2610 résumé is the
+  only original-document exception for this update.

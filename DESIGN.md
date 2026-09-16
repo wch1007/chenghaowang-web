@@ -11,10 +11,20 @@ future iterations unless the owner explicitly changes it.
 - Journey is reverse chronological and opens Alibaba by default. Restore the
   previous vertically expanding accordion (35aa275), with in-flow photos and
   optional collapse. Its height follows its content instead of a fixed screen.
+  Title: “在经历中积累，在实践中前行”; Alibaba uses 工作照2.jpg,
+  optimized as accio-work-portrait.webp without modifying the source photo.
 - Practice starts with Alibaba, followed by TechWend (汤问致新), K Teacher, HerOS and
   Plateau Guard (高原智卫) and Pyroscope. One always-expanded case is selected
   at a time; video playback stops when switching to another case.
 - HerOS is SkinPilot, confirmed by the owner. Keep their work in one case.
+  Show the updated Product Manager role (June 2025–July 2026), structured
+  dialogue redesign, competitive/interaction analysis and acceptance tests.
+- Pyroscope shows the AI2 collaboration and Project Lead role (August 2025–
+  March 2026), onboard image-to-soil-moisture prediction and database/UI/control
+  work. Its award is the owner's statement, not an independently verified title.
+- Plateau Guard shows the Agent Product Lead role (March–June 2026), provincial
+  key initiative and Tsinghua/Qinghai/Hengqitong collaboration, culminating in
+  the owner's Tsinghua master's thesis. Preserve prototype imagery and videos.
 - The owner's English name is Caelen, not Caelan.
 - Practice, student work, capabilities and honors occupy full-height
   chapters with native scroll snapping. Small viewports prioritize readability
@@ -25,8 +35,11 @@ future iterations unless the owner explicitly changes it.
   sites and press links are visible alongside the overview when available.
 - Wide-screen hero portraits extend to the footer, with an infinite ticker
   passing behind the transparent figure to connect the two compositions.
+  Keep only the main graduation portrait, not the small caelen-tsinghua inset.
+  Offer the authorized 2610 Chinese résumé after the project action.
 - Project stories and media are local. FlowUs is only an optional archive link.
-- Honors loop vertically, newest first, without a large headline. Keep accessible
+- Honors loop vertically, newest first, without a large headline; compact label
+  “好汉也提提当年勇”. Keep accessible
   controls to pause and step; disable autoplay when reduced motion is requested.
   Accelerate smoothly over 2.4 seconds to 63 pixels/second (three times 21).
 - Last page preserves the original narrative, motto and contact invitation,
@@ -36,8 +49,10 @@ future iterations unless the owner explicitly changes it.
 
 ## Sources
 
-- Owner-provided résumé and 2024 / 2025 GIX scholarship decks (private originals,
-  not published). Use the later deck for confirmed competition results.
+- Owner-provided résumé and 2024 / 2025 GIX scholarship decks. The owner
+  explicitly authorized publishing Chenghao_s_CV__2610__Chinese.pdf as a
+  download; other private originals are not published. Use the later deck for
+  confirmed competition results.
 - Owner-provided photos and HerOS cover.
 - Owner corrections and new honors, September 2026; no exact months inferred
   for awards only documented by year or study period.

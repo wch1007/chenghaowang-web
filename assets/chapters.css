@@ -15,14 +15,15 @@ html { scroll-snap-type:y proximity; scroll-padding-top:0; }
 .portrait-backdrop { border-radius:48% 48% 0 0; }
 .hero-signature { position:absolute; z-index:4; left:24%; bottom:7%; color:var(--ink); font:italic clamp(50px,6vw,88px)/1 Georgia,serif; transform:rotate(-8deg); text-shadow:0 3px 28px #000; }
 .hero-signature span { display:block; font:9px/1.6 Consolas,monospace; letter-spacing:.13em; margin-top:10px; transform:rotate(8deg); }
-.hero-memory { position:absolute; z-index:3; left:-6%; bottom:8%; width:28%; height:40%; transform:rotate(-8deg); border-bottom:1px solid #59f3c568; background:linear-gradient(transparent,#13251bbc); }
-.hero-memory img { height:100%; width:100%; object-fit:contain; object-position:bottom; }
-.hero-memory span { position:absolute; left:0; bottom:-24px; white-space:nowrap; font:8px Consolas,monospace; color:var(--muted); }
 .note-b { display:none; }
 .hero-lead { font-size:16px; }
+.hero-actions { flex-wrap:wrap; column-gap:24px; row-gap:14px; }
+.hero-actions > a { flex-shrink:0; white-space:nowrap; }
+.resume-link:hover { border-color:var(--mint); }
 
 /* Restore the previous chronological accordion and its generous photo layout. */
 .journey-section { min-height:100svh; }
+.journey-card.journey-now .journey-photo img { object-position:50% 100%; }
 .institution-logos { gap:16px; }
 .institution-logos .gix-logo { max-width:140px; height:32px; background:#fff; padding:5px; border-radius:2px; }
 .institution-logos .school-logo { width:65px; height:65px; }
@@ -36,6 +37,7 @@ html { scroll-snap-type:y proximity; scroll-padding-top:0; }
 .venture-copy { overflow:auto; scrollbar-gutter:stable; padding:0 12px 12px 0; }
 .venture-copy h3 { font-size:clamp(27px,3vw,44px); }
 .venture-number { font-size:12px; margin-bottom:13px; }
+.venture-affiliation { margin:0 0 10px; font-size:12px; line-height:1.6; letter-spacing:.04em; color:var(--mint); }
 .venture-role { font-size:14px; margin:13px 0 8px; }
 .venture-copy > p:not(.venture-role),.venture-detail p,.work-details { font-size:16px; line-height:1.8; }
 .venture-detail { display:block; visibility:visible; }
@@ -195,7 +197,6 @@ html[data-language="en"] .project-dial { height:auto; }
   .marquee-group span { font-size:13px; color:#d0e6db; }
   .marquee-group i { font-size:24px; }
   .hero-signature { left:43%; bottom:24%; font-size:clamp(58px,5vw,94px); }
-  .hero-memory { left:4%; bottom:13%; width:22%; height:32%; }
   .note-c { left:8%; top:43%; }
 }
 @media (max-width:1100px) {
@@ -231,8 +232,6 @@ html[data-language="en"] .project-dial { height:auto; }
   .chapter .section-heading > p { display:none; }
   .hero { min-height:100svh; }
   .hero-signature { font-size:56px; left:29%; }
-  .hero-memory { left:1%; width:26%; bottom:12%; }
-  .hero-memory span { font-size:6px; }
   .hero-signature span { font-size:7px; }
   .institution-logos img { height:34px; }
   .venture-list { overflow:hidden; }

@@ -19,6 +19,7 @@
 - 响应式桌面与移动端布局
 - 四个整屏章节与原生滚动吸附，履历恢复纵向展开，齿盘拖动 / 滚轮 / 键盘切换、图文位置过渡、无缝轮播
 - 宽屏首页人物与滚动条结合；荣誉轮播在 2.4 秒内加速到三倍速度
+- 首页保留主要人物肖像，在项目入口右侧提供 2610 中文简历下载
 - 尊重系统的 `prefers-reduced-motion` 动效偏好，并提供暂停动态效果按钮
 - 固定 Accio Work 深色薄荷绿主调，荧光绿和紫色仅作局部点缀，见 `DESIGN.md`
 - 无构建步骤、无外部前端依赖，适合 GitHub Pages 直接托管
@@ -47,7 +48,7 @@ npm install --prefix tmp/qa jsdom --no-save --ignore-scripts
 node scripts/test-interactions.cjs
 ```
 
-项目正文和图片均保存在本站。简历、奖学金申请等私人原件不纳入发布文件。
+项目正文和图片均保存在本站。按本人明确授权，提供 `assets/files/Chenghao_s_CV__2610__Chinese.pdf` 原件公开下载；其他简历、奖学金申请等私人原件不纳入本次发布。
 
 ## 联系
 
