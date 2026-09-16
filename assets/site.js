@@ -1,347 +1,357 @@
 (() => {
   'use strict';
-
   const doc = document;
   const root = doc.documentElement;
   const body = doc.body;
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const finePointer = window.matchMedia('(pointer: fine)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  root.classList.add('js');
+  const motionButton = doc.querySelector('.motion-toggle');
+  let paused = reduced.matches;
+  const motionAllowed = () => !paused && !reduced.matches;
+  function setMotion(value) {
+    paused = value;
+    body.classList.toggle('motion-paused', value);
+    motionButton.setAttribute('aria-pressed', String(value));
+    motionButton.textContent = value ? '▷' : 'Ⅱ';
+    motionButton.setAttribute('aria-label', value ? '播放动态效果 / Play motion' : '暂停动态效果 / Pause motion');
+  }
+  setMotion(paused);
+  motionButton.addEventListener('click', () => setMotion(!paused));
+  reduced.addEventListener('change', () => setMotion(reduced.matches));
 
-  const finishLoading = () => window.setTimeout(() => body.classList.add('is-loaded'), reduceMotion ? 0 : 180);
-  if (doc.readyState === 'complete') finishLoading();
-  else window.addEventListener('load', finishLoading, { once: true });
-  window.setTimeout(finishLoading, 1800);
-
-  const getLanguage = () => root.dataset.language === 'en' ? 'en' : 'zh';
   const languageButton = doc.querySelector('.language-toggle');
-  const getInitialLanguage = () => {
-    const query = new URLSearchParams(window.location.search).get('lang');
-    if (query === 'en' || query === 'zh') return query;
-    try {
-      const saved = window.localStorage.getItem('cw-language-2026');
-      if (saved === 'en' || saved === 'zh') return saved;
-    } catch (_) {}
-    return 'zh';
-  };
-
-  const toggleText = () => {
-    const lang = getLanguage();
-    doc.querySelectorAll('.venture-record').forEach((record) => {
-      const span = record.querySelector('.inline-toggle span');
-      if (!span) return;
-      span.textContent = record.classList.contains('is-open')
-        ? (lang === 'zh' ? '收起详情' : 'Close case')
-        : (lang === 'zh' ? '展开详情' : 'Open case');
+  const lang = () => root.dataset.language === 'en' ? 'en' : 'zh';
+  function translateControls() {
+    doc.querySelectorAll('.inline-toggle, .project-toggle').forEach(button => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.querySelector('span').textContent = lang() === 'zh'
+        ? (open ? '收起详情' : '展开详情')
+        : (open ? 'Close details' : 'Explore details');
     });
-    doc.querySelectorAll('.project-record').forEach((record) => {
-      const span = record.querySelector('.project-toggle span');
-      if (!span) return;
-      span.textContent = record.classList.contains('is-open')
-        ? (lang === 'zh' ? '收起项目详情' : 'Close project details')
-        : (lang === 'zh' ? '展开项目详情' : 'Open project details');
-    });
-  };
-
-  const setLanguage = (language, updateUrl = true) => {
-    const lang = language === 'en' ? 'en' : 'zh';
-    root.dataset.language = lang;
-    root.lang = lang === 'en' ? 'en' : 'zh-CN';
-    doc.querySelectorAll('[data-zh][data-en]').forEach((node) => {
-      node.innerHTML = node.dataset[lang];
-    });
-    if (languageButton) {
-      languageButton.textContent = lang === 'zh' ? 'EN' : '中文';
-      languageButton.setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切换到中文');
-    }
-    doc.title = lang === 'zh'
-      ? '王城昊 Chenghao Wang — AI Product Builder'
-      : 'Chenghao Wang — AI Product Builder';
-    const description = doc.querySelector('meta[name="description"]');
-    description?.setAttribute('content', lang === 'zh'
-      ? '王城昊 Chenghao Wang：AI 产品经理、连续创业者与跨学科产品创造者。'
-      : 'Chenghao Wang: AI product manager, entrepreneur and interdisciplinary builder.');
-    try { window.localStorage.setItem('cw-language-2026', lang); } catch (_) {}
+  }
+  function setLanguage(value, updateUrl = true) {
+    root.dataset.language = value;
+    root.lang = value === 'en' ? 'en' : 'zh-CN';
+    doc.title = value === 'en' ? 'Chenghao Wang — AI Product Builder' : '王城昊 Chenghao Wang — AI Product Builder';
+    doc.querySelectorAll('[data-zh][data-en]').forEach(node => { node.innerHTML = node.dataset[value]; });
+    languageButton.textContent = value === 'en' ? '中文' : 'EN';
+    languageButton.setAttribute('aria-label', value === 'en' ? '切换中文' : 'Switch to English');
+    try { localStorage.setItem('cw-language-2026', value); } catch (_) {}
     if (updateUrl) {
-      const url = new URL(window.location.href);
-      if (lang === 'en') url.searchParams.set('lang', 'en');
-      else url.searchParams.delete('lang');
-      window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+      const url = new URL(location.href);
+      if (value === 'en') url.searchParams.set('lang', 'en'); else url.searchParams.delete('lang');
+      history.replaceState({}, '', url.pathname + url.search + url.hash);
     }
-    toggleText();
-    renderCapability(doc.querySelector('.cap-node.active')?.dataset.cap || 'ai');
-  };
-
-  languageButton?.addEventListener('click', () => setLanguage(getLanguage() === 'zh' ? 'en' : 'zh'));
+    translateControls();
+    renderSkill(selectedSkill, false);
+  }
+  languageButton.addEventListener('click', () => setLanguage(lang() === 'en' ? 'zh' : 'en'));
 
   const menuButton = doc.querySelector('.menu-toggle');
-  const mobileMenu = doc.querySelector('.mobile-menu');
-  const setMenu = (open) => {
+  const menu = doc.querySelector('.mobile-menu');
+  function setMenu(open) {
     body.classList.toggle('menu-open', open);
-    menuButton?.setAttribute('aria-expanded', String(open));
-    menuButton?.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
-    mobileMenu?.setAttribute('aria-hidden', String(!open));
-    mobileMenu?.classList.toggle('is-open', open);
-  };
-  menuButton?.addEventListener('click', () => setMenu(!body.classList.contains('menu-open')));
-  mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
-  window.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
+    menu.classList.toggle('is-open', open);
+    menu.inert = !open;
+    menu.setAttribute('aria-hidden', String(!open));
+    menuButton.setAttribute('aria-expanded', String(open));
+  }
+  setMenu(false);
+  menuButton.addEventListener('click', () => setMenu(!body.classList.contains('menu-open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  doc.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && body.classList.contains('menu-open')) { setMenu(false); menuButton.focus(); }
+    if (event.key === 'Tab' && body.classList.contains('menu-open')) {
+      const focusable = [menuButton, ...menu.querySelectorAll('a')];
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (event.shiftKey && doc.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && doc.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+  });
+  window.matchMedia('(min-width: 901px)').addEventListener('change', event => { if (event.matches) setMenu(false); });
 
   const header = doc.querySelector('.site-header');
   const progress = doc.querySelector('.scroll-progress i');
-  let scrollTicking = false;
-  const updateScroll = () => {
-    const y = window.scrollY;
-    const range = Math.max(doc.documentElement.scrollHeight - window.innerHeight, 1);
-    header?.classList.toggle('is-scrolled', y > 20);
-    if (progress) progress.style.transform = `scaleY(${Math.min(y / range, 1)})`;
-    scrollTicking = false;
-  };
+  let framePending = false;
+  function updateScroll() {
+    header.classList.toggle('is-scrolled', window.scrollY > 15);
+    progress.style.transform = 'scaleY(' + Math.min(window.scrollY / Math.max(root.scrollHeight - innerHeight, 1), 1) + ')';
+    framePending = false;
+  }
   window.addEventListener('scroll', () => {
-    if (!scrollTicking) {
-      window.requestAnimationFrame(updateScroll);
-      scrollTicking = true;
-    }
+    if (!framePending) { framePending = true; requestAnimationFrame(updateScroll); }
   }, { passive: true });
   updateScroll();
-
-  const revealItems = [...doc.querySelectorAll('.reveal')];
-  if (reduceMotion || !('IntersectionObserver' in window)) revealItems.forEach((item) => item.classList.add('is-visible'));
-  else {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+  const revealTargets = doc.querySelectorAll('.reveal, .honor-row');
+  if ('IntersectionObserver' in window && !reduced.matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
       });
-    }, { rootMargin: '0px 0px -8%', threshold: .06 });
-    revealItems.forEach((item, index) => {
-      item.style.setProperty('--reveal-delay', `${Math.min(index % 3, 2) * 65}ms`);
-      revealObserver.observe(item);
-    });
-  }
-
-  const desktopLinks = [...doc.querySelectorAll('.desktop-nav a')];
-  const mainSections = [...doc.querySelectorAll('main > section[id]')];
+    }, { threshold: .09, rootMargin: '0px 0px -35px' });
+    revealTargets.forEach(node => observer.observe(node));
+  } else revealTargets.forEach(node => node.classList.add('is-visible'));
   if ('IntersectionObserver' in window) {
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        desktopLinks.forEach((link) => link.classList.toggle('active', link.hash === `#${entry.target.id}`));
+    const navLinks = [...doc.querySelectorAll('.desktop-nav a')];
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) navLinks.forEach(link => link.classList.toggle('active', link.hash === '#' + entry.target.id));
       });
-    }, { rootMargin: '-30% 0px -62%', threshold: 0 });
-    mainSections.forEach((section) => sectionObserver.observe(section));
+    }, { rootMargin: '-20% 0px -65%', threshold: 0 });
+    doc.querySelectorAll('main > section[id]').forEach(section => navObserver.observe(section));
   }
 
-  doc.querySelectorAll('.journey-summary').forEach((button) => {
+  const journeyCards = [...doc.querySelectorAll('.journey-card')];
+  journeyCards.forEach((card, i) => {
+    const button = card.querySelector('.journey-summary');
+    const panel = card.querySelector('.journey-detail');
+    const open = i === 0;
+    card.classList.toggle('is-open', open);
+    button.setAttribute('aria-expanded', String(open));
+    panel.inert = !open;
     button.addEventListener('click', () => {
-      const card = button.closest('.journey-card');
       const willOpen = !card.classList.contains('is-open');
-      doc.querySelectorAll('.journey-card').forEach((other) => {
-        other.classList.remove('is-open');
-        other.querySelector('.journey-summary')?.setAttribute('aria-expanded', 'false');
+      journeyCards.forEach(other => {
+        const active = other === card && willOpen;
+        other.classList.toggle('is-open', active);
+        other.querySelector('.journey-summary').setAttribute('aria-expanded', String(active));
+        other.querySelector('.journey-detail').inert = !active;
       });
+      // Keep the selected chapter below the header when an earlier one collapses.
       if (willOpen) {
-        card.classList.add('is-open');
-        button.setAttribute('aria-expanded', 'true');
+        setTimeout(() => {
+          const top = button.getBoundingClientRect().top;
+          if (top < 90) window.scrollBy({ top: top - 100, behavior: motionAllowed() ? 'smooth' : 'instant' });
+        }, motionAllowed() ? 670 : 0);
       }
     });
   });
-
-  doc.querySelectorAll('.inline-toggle').forEach((button) => {
+  doc.querySelectorAll('.venture-record').forEach((record, i) => {
+    const button = record.querySelector('.inline-toggle');
+    const panel = record.querySelector('.venture-detail');
+    panel.id = 'venture-details-' + i;
+    panel.inert = !record.classList.contains('is-open');
+    button.setAttribute('aria-controls', panel.id);
+    button.setAttribute('aria-expanded', String(!panel.inert));
     button.addEventListener('click', () => {
-      const record = button.closest('.venture-record');
       const open = !record.classList.contains('is-open');
       record.classList.toggle('is-open', open);
+      panel.inert = !open;
       button.setAttribute('aria-expanded', String(open));
-      toggleText();
+      translateControls();
     });
   });
 
-  doc.querySelectorAll('.project-toggle').forEach((button) => {
-    button.addEventListener('click', () => {
-      const record = button.closest('.project-record');
-      const open = !record.classList.contains('is-open');
-      record.classList.toggle('is-open', open);
-      button.setAttribute('aria-expanded', String(open));
-      toggleText();
+  // A single local case-study stage, controlled by a continuous, snapping dial.
+  const projects = [...doc.querySelectorAll('.project-record')];
+  const dial = doc.querySelector('.project-dial');
+  const dialButtons = [...doc.querySelectorAll('.dial-item')];
+  const rotor = doc.querySelector('.dial-rotor');
+  const count = projects.length;
+  let selected = 0, rotation = 0, suppressClickUntil = 0;
+  const announcement = doc.createElement('span');
+  announcement.className = 'sr-only';
+  announcement.setAttribute('aria-live', 'polite');
+  doc.querySelector('.project-rail').append(announcement);
+  function selectProject(index, options = {}) {
+    const next = ((index % count) + count) % count;
+    const old = selected;
+    const desired = -next * 45;
+    if (options.rotation !== undefined) rotation = options.rotation;
+    rotation = desired + Math.round((rotation - desired) / 360) * 360;
+    dial.style.setProperty('--rotation', rotation + 'deg');
+    selected = next;
+    projects.forEach((record, i) => {
+      record.hidden = i !== selected;
+      record.classList.toggle('is-selected', i === selected);
+      if (i !== old || selected !== old) {
+        record.classList.remove('is-open');
+        record.querySelector('.project-toggle').setAttribute('aria-expanded', 'false');
+        record.querySelector('.project-detail').inert = true;
+      }
+      dialButtons[i].classList.toggle('active', i === selected);
+      dialButtons[i].setAttribute('aria-pressed', String(i === selected));
     });
-  });
-
-  const projectLinks = [...doc.querySelectorAll('.project-rail a')];
-  const projectRecords = [...doc.querySelectorAll('.project-record')];
-  if ('IntersectionObserver' in window) {
-    const projectObserver = new IntersectionObserver((entries) => {
-      const active = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!active) return;
-      projectLinks.forEach((link) => link.classList.toggle('active', link.hash === `#${active.target.id}`));
-    }, { rootMargin: '-18% 0px -58%', threshold: [0, .1, .35] });
-    projectRecords.forEach((record) => projectObserver.observe(record));
+    doc.querySelector('.project-counter').textContent = String(selected + 1).padStart(2, '0') + ' / 08';
+    announcement.textContent = projects[selected].querySelector('h3').textContent;
+    if (motionAllowed() && old !== selected) projects[selected].animate(
+      [{ opacity: 0, transform: 'translateY(15px)' }, { opacity: 1, transform: 'none' }],
+      { duration: 420, easing: 'cubic-bezier(.22,.75,.18,1)' }
+    );
+    translateControls();
   }
-
-  const capabilities = {
-    ai: {
-      index: '01 / 06',
-      zh: { title: 'AI 产品系统', body: '从客户访谈与问题拆解开始，定义 Agent / Skill 项目，用评测与 bad case 治理闭环，再推进到真实业务消费。', proof: 'Alibaba Accio Work · AI 英语内容引擎 · SkinPilot' },
-      en: { title: 'AI Product Systems', body: 'Start with customer interviews and problem decomposition, define Agent and Skill initiatives, close the loop through evaluation and bad-case governance, then drive real adoption.', proof: 'Alibaba Accio Work · AI English Studio · SkinPilot' },
-      tags: ['NEED DISCOVERY', 'AGENT / SKILL PRD', 'EVALUATION', 'BAD-CASE GOVERNANCE', 'ADOPTION']
-    },
-    data: {
-      index: '02 / 06',
-      zh: { title: '应用 AI 与数据', body: '把大模型、数据管线与业务规则组合成可重复运行的工作流，并用测试集、场景评测和指标判断它是否真的有效。', proof: 'LLM 应用 · Python 自动化 · 数据分析 · 模型评测' },
-      en: { title: 'Applied AI & Data', body: 'Combine language models, data pipelines and business rules into repeatable workflows, then judge effectiveness through test sets, scenario evaluation and metrics.', proof: 'LLM apps · Python automation · Data analysis · Model evaluation' },
-      tags: ['LLM APPLICATION', 'PYTHON', 'DATA PIPELINE', 'TEST CASES', 'METRICS']
-    },
-    robotics: {
-      index: '03 / 06',
-      zh: { title: '机器人与硬件', body: '从传感器标定、嵌入式系统到 ROS 2 感知与坐标转换，能把算法放进真实物理环境，并处理误差、延迟与故障。', proof: 'TangWen · ROS 2 Delivery · X-WBT · GottaGo' },
-      en: { title: 'Robotics & Hardware', body: 'From sensor calibration and embedded systems to ROS 2 perception and coordinate transformation, I bring algorithms into physical environments and work through error, latency and failure.', proof: 'TangWen · ROS 2 Delivery · X-WBT · GottaGo' },
-      tags: ['ROS 2', 'YOLOV8', 'SENSORS', 'EMBEDDED', '3D PRINT']
-    },
-    prototype: {
-      index: '04 / 06',
-      zh: { title: '原型与交互', body: '用交互原型快速验证假设：从 React / TypeScript 到对话 UX、实体交互、激光切割与 3D 打印，在正确的保真度上回答问题。', proof: 'Visual Diary · Frame Flow · SkinPilot · GottaGo' },
-      en: { title: 'Prototype & Interaction', body: 'Validate assumptions through the right fidelity—from React and TypeScript to conversational UX, physical interaction, laser cutting and 3D printing.', proof: 'Visual Diary · Frame Flow · SkinPilot · GottaGo' },
-      tags: ['REACT / TS', 'UX FLOW', 'CONVERSATIONAL UX', 'PHYSICAL PROTOTYPE', 'USABILITY']
-    },
-    venture: {
-      index: '05 / 06',
-      zh: { title: '0→1 创业推进', body: '在没有标准答案时定义定位、MVP 与路线图，协调团队、供应链和合作方，并用路演、融资、营收与用户反馈推进验证。', proof: '汤问 $300K 融资 · K老师 10W+ 营收 · HerOS' },
-      en: { title: '0→1 Venture Building', body: 'Define positioning, MVP and roadmap without a preset answer; align teams, supply chain and partners; validate through pitching, funding, revenue and user feedback.', proof: 'TangWen $300K seed · K Teacher 100K+ revenue · HerOS' },
-      tags: ['POSITIONING', 'MVP', 'ROADMAP', 'FUNDRAISING', 'COMMERCIAL VALIDATION']
-    },
-    system: {
-      index: '06 / 06',
-      zh: { title: '空间与系统设计', body: '建筑学训练让我从关系、尺度与结构理解复杂系统；再用研究、可视化与叙事，把多方约束组织为清晰可行动的整体。', proof: 'Hyper Student City · Monolith · Bubble-Verse' },
-      en: { title: 'Spatial & System Design', body: 'Architecture trained me to read complex systems through relationships, scale and structure, then organize constraints into a clear, actionable whole through research, visualization and narrative.', proof: 'Hyper Student City · Monolith · Bubble-Verse' },
-      tags: ['SYSTEM THINKING', 'SPATIAL DESIGN', 'RESEARCH', 'VISUAL STORYTELLING', 'FUTURES']
+  dialButtons.forEach((button, index) => button.addEventListener('click', () => {
+    if (performance.now() < suppressClickUntil) return;
+    selectProject(index);
+  }));
+  doc.querySelector('.project-prev').addEventListener('click', () => selectProject(selected - 1));
+  doc.querySelector('.project-next').addEventListener('click', () => selectProject(selected + 1));
+  dial.addEventListener('keydown', event => {
+    if (['ArrowDown','ArrowRight','ArrowUp','ArrowLeft','Home','End'].includes(event.key)) {
+      event.preventDefault();
+      selectProject(event.key === 'Home' ? 0 : event.key === 'End' ? count - 1 :
+        selected + (['ArrowDown','ArrowRight'].includes(event.key) ? 1 : -1));
+    }
+  });
+  let wheelAmount = 0, lastWheel = 0;
+  dial.addEventListener('wheel', event => {
+    if (event.ctrlKey) return;
+    event.preventDefault();
+    if (performance.now() - lastWheel < 250) return;
+    wheelAmount += event.deltaY || event.deltaX;
+    if (Math.abs(wheelAmount) > 28) {
+      selectProject(selected + Math.sign(wheelAmount));
+      wheelAmount = 0;
+      lastWheel = performance.now();
+    }
+  }, { passive: false });
+  let drag = null;
+  const angleAt = event => {
+    const rect = dial.getBoundingClientRect();
+    const centerX = innerWidth <= 640 ? rect.left + rect.width / 2 : rect.left + 35;
+    return Math.atan2(event.clientY - rect.top - rect.height / 2, event.clientX - centerX) * 180 / Math.PI;
+  };
+  dial.addEventListener('pointerdown', event => {
+    if (event.button !== 0) return;
+    drag = { id: event.pointerId, angle: angleAt(event), total: 0, base: rotation, x: event.clientX, y: event.clientY, moved: false };
+  });
+  dial.addEventListener('pointermove', event => {
+    if (!drag || event.pointerId !== drag.id) return;
+    if (!drag.moved && Math.hypot(event.clientX - drag.x, event.clientY - drag.y) > 8) {
+      drag.moved = true;
+      dial.classList.add('is-dragging');
+      dial.setPointerCapture(event.pointerId);
+      rotor.style.transition = 'none';
+    }
+    if (!drag.moved) return;
+    const angle = angleAt(event);
+    let delta = angle - drag.angle;
+    if (delta > 180) delta -= 360;
+    if (delta < -180) delta += 360;
+    drag.total += delta;
+    drag.angle = angle;
+    dial.style.setProperty('--rotation', (drag.base + drag.total) + 'deg');
+  });
+  const finishDrag = () => {
+    if (!drag) return;
+    const previous = drag;
+    drag = null;
+    dial.classList.remove('is-dragging');
+    rotor.style.transition = '';
+    if (previous.moved) {
+      suppressClickUntil = performance.now() + 150;
+      const turned = previous.base + previous.total;
+      selectProject(Math.round(-turned / 45), { rotation: turned });
     }
   };
+  dial.addEventListener('pointerup', finishDrag);
+  dial.addEventListener('pointercancel', finishDrag);
+  window.addEventListener('pointerup', finishDrag);
 
-  function renderCapability(key) {
-    const data = capabilities[key] || capabilities.ai;
-    const lang = getLanguage();
-    const readout = doc.querySelector('.capability-readout');
-    if (!readout) return;
-    const topIndex = readout.querySelector('.readout-top i');
-    const title = readout.querySelector('h3');
-    const bodyText = readout.querySelector(':scope > p');
-    const tags = readout.querySelector('.readout-tags');
-    const proof = readout.querySelector('.readout-proof p');
-    if (topIndex) topIndex.textContent = data.index;
-    if (title) title.textContent = data[lang].title;
-    if (bodyText) bodyText.textContent = data[lang].body;
-    if (tags) tags.innerHTML = data.tags.map((tag) => `<span>${tag}</span>`).join('');
-    if (proof) proof.textContent = data[lang].proof;
+  projects.forEach(record => {
+    const button = record.querySelector('.project-toggle');
+    const panel = record.querySelector('.project-detail');
+    button.addEventListener('click', () => {
+      const pageY = innerWidth > 640
+        ? doc.querySelector('#projects').getBoundingClientRect().top + window.scrollY - 90
+        : record.parentElement.getBoundingClientRect().top + window.scrollY - 90;
+      const animated = [record.querySelector('.project-image'), record.querySelector('.project-copy')];
+      animated.forEach(node => node.getAnimations().forEach(animation => animation.cancel()));
+      const before = animated.map(node => node.getBoundingClientRect());
+      const open = !record.classList.contains('is-open');
+      record.classList.toggle('is-open', open);
+      panel.inert = !open;
+      panel.scrollTop = 0;
+      button.setAttribute('aria-expanded', String(open));
+      translateControls();
+      window.scrollTo({ top: pageY, behavior: 'instant' });
+      requestAnimationFrame(() => window.scrollTo({ top: pageY, behavior: 'instant' }));
+      if (!motionAllowed()) return;
+      animated.forEach((node, i) => {
+        const after = node.getBoundingClientRect();
+        const start = before[i];
+        if (!after.width || !after.height) return;
+        node.animate([
+          { transformOrigin: 'top left', transform: 'translate(' + (start.left - after.left) + 'px,' + (start.top - after.top) + 'px) scale(' + start.width / after.width + ',' + start.height / after.height + ')' },
+          { transformOrigin: 'top left', transform: 'none' }
+        ], { duration: 650, easing: 'cubic-bezier(.22,.75,.18,1)' });
+      });
+      if (open) panel.animate([{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'none' }], { duration: 550, delay: 170, fill: 'backwards' });
+    });
+  });
+  function selectFromHash() {
+    const match = projects.findIndex(record => '#' + record.id === location.hash);
+    if (match >= 0) selectProject(match);
   }
+  selectFromHash();
+  window.addEventListener('hashchange', selectFromHash);
 
-  doc.querySelectorAll('.cap-node').forEach((button) => {
-    const activate = () => {
-      doc.querySelectorAll('.cap-node').forEach((node) => node.classList.toggle('active', node === button));
-      renderCapability(button.dataset.cap);
+  const lightbox = doc.createElement('dialog');
+  lightbox.className = 'image-lightbox';
+  lightbox.innerHTML = '<button type="button" aria-label="关闭大图">×</button><img alt="">';
+  body.appendChild(lightbox);
+  lightbox.querySelector('button').addEventListener('click', () => lightbox.close());
+  lightbox.addEventListener('click', event => { if (event.target === lightbox) lightbox.close(); });
+  doc.querySelectorAll('.project-gallery img').forEach(img => {
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', img.alt + '，查看大图');
+    const open = () => {
+      lightbox.querySelector('img').src = img.src;
+      lightbox.querySelector('img').alt = img.alt;
+      lightbox.showModal();
     };
-    button.addEventListener('click', activate);
-    if (finePointer) button.addEventListener('pointerenter', activate);
+    img.addEventListener('click', open);
+    img.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open(); }
+    });
   });
 
+  const capabilities = [["design","设计与人机交互","Design & HCI","把人、场景和系统组织成可用的体验。","Turn people, context and systems into usable experiences.",["用户研究","UX Flow","Persona / IP","对话交互","可用性测试","Rhino / Revit","参数化设计"],"Visual Diary Cloud · SkinPilot · HRI 2024"],["venture","路演与创业创新","Pitching & Ventures","定义机会，协调团队，把原型推向市场。","Define opportunities, align teams and take prototypes to market.",["商业计划","产品定位","MVP 验证","投资人路演","融资对接","跨职能协作","供应链沟通"],"汤问 / TangWen · 奇绩创坛 $300K · K老师 10W+"],["ai","AI应用与产品","AI Applications & Product","把需求拆成 Agent 与 Skill，用评测推动迭代。","Translate needs into Agents and Skills, then iterate through evaluation.",["Agent / Skill","PRD","需求优先级","LLM 工作流","Bad Case 治理","功能 / 回归测试","竞品分析"],"Accio Work · K Teacher · SkinPilot"],["data","数据分析与编程","Data & Programming","从数据与模型，到可以实际运行的应用。","From data and models to working applications.",["Python","React / TypeScript","Next.js","MongoDB","统计机器学习","D3 可视化","API / JSON","数据管线"],"Visual Diary Cloud · Frame Flow · AI 英语内容引擎"],["hardware","机器人与硬件","Robotics & Hardware","在真实环境中连接感知、交互和动作。","Connect perception, interaction and action in the physical world.",["ROS 2","YOLOv8 / OpenCV","OAK-D / ArUco","ESP32 / RP2040","传感器标定","3D 打印","激光切割"],"汤问 · HerOS · ROS 2 Delivery · X-WBT"],["commerce","跨境电商B2B","Cross-border B2B Commerce","理解商家的经营问题，让 AI 能力被持续使用。","Understand merchant operations and help AI become part of daily work.",["商家访谈","国际站经营","业务痛点拆解","商业化场景","市场调研","商家消费链路","工作流提效"],"Alibaba.com · Accio Work"]];
+  let selectedSkill = 'design';
+  function renderSkill(key, animate = true) {
+    selectedSkill = key;
+    const data = capabilities.find(item => item[0] === key) || capabilities[0];
+    const description = doc.querySelector('.skill-description');
+    const proof = doc.querySelector('.skill-proof');
+    description.textContent = lang() === 'zh' ? data[3] : data[4];
+    proof.textContent = data[6];
+    doc.querySelectorAll('.skill-select').forEach(button => {
+      const active = button.dataset.cap === key;
+      button.setAttribute('aria-pressed', String(active));
+      button.closest('.skill-cluster').classList.toggle('active', active);
+    });
+    doc.querySelector('.skill-project-link').href = ['venture','ai','commerce'].includes(key) ? '#ventures' : '#projects';
+    if (animate && motionAllowed()) description.parentElement.animate([{ opacity: .2, transform: 'translateY(5px)' }, { opacity: 1, transform: 'none' }], { duration: 320 });
+  }
+  doc.querySelectorAll('.skill-select').forEach(button => button.addEventListener('click', () => renderSkill(button.dataset.cap)));
+
+  const film = doc.querySelector('.life-film');
+  doc.querySelectorAll('[data-life-direction]').forEach(button => button.addEventListener('click', () => {
+    film.scrollBy({ left: Number(button.dataset.lifeDirection) * (film.querySelector('figure').offsetWidth + 24), behavior: motionAllowed() ? 'smooth' : 'instant' });
+  }));
   const copyButton = doc.querySelector('.copy-contact');
-  copyButton?.addEventListener('click', async () => {
-    const value = copyButton.dataset.copy || '';
-    try { await navigator.clipboard.writeText(value); }
+  copyButton.addEventListener('click', async () => {
+    const indicator = copyButton.querySelector('i');
+    let success = false;
+    try { await navigator.clipboard.writeText(copyButton.dataset.copy); success = true; }
     catch (_) {
       const input = doc.createElement('textarea');
-      input.value = value;
-      input.style.position = 'fixed';
-      input.style.opacity = '0';
+      input.value = copyButton.dataset.copy;
+      input.style.cssText = 'position:fixed;top:0;left:-9999px';
       body.appendChild(input);
       input.select();
-      doc.execCommand('copy');
+      try { success = doc.execCommand('copy'); } catch (_) {}
       input.remove();
+      copyButton.focus();
     }
-    const indicator = copyButton.querySelector('i');
-    if (!indicator) return;
-    indicator.textContent = getLanguage() === 'zh' ? '已复制' : 'COPIED';
-    window.setTimeout(() => { indicator.textContent = getLanguage() === 'zh' ? '复制' : 'COPY'; }, 1500);
+    indicator.textContent = lang() === 'zh' ? (success ? '已复制' : '请手动复制') : (success ? 'COPIED' : 'COPY MANUALLY');
+    setTimeout(() => { indicator.textContent = lang() === 'zh' ? '复制' : 'COPY'; }, 2200);
   });
 
-  if (finePointer && !reduceMotion) {
-    const dot = doc.querySelector('.cursor-dot');
-    const ring = doc.querySelector('.cursor-ring');
-    let px = window.innerWidth / 2, py = window.innerHeight / 2, rx = px, ry = py;
-    window.addEventListener('pointermove', (event) => {
-      px = event.clientX; py = event.clientY;
-      body.classList.add('cursor-active');
-      if (dot) dot.style.transform = `translate3d(${px}px,${py}px,0) translate(-50%,-50%)`;
-    }, { passive: true });
-    const animateCursor = () => {
-      rx += (px - rx) * .15; ry += (py - ry) * .15;
-      if (ring) ring.style.transform = `translate3d(${rx}px,${ry}px,0) translate(-50%,-50%)`;
-      window.requestAnimationFrame(animateCursor);
-    };
-    animateCursor();
-    doc.querySelectorAll('a, button').forEach((node) => {
-      node.addEventListener('pointerenter', () => body.classList.add('cursor-hover'));
-      node.addEventListener('pointerleave', () => body.classList.remove('cursor-hover'));
-    });
-    doc.querySelectorAll('.magnetic').forEach((node) => {
-      node.addEventListener('pointermove', (event) => {
-        const rect = node.getBoundingClientRect();
-        node.style.transform = `translate3d(${(event.clientX - rect.left - rect.width / 2) * .1}px,${(event.clientY - rect.top - rect.height / 2) * .1}px,0)`;
-      });
-      node.addEventListener('pointerleave', () => { node.style.transform = ''; });
-    });
-    const parallaxRoot = doc.querySelector('[data-parallax-root]');
-    parallaxRoot?.addEventListener('pointermove', (event) => {
-      const rect = parallaxRoot.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - .5;
-      const y = (event.clientY - rect.top) / rect.height - .5;
-      parallaxRoot.querySelectorAll('[data-depth]').forEach((node) => {
-        const depth = Number(node.dataset.depth || 10);
-        node.style.translate = `${x * depth}px ${y * depth}px`;
-      });
-    });
-    parallaxRoot?.addEventListener('pointerleave', () => parallaxRoot.querySelectorAll('[data-depth]').forEach((node) => { node.style.translate = ''; }));
+  let initial = new URLSearchParams(location.search).get('lang');
+  if (initial !== 'en' && initial !== 'zh') {
+    try { initial = localStorage.getItem('cw-language-2026'); } catch (_) {}
   }
-
-  const canvas = doc.querySelector('.capability-canvas');
-  if (canvas) {
-    const context = canvas.getContext('2d');
-    let width = 0, height = 0, dpr = 1, animationFrame = 0;
-    const points = Array.from({ length: 54 }, () => ({ x: Math.random(), y: Math.random(), vx: (Math.random() - .5) * .00018, vy: (Math.random() - .5) * .00018, r: Math.random() * 1.6 + .4 }));
-    const resizeCanvas = () => {
-      const rect = canvas.getBoundingClientRect();
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = rect.width; height = rect.height;
-      canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
-      context.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-    const draw = () => {
-      context.clearRect(0, 0, width, height);
-      points.forEach((point) => {
-        point.x += point.vx; point.y += point.vy;
-        if (point.x < 0 || point.x > 1) point.vx *= -1;
-        if (point.y < 0 || point.y > 1) point.vy *= -1;
-      });
-      for (let i = 0; i < points.length; i += 1) {
-        const a = points[i];
-        for (let j = i + 1; j < points.length; j += 1) {
-          const b = points[j];
-          const dx = (a.x - b.x) * width, dy = (a.y - b.y) * height;
-          const distance = Math.hypot(dx, dy);
-          if (distance > 130) continue;
-          context.strokeStyle = `rgba(200,255,36,${(1 - distance / 130) * .14})`;
-          context.lineWidth = .7;
-          context.beginPath(); context.moveTo(a.x * width, a.y * height); context.lineTo(b.x * width, b.y * height); context.stroke();
-        }
-        context.fillStyle = i % 5 === 0 ? 'rgba(200,255,36,.72)' : 'rgba(255,255,255,.36)';
-        context.beginPath(); context.arc(a.x * width, a.y * height, a.r, 0, Math.PI * 2); context.fill();
-      }
-      if (!reduceMotion) animationFrame = window.requestAnimationFrame(draw);
-    };
-    resizeCanvas(); draw();
-    window.addEventListener('resize', resizeCanvas, { passive: true });
-    window.addEventListener('pagehide', () => window.cancelAnimationFrame(animationFrame), { once: true });
-  }
-
-  setLanguage(getInitialLanguage(), false);
-  toggleText();
+  setLanguage(initial === 'en' ? 'en' : 'zh', false);
 })();
