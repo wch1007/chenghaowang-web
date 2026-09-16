@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#050807">
-  <meta name="description" content="王城昊（Chenghao Wang / Caelan）的个人网站：产品、AI Agent、AI 硬件、机器人与跨学科创新实践。">
-  <meta property="og:title" content="Chenghao Wang — Product, AI & Robotics">
-  <meta property="og:description" content="Turning ambiguous problems into products, agents and systems that work.">
+  <meta name="theme-color" content="#f3f4ee">
+  <meta name="description" content="王城昊 Chenghao Wang：AI 产品经理、连续创业者与跨学科产品创造者。">
+  <meta property="og:title" content="王城昊 Chenghao Wang — AI Product Builder">
+  <meta property="og:description" content="From insight to systems. 从洞察出发，把复杂问题做成真正能工作的产品。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wch1007.github.io/chenghaowang-web/">
   <meta property="og:image" content="https://wch1007.github.io/chenghaowang-web/assets/images/chenghao-portrait.webp">
@@ -14,375 +14,80 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/images/chenghao-portrait.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="assets/styles.css">
-  <title>Chenghao Wang — Product, AI & Robotics</title>
+  <title>王城昊 Chenghao Wang — AI Product Builder</title>
 </head>
 <body>
-  <div class="site-loader" aria-hidden="true">
-    <div class="loader-mark">CW<span>/</span></div>
-    <div class="loader-track"><i></i></div>
-  </div>
-  <canvas id="constellation" aria-hidden="true"></canvas>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="scroll-progress" aria-hidden="true"><i></i></div>
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
-
+  <div class="site-loader" aria-hidden="true"><div class="loader-word"><span>C</span><span>W</span><i>↗</i></div><div class="loader-line"><i></i></div></div>
+  <div class="noise" aria-hidden="true"></div><div class="cursor-dot" aria-hidden="true"></div><div class="cursor-ring" aria-hidden="true"></div><div class="scroll-progress" aria-hidden="true"><i></i></div>
   <a class="skip-link" href="#main" data-zh="跳到正文" data-en="Skip to content">跳到正文</a>
 
   <header class="site-header" id="top">
-    <a class="brand magnetic" href="#home" aria-label="Chenghao Wang home">
-      <span>CW</span><i>/</i>
-    </a>
-    <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="#work" data-zh="现在" data-en="Now">现在</a>
-      <a href="#ventures" data-zh="重点项目" data-en="Ventures">重点项目</a>
-      <a href="#atlas" data-zh="能力图谱" data-en="Atlas">能力图谱</a>
-      <a href="#about" data-zh="关于" data-en="About">关于</a>
-    </nav>
-    <div class="header-actions">
-      <button class="language-toggle magnetic" type="button" aria-label="Switch language">EN</button>
-      <a class="nav-cta magnetic" href="#contact"><span data-zh="聊一聊" data-en="Let's talk">聊一聊</span><i>↗</i></a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
-        <span></span><span></span>
-      </button>
-    </div>
+    <a class="brand magnetic" href="#home" aria-label="Chenghao Wang home"><i></i><span>Chenghao Wang</span></a>
+    <nav class="desktop-nav" aria-label="Primary navigation"><a href="#journey" data-zh="履历" data-en="Journey">履历</a><a href="#ventures" data-zh="实践" data-en="Ventures">实践</a><a href="#projects" data-zh="项目" data-en="Projects">项目</a><a href="#capabilities" data-zh="能力" data-en="Capabilities">能力</a><a href="#contact" data-zh="联系" data-en="Contact">联系</a></nav>
+    <div class="header-actions"><button class="language-toggle magnetic" type="button" aria-label="Switch language">EN</button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="打开菜单"><span></span><span></span></button></div>
   </header>
-
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <a href="#work"><em>01</em><span data-zh="现在" data-en="Now">现在</span></a>
-    <a href="#ventures"><em>02</em><span data-zh="重点项目" data-en="Ventures">重点项目</span></a>
-    <a href="#atlas"><em>03</em><span data-zh="能力图谱" data-en="Atlas">能力图谱</span></a>
-    <a href="#about"><em>04</em><span data-zh="关于" data-en="About">关于</span></a>
-    <a href="#contact"><em>05</em><span data-zh="联系" data-en="Contact">联系</span></a>
-  </div>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true"><a href="#journey"><em>01</em><span data-zh="个人履历" data-en="Journey">个人履历</span></a><a href="#ventures"><em>02</em><span data-zh="实践创业" data-en="Ventures">实践创业</span></a><a href="#projects"><em>03</em><span data-zh="项目集" data-en="Projects">项目集</span></a><a href="#capabilities"><em>04</em><span data-zh="能力图谱" data-en="Capabilities">能力图谱</span></a><a href="#honors"><em>05</em><span data-zh="荣誉一览" data-en="Honors">荣誉一览</span></a><a href="#contact"><em>06</em><span data-zh="联系" data-en="Contact">联系</span></a></div>
 
   <main id="main">
     <section class="hero" id="home">
-      <div class="hero-aurora aurora-a" aria-hidden="true"></div>
-      <div class="hero-aurora aurora-b" aria-hidden="true"></div>
+      <div class="hero-glow glow-lime" aria-hidden="true"></div><div class="hero-glow glow-violet" aria-hidden="true"></div><div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-copy">
-        <div class="eyebrow reveal">
-          <span class="status-dot"></span>
-          <span data-zh="王城昊 / CAELAN · 北京" data-en="CHENGHAO WANG / CAELAN · BEIJING">王城昊 / CAELAN · 北京</span>
-        </div>
-        <h1 class="hero-title reveal">
-          <span data-zh="把复杂问题" data-en="I turn complex">把复杂问题</span>
-          <span><strong data-zh="做成" data-en="problems into">做成</strong> <b data-zh="真正有用" data-en="products that">真正有用</b></span>
-          <span data-zh="的产品与系统。" data-en="actually work.">的产品与系统。</span>
-        </h1>
-        <p class="hero-lead reveal" data-zh="产品人、AI 实践者与连续创业者。横跨 Agent、AI 硬件、机器人、设计与商业，把模糊需求推进为可验证、可交付、可增长的产品。" data-en="Product builder, AI practitioner and serial entrepreneur working across agents, AI hardware, robotics, design and business—from ambiguous needs to validated products.">
-          产品人、AI 实践者与连续创业者。横跨 Agent、AI 硬件、机器人、设计与商业，把模糊需求推进为可验证、可交付、可增长的产品。
-        </p>
-        <div class="hero-actions reveal">
-          <a class="primary-button magnetic" href="#ventures"><span data-zh="看重点项目" data-en="Explore ventures">看重点项目</span><i>↘</i></a>
-          <a class="text-link" href="assets/files/王城昊简历_2503.pdf" target="_blank" rel="noopener"><span data-zh="查看简历" data-en="View résumé">查看简历</span><i>↗</i></a>
-        </div>
+        <div class="hero-overline reveal"><span class="pulse"></span><span data-zh="AI 产品经理 · 创业者 · 跨学科创造者" data-en="AI PRODUCT MANAGER · ENTREPRENEUR · BUILDER">AI 产品经理 · 创业者 · 跨学科创造者</span></div>
+        <h1 class="hero-title reveal"><span data-zh="从洞察出发，" data-en="FROM INSIGHT,">从洞察出发，</span><span><b data-zh="把复杂问题" data-en="COMPLEXITY">把复杂问题</b></span><span><i data-zh="做成产品。" data-en="BECOMES PRODUCT.">做成产品。</i></span></h1>
+        <p class="hero-lead reveal" data-zh="我是王城昊。跨越 AI Agent、智能硬件、机器人、设计与商业，把模糊需求推进为可验证、可交付、可增长的系统。" data-en="I'm Chenghao Wang. I work across AI agents, intelligent hardware, robotics, design and business—turning ambiguous needs into systems that can be validated, shipped and scaled.">我是王城昊。跨越 AI Agent、智能硬件、机器人、设计与商业，把模糊需求推进为可验证、可交付、可增长的系统。</p>
+        <div class="hero-actions reveal"><a class="pill-button magnetic" href="#journey"><span data-zh="从履历开始" data-en="Start with my journey">从履历开始</span><i>↓</i></a><a class="plain-link" href="#projects"><span data-zh="直接看项目" data-en="Explore projects">直接看项目</span><i>↗</i></a></div>
       </div>
-
-      <div class="hero-visual reveal" data-parallax-root>
-        <div class="portrait-halo" aria-hidden="true"></div>
-        <div class="portrait-grid" aria-hidden="true"></div>
-        <div class="portrait-frame">
-          <div class="portrait-index">NO. 001 / BUILDER</div>
-          <img src="assets/images/chenghao-portrait.webp" alt="王城昊 Chenghao Wang" width="1000" height="1250">
-        </div>
-        <div class="orbit orbit-one" aria-hidden="true"></div>
-        <div class="orbit orbit-two" aria-hidden="true"></div>
-        <div class="float-chip chip-a" data-depth="18">AI AGENTS</div>
-        <div class="float-chip chip-b" data-depth="11">PRODUCT</div>
-        <div class="float-chip chip-c" data-depth="15">ROBOTICS</div>
-        <div class="float-chip chip-d" data-depth="9">DESIGN × BUSINESS</div>
-        <div class="hero-coordinate" aria-hidden="true">39.9042° N<br>116.4074° E</div>
-      </div>
-
-      <div class="hero-ticker" aria-hidden="true">
-        <div class="ticker-track">
-          <span>PRODUCT STRATEGY</span><i>✦</i><span>AGENT SYSTEMS</span><i>✦</i><span>AI HARDWARE</span><i>✦</i><span>HUMAN–COMPUTER INTERACTION</span><i>✦</i><span>ROBOTICS</span><i>✦</i><span>0→1 VENTURES</span><i>✦</i>
-          <span>PRODUCT STRATEGY</span><i>✦</i><span>AGENT SYSTEMS</span><i>✦</i><span>AI HARDWARE</span><i>✦</i><span>HUMAN–COMPUTER INTERACTION</span><i>✦</i><span>ROBOTICS</span><i>✦</i><span>0→1 VENTURES</span><i>✦</i>
-        </div>
-      </div>
+      <div class="hero-portrait reveal" data-parallax-root><div class="portrait-backdrop" aria-hidden="true"><span>AI</span><span>01</span></div><div class="portrait-photo"><img src="assets/images/chenghao-portrait.webp" alt="王城昊 Chenghao Wang" width="1000" height="1250"></div><div class="floating-note note-a" data-depth="14">PRODUCT<br>× AI</div><div class="floating-note note-b" data-depth="9">BEIJING<br>39.90°N</div><div class="floating-note note-c" data-depth="18">BUILD<br>WHAT<br>MATTERS</div></div>
+      <div class="hero-marquee" aria-hidden="true"><div><span>AI PRODUCT</span><i>✦</i><span>AGENT SYSTEMS</span><i>✦</i><span>ROBOTICS</span><i>✦</i><span>0 → 1 VENTURES</span><i>✦</i><span>HUMAN × MACHINE</span><i>✦</i><span>AI PRODUCT</span><i>✦</i><span>AGENT SYSTEMS</span><i>✦</i><span>ROBOTICS</span><i>✦</i></div></div>
     </section>
 
-    <section class="section now-section" id="work">
-      <div class="section-shell">
-        <div class="section-heading reveal">
-          <div class="section-kicker"><span>01</span><span data-zh="正在发生" data-en="Happening now">正在发生</span></div>
-          <h2 data-zh="让 AI 从“会回答”，<br>走向“能把事做完”。" data-en="Moving AI from answers<br>to finished work.">让 AI 从“会回答”，<br>走向“能把事做完”。</h2>
-          <p data-zh="目前在阿里巴巴 Accio Work 团队，连接客户需求、Agent 能力与真实经营结果。" data-en="Currently with Alibaba's Accio Work team, connecting customer needs, agent capability and real business outcomes.">目前在阿里巴巴 Accio Work 团队，连接客户需求、Agent 能力与真实经营结果。</p>
-        </div>
-
-        <div class="work-stage reveal" data-tilt>
-          <div class="stage-topbar">
-            <div class="traffic-lights"><i></i><i></i><i></i></div>
-            <div class="stage-title">ACCIO WORK / PRODUCT SYSTEM</div>
-            <div class="live-pill"><span></span> LIVE</div>
-          </div>
-          <div class="work-layout">
-            <div class="work-copy">
-              <span class="role-label" data-zh="ALIBABA.COM · ACCIO WORK 团队" data-en="ALIBABA.COM · ACCIO WORK TEAM">ALIBABA.COM · ACCIO WORK 团队</span>
-              <h3 data-zh="把客户问题翻译成<br>可执行的 AI 能力" data-en="Translating customer problems<br>into executable AI capability">把客户问题翻译成<br>可执行的 AI 能力</h3>
-              <p data-zh="工作细节仍在持续沉淀，当前聚焦三个相互咬合的环节：定义、评测、落地。" data-en="The story is still unfolding. My work currently centers on three connected loops: definition, evaluation and adoption.">工作细节仍在持续沉淀，当前聚焦三个相互咬合的环节：定义、评测、落地。</p>
-              <div class="work-tags">
-                <span>AGENT</span><span>SKILL</span><span>EVALUATION</span><span>WORKFLOW</span>
-              </div>
-            </div>
-            <div class="work-flows">
-              <article class="flow-card">
-                <div class="flow-number">01</div>
-                <div>
-                  <h4 data-zh="从需求到能力" data-en="Need → Capability">从需求到能力</h4>
-                  <p data-zh="洞察客户需求，转换为 Agent / Skill 开发项目。" data-en="Discover customer needs and translate them into agent and skill projects.">洞察客户需求，转换为 Agent / Skill 开发项目。</p>
-                </div>
-                <div class="flow-signal"><i></i><i></i><i></i></div>
-              </article>
-              <article class="flow-card">
-                <div class="flow-number">02</div>
-                <div>
-                  <h4 data-zh="从评测到治理" data-en="Evaluation → Governance">从评测到治理</h4>
-                  <p data-zh="测评 Agent / Skill 表现，沿 Bad Case 追到根因并治理。" data-en="Evaluate agent and skill performance, then trace bad cases to root causes.">测评 Agent / Skill 表现，沿 Bad Case 追到根因并治理。</p>
-                </div>
-                <div class="flow-signal"><i></i><i></i><i></i></div>
-              </article>
-              <article class="flow-card">
-                <div class="flow-number">03</div>
-                <div>
-                  <h4 data-zh="从数据到经营结果" data-en="Data → Business outcomes">从数据到经营结果</h4>
-                  <p data-zh="优化数据 → AI 解释 → 商家消费 → 经营提效的完整工作流。" data-en="Improve the full loop from data and AI explanation to merchant adoption and operating efficiency.">优化数据 → AI 解释 → 商家消费 → 经营提效的完整工作流。</p>
-                </div>
-                <div class="flow-signal"><i></i><i></i><i></i></div>
-              </article>
-            </div>
-          </div>
-          <div class="stage-footer">
-            <span data-zh="细节持续补充中" data-en="More details coming soon">细节持续补充中</span>
-            <div class="stage-route"><b>DATA</b><i>→</i><b>AI</b><i>→</i><b>MERCHANT</b><i>→</i><b>IMPACT</b></div>
-          </div>
-        </div>
+    <section class="section journey-section" id="journey"><div class="section-shell">
+      <div class="section-heading reveal"><div class="section-index"><span>01</span><span data-zh="PERSONAL JOURNEY / 个人履历" data-en="PERSONAL JOURNEY">PERSONAL JOURNEY / 个人履历</span></div><h2 data-zh="四段经历，<br>一条不断拓宽的路径。" data-en="Four chapters.<br>One expanding path.">四段经历，<br>一条不断拓宽的路径。</h2><p data-zh="从北京八中、清华新雅，到 GIX 与 Accio Work。点击每一段，展开当时留下的角色、成绩与选择。" data-en="From Beijing No. 8 and Tsinghua Xinya to GIX and Accio Work. Open each chapter to see the roles, achievements and choices behind it.">从北京八中、清华新雅，到 GIX 与 Accio Work。点击每一段，展开当时留下的角色、成绩与选择。</p></div>
+      <div class="journey-track" role="list">
+        <article class="journey-card reveal is-open" role="listitem"><button class="journey-summary" type="button" aria-expanded="true"><span class="journey-year">2013—2019</span><span class="journey-photo"><img src="assets/images/timeline/beijing-no8.webp" alt="王城昊在北京八中毕业典礼发言" loading="lazy"></span><span class="journey-title"><small>BEIJING NO. 8 HIGH SCHOOL</small><strong data-zh="北京八中" data-en="Beijing No. 8 High School">北京八中</strong><em data-zh="金融街奖学金 · 优秀毕业生" data-en="Financial Street Scholarship · Outstanding Graduate">金融街奖学金 · 优秀毕业生</em></span><span class="journey-toggle"><i></i><i></i></span></button><div class="journey-detail"><div class="journey-detail-inner"><p data-zh="在北京八中完成六年中学阶段，获得金融街奖学金与优秀毕业生荣誉，并作为毕业生代表站上讲台。从竞技体育到公共表达，这一阶段建立了我持续投入、主动承担与把观点讲清楚的底层习惯。" data-en="Six formative years at Beijing No. 8, recognized with the Financial Street Scholarship and Outstanding Graduate honor. Speaking at graduation and competing in athletics shaped my habits of commitment, ownership and clear communication.">在北京八中完成六年中学阶段，获得金融街奖学金与优秀毕业生荣誉，并作为毕业生代表站上讲台。从竞技体育到公共表达，这一阶段建立了我持续投入、主动承担与把观点讲清楚的底层习惯。</p><ul><li data-zh="金融街奖学金" data-en="Financial Street Scholarship">金融街奖学金</li><li data-zh="北京八中优秀毕业生" data-en="Outstanding Graduate">北京八中优秀毕业生</li><li data-zh="毕业典礼学生代表发言" data-en="Student graduation address">毕业典礼学生代表发言</li></ul></div></div></article>
+        <article class="journey-card reveal" role="listitem"><button class="journey-summary" type="button" aria-expanded="false"><span class="journey-year">2019—2023</span><span class="journey-photo"><img src="assets/images/timeline/tsinghua-xinya.webp" alt="王城昊在清华大学本科毕业典礼发言" loading="lazy"></span><span class="journey-title"><small>TSINGHUA UNIVERSITY · XINYA COLLEGE</small><strong data-zh="清华大学新雅书院" data-en="Tsinghua University · Xinya College">清华大学新雅书院</strong><em data-zh="学生会副主席 · 工学学士 · 辅修数据科学" data-en="Student Union VP · B.Eng. · Data Science minor">学生会副主席 · 工学学士 · 辅修数据科学</em></span><span class="journey-toggle"><i></i><i></i></span></button><div class="journey-detail"><div class="journey-detail-inner"><p data-zh="以建筑学训练空间与系统思维，同时完成数据科学辅修，把设计、工程与计算连接起来。担任新雅书院学生会副主席，统筹大型活动与跨部门协作；综合成绩位列前 30%，获新雅书院特殊贡献奖、优秀共青团员与多项奖学金。" data-en="Studied architecture while completing a data science minor, connecting spatial design, engineering and computation. Served as Vice President of the Xinya Student Union, coordinating large events and cross-team operations; ranked in the top 30% and received awards for contribution, leadership and academic work.">以建筑学训练空间与系统思维，同时完成数据科学辅修，把设计、工程与计算连接起来。担任新雅书院学生会副主席，统筹大型活动与跨部门协作；综合成绩位列前 30%，获新雅书院特殊贡献奖、优秀共青团员与多项奖学金。</p><ul><li data-zh="新雅书院学生会副主席" data-en="Vice President, Xinya Student Union">新雅书院学生会副主席</li><li data-zh="新雅书院特殊贡献奖" data-en="Xinya Special Contribution Award">新雅书院特殊贡献奖</li><li data-zh="清华大学优秀共青团员" data-en="Outstanding Youth League Member">清华大学优秀共青团员</li><li data-zh="社会工作 / 体育奖学金" data-en="Leadership & athletics scholarships">社会工作 / 体育奖学金</li></ul></div></div></article>
+        <article class="journey-card reveal" role="listitem"><button class="journey-summary" type="button" aria-expanded="false"><span class="journey-year">2023—2026</span><span class="journey-photo"><img src="assets/images/timeline/gix-graduation.webp" alt="王城昊在华盛顿大学 GIX 毕业" loading="lazy"></span><span class="journey-title"><small>TSINGHUA × UNIVERSITY OF WASHINGTON · GIX</small><strong data-zh="清华大学 × 华盛顿大学 GIX" data-en="Tsinghua × UW Global Innovation Exchange">清华大学 × 华盛顿大学 GIX</strong><em data-zh="北京市优秀毕业生 · 工学硕士 · CS + DS 双学位" data-en="Beijing Outstanding Graduate · M.Eng. · CS + DS dual degree">北京市优秀毕业生 · 工学硕士 · CS + DS 双学位</em></span><span class="journey-toggle"><i></i><i></i></span></button><div class="journey-detail"><div class="journey-detail-inner"><p data-zh="在清华数据科学与 GIX 科技创新双学位项目中，把研究、软件、硬件与真实用户问题放在同一张桌面上。清华阶段位列前 10%，华盛顿大学阶段位列前 20%；获北京市优秀毕业生、小米一等奖学金与霸州人才二等奖学金，并以第一作者完成 HRI 2024 Late-Breaking Report。" data-en="Across Tsinghua Data Science and GIX Technology Innovation, I worked at the intersection of research, software, hardware and real user needs. Ranked top 10% at Tsinghua and top 20% at UW; received the Beijing Outstanding Graduate honor and major scholarships, and published a first-author HRI 2024 Late-Breaking Report.">在清华数据科学与 GIX 科技创新双学位项目中，把研究、软件、硬件与真实用户问题放在同一张桌面上。清华阶段位列前 10%，华盛顿大学阶段位列前 20%；获北京市优秀毕业生、小米一等奖学金与霸州人才二等奖学金，并以第一作者完成 HRI 2024 Late-Breaking Report。</p><ul><li data-zh="北京市优秀毕业生" data-en="Beijing Outstanding Graduate">北京市优秀毕业生</li><li data-zh="小米一等奖学金" data-en="Xiaomi First-Class Scholarship">小米一等奖学金</li><li data-zh="霸州人才二等奖学金" data-en="Bazhou Talent Scholarship">霸州人才二等奖学金</li><li data-zh="HRI 2024 第一作者" data-en="HRI 2024 · First author">HRI 2024 第一作者</li></ul></div></div></article>
+        <article class="journey-card journey-now reveal" role="listitem"><button class="journey-summary" type="button" aria-expanded="false"><span class="journey-year"><i></i>NOW</span><span class="journey-photo"><img src="assets/images/timeline/accio-now.webp" alt="王城昊在阿里巴巴 Accio Work 进行内部分享" loading="lazy"></span><span class="journey-title"><small>ALIBABA.COM · ACCIO WORK</small><strong data-zh="阿里巴巴 · Accio Work" data-en="Alibaba · Accio Work">阿里巴巴 · Accio Work</strong><em data-zh="AI 产品经理 · 星途计划 · AW 讲师" data-en="AI Product Manager · Rising Star Program · AW Instructor">AI 产品经理 · 星途计划 · AW 讲师</em></span><span class="journey-toggle"><i></i><i></i></span></button><div class="journey-detail"><div class="journey-detail-inner"><p data-zh="负责 Accio Work 商业 AI 工作台的产品侧设计与迭代。工作围绕三条闭环展开：把客户问题拆解为 Agent / Skill 项目；独立完成 AI 功能、回归与场景评测，并沿 bad case 推进治理；优化从数据、AI 解释到商家消费与经营提效的完整工作流。" data-en="I design and iterate Accio Work's commerce AI workplace. My work closes three loops: turning customer problems into Agent and Skill initiatives; evaluating AI features and governing bad cases; and improving the workflow from data and AI interpretation to merchant adoption and operating impact.">负责 Accio Work 商业 AI 工作台的产品侧设计与迭代。工作围绕三条闭环展开：把客户问题拆解为 Agent / Skill 项目；独立完成 AI 功能、回归与场景评测，并沿 bad case 推进治理；优化从数据、AI 解释到商家消费与经营提效的完整工作流。</p><ul><li data-zh="客户洞察 → Agent / Skill 定义" data-en="Customer insight → Agent / Skill definition">客户洞察 → Agent / Skill 定义</li><li data-zh="AI 测评 → Bad Case 治理" data-en="AI evaluation → Bad-case governance">AI 测评 → Bad Case 治理</li><li data-zh="数据 → AI 解释 → 商家经营提效" data-en="Data → AI explanation → merchant impact">数据 → AI 解释 → 商家经营提效</li><li data-zh="星途计划成员 · AW 讲师" data-en="Rising Star Program · AW Instructor">星途计划成员 · AW 讲师</li></ul></div></div></article>
       </div>
+    </div></section>
+
+    <section class="section ventures-section" id="ventures"><div class="section-shell">
+      <div class="section-heading light reveal"><div class="section-index"><span>02</span><span data-zh="ENTREPRENEURIAL PRACTICE / 实践创业经历" data-en="ENTREPRENEURIAL PRACTICE">ENTREPRENEURIAL PRACTICE / 实践创业经历</span></div><h2 data-zh="从想法到真实世界，<br>用结果验证判断。" data-en="From an idea to reality,<br>judgment proven by outcomes.">从想法到真实世界，<br>用结果验证判断。</h2><p data-zh="三段实践覆盖具身智能、AI 内容工作流与智能美妆硬件。所有详情都留在页面内，点击即可展开。" data-en="Three ventures across embodied intelligence, AI content workflows and smart beauty hardware. Every case expands in place.">三段实践覆盖具身智能、AI 内容工作流与智能美妆硬件。所有详情都留在页面内，点击即可展开。</p></div>
+      <div class="venture-list">
+        <article class="venture-record reveal is-open"><div class="venture-visual tangwen-visual"><img class="venture-main-image" src="assets/images/tangwen-pitch.webp" alt="王城昊路演汤问机器人项目" loading="lazy"><img class="venture-inset-image" src="assets/images/tangwen-product.webp" alt="汤问机器人产品展示" loading="lazy"><span class="venture-stamp">$300K<br>SEED</span></div><div class="venture-copy"><div class="venture-number">01 / 03 · 2023—2026</div><h3><span data-zh="汤问" data-en="TangWen">汤问</span><i>Embodied AI Robot</i></h3><p class="venture-role" data-zh="核心创始团队 · 产品负责人 · 项目管理者 · 路演主讲人" data-en="Core founding team · Product lead · Program manager · Pitch lead">核心创始团队 · 产品负责人 · 项目管理者 · 路演主讲人</p><p data-zh="让 IP 手办成为能感知、会动作、可长期陪伴的桌面机器人。" data-en="A perceptive, expressive desktop robot that turns character IP into long-term companionship.">让 IP 手办成为能感知、会动作、可长期陪伴的桌面机器人。</p><div class="venture-metrics"><span><b>4</b> <em data-zh="代样机" data-en="prototypes">代样机</em></span><span><b>300+</b> <em data-zh="标准化动作" data-en="motions">标准化动作</em></span><span><b>$300K</b> <em data-zh="奇绩创坛融资" data-en="MiraclePlus seed">奇绩创坛融资</em></span></div><button class="inline-toggle" type="button" aria-expanded="true"><span data-zh="收起详情" data-en="Close case">收起详情</span><i></i></button><div class="venture-detail"><div><p data-zh="主导产品定位、PRD 与 MVP，定义 IP 人格、语音体系和交互流程；把 26 自由度与 60+ 传感数据转译为产品规格，沉淀 300+ 标准化动作库，并协调 23 人跨校团队、研发、供应链和合作伙伴完成四代样机。作为路演主讲人推进融资，并在中国国际科技产业博览会展示原型。" data-en="Led positioning, PRD and MVP definition; created the IP persona, voice and interaction system; translated 26 DoF and 60+ sensor signals into product specifications and a 300+ motion library; coordinated a 23-person cross-university team, engineering, supply chain and partners through four prototype generations; led fundraising pitches and showcased the prototype at the China International Technology Industry Expo.">主导产品定位、PRD 与 MVP，定义 IP 人格、语音体系和交互流程；把 26 自由度与 60+ 传感数据转译为产品规格，沉淀 300+ 标准化动作库，并协调 23 人跨校团队、研发、供应链和合作伙伴完成四代样机。作为路演主讲人推进融资，并在中国国际科技产业博览会展示原型。</p><div class="detail-chips"><span>PRODUCT STRATEGY</span><span>ROBOTICS</span><span>HRI</span><span>FUNDRAISING</span><span>SUPPLY CHAIN</span></div></div></div></div></article>
+        <article class="venture-record venture-reverse reveal"><div class="venture-visual english-visual"><img class="english-cover" src="assets/images/english-cover.webp" alt="K老师 AI 英语资料封面" loading="lazy"><img class="english-card" src="assets/images/english-card.webp" alt="AI 英语学习资料卡片" loading="lazy"><div class="pipeline-labels" aria-hidden="true"><span>SCENE</span><i>→</i><span>JSON</span><i>→</i><span>IMAGE</span><i>→</i><span>AUDIO</span></div></div><div class="venture-copy"><div class="venture-number">02 / 03 · 2025</div><h3><span data-zh="K老师 · AI 英语资料" data-en="K Teacher · AI English Studio">K老师 · AI 英语资料</span><i>AI Content Engine</i></h3><p class="venture-role" data-zh="独立开发者 · 内容产品经理 · 运营者" data-en="Solo developer · Content PM · Operator">独立开发者 · 内容产品经理 · 运营者</p><p data-zh="把英语场景、图文、语音与发布素材串成一条自动化内容生产线。" data-en="An automated production line connecting English scenarios, visuals, voice and publish-ready assets.">把英语场景、图文、语音与发布素材串成一条自动化内容生产线。</p><div class="venture-metrics"><span><b>10W+</b> <em data-zh="营收" data-en="revenue">营收</em></span><span><b>20+</b> <em data-zh="篇 / 小时" data-en="pieces / hour">篇 / 小时</em></span><span><b>80+</b> <em data-zh="真实场景" data-en="scenarios">真实场景</em></span></div><button class="inline-toggle" type="button" aria-expanded="false"><span data-zh="展开详情" data-en="Open case">展开详情</span><i></i></button><div class="venture-detail"><div><p data-zh="独立完成选题、产品设计、自动化开发与账号运营。用 Python / Pillow / JSON 搭建模板化渲染管线，接入大模型与 Minimax 语音 API，将单篇生产从约 30 分钟压缩到 3 分钟；沉淀 80+ 高频生活场景，实现每小时 20+ 篇产出，首月获 3000+ 点赞，并完成 10W+ 营收验证。" data-en="Owned topic selection, product design, automation and channel operation. Built a templated rendering pipeline with Python, Pillow and JSON, connecting LLMs and the Minimax voice API. Reduced production from about 30 minutes to 3 minutes per piece, built 80+ high-frequency scenarios, reached 20+ pieces per hour, gained 3,000+ likes in the first month and validated 100K+ RMB in revenue.">独立完成选题、产品设计、自动化开发与账号运营。用 Python / Pillow / JSON 搭建模板化渲染管线，接入大模型与 Minimax 语音 API，将单篇生产从约 30 分钟压缩到 3 分钟；沉淀 80+ 高频生活场景，实现每小时 20+ 篇产出，首月获 3000+ 点赞，并完成 10W+ 营收验证。</p><div class="detail-chips"><span>PYTHON</span><span>LLM</span><span>CONTENT OPS</span><span>VOICE API</span><span>GROWTH</span></div></div></div></div></article>
+        <article class="venture-record reveal"><div class="venture-visual mirror-visual" aria-label="HerOS SkinPilot 智能美妆镜概念视觉"><div class="mirror-device"><div class="mirror-screen"><span class="scan-face"></span><b>SKIN<br>SCAN</b><i>92%</i></div><div class="mirror-stand"></div></div><div class="mirror-data"><span>HYDRATION <b>68</b></span><span>TEXTURE <b>82</b></span><span>REDNESS <b>21</b></span></div></div><div class="venture-copy"><div class="venture-number">03 / 03 · 2025—NOW</div><h3><span>HerOS / SkinPilot</span><i>Smart Beauty Mirror</i></h3><p class="venture-role" data-zh="AI 产品负责人 · 智能硬件创业实践" data-en="AI Product Lead · Intelligent hardware venture">AI 产品负责人 · 智能硬件创业实践</p><p data-zh="把皮肤识别、成分解读和长期反馈装进一面会理解用户的智能美妆镜。" data-en="A smart beauty mirror combining skin recognition, ingredient understanding and longitudinal feedback.">把皮肤识别、成分解读和长期反馈装进一面会理解用户的智能美妆镜。</p><div class="venture-metrics"><span><b>AI</b> <em data-zh="皮肤识别" data-en="skin vision">皮肤识别</em></span><span><b>1:1</b> <em data-zh="个性建议" data-en="personal guidance">个性建议</em></span><span><b>LOOP</b> <em data-zh="长期追踪" data-en="tracking">长期追踪</em></span></div><button class="inline-toggle" type="button" aria-expanded="false"><span data-zh="展开详情" data-en="Open case">展开详情</span><i></i></button><div class="venture-detail"><div><p data-zh="围绕消费级智能美妆镜与 AI 护肤助手，设计从图像识别、用户反馈、成分解析到趋势追踪的完整体验。负责对话 UX、竞品与需求分析、测试用例和模型评测，让一次性的“皮肤检测”变成可持续更新的个人皮肤档案与行动建议。" data-en="Designed the end-to-end experience for a consumer smart beauty mirror and AI skincare assistant—from image recognition and user feedback to ingredient interpretation and trend tracking. Led conversational UX, competitive and user research, test cases and model evaluation, turning a one-off scan into an evolving personal skin record and actionable guidance.">围绕消费级智能美妆镜与 AI 护肤助手，设计从图像识别、用户反馈、成分解析到趋势追踪的完整体验。负责对话 UX、竞品与需求分析、测试用例和模型评测，让一次性的“皮肤检测”变成可持续更新的个人皮肤档案与行动建议。</p><div class="detail-chips"><span>COMPUTER VISION</span><span>AI UX</span><span>MODEL EVAL</span><span>HARDWARE</span><span>BEAUTY TECH</span></div></div></div></div></article>
+      </div>
+    </div></section>
+
+    <section class="section projects-section" id="projects"><div class="section-shell project-shell">
+      <div class="section-heading reveal"><div class="section-index"><span>03</span><span data-zh="SELECTED PROJECTS / 学生时代项目集" data-en="SELECTED PROJECTS">SELECTED PROJECTS / 学生时代项目集</span></div><h2 data-zh="跨过学科边界，<br>用作品留下证据。" data-en="Across disciplines,<br>work becomes evidence.">跨过学科边界，<br>用作品留下证据。</h2><p data-zh="FlowUs 中的项目正文与主图已迁移到本站。每个项目先给出角色与基本信息，再在原地展开过程、结果与额外配图。" data-en="Project stories and key images have been migrated from FlowUs. Every case starts with the essentials and expands in place into process, evidence and visuals.">FlowUs 中的项目正文与主图已迁移到本站。每个项目先给出角色与基本信息，再在原地展开过程、结果与额外配图。</p></div>
+      <div class="project-layout"><aside class="project-rail" aria-label="Project index"><span class="rail-label">WORK INDEX / 08</span><a href="#project-visual-diary" class="active"><i></i>Visual Diary Cloud</a><a href="#project-ros"><i></i>ROS 2 Delivery</a><a href="#project-xwbt"><i></i>X-WBT</a><a href="#project-gottago"><i></i>GottaGo</a><a href="#project-frame-flow"><i></i>Frame Flow</a><a href="#project-bubble"><i></i>Bubble-Verse</a><a href="#project-hyper"><i></i>Hyper Student City</a><a href="#project-monolith"><i></i>Monolith</a></aside>
+      <div class="project-records">
+        <article class="project-record reveal" id="project-visual-diary"><div class="project-image"><img src="assets/images/projects/visual-diary-main.webp" alt="Visual Diary Cloud 瀑布流相册界面" loading="lazy"><span>01 / WEB PRODUCT</span></div><div class="project-copy"><div class="project-topline"><span data-zh="Web 产品 · UX/UI · 云端媒体" data-en="Web product · UX/UI · Cloud media">Web 产品 · UX/UI · 云端媒体</span><time>2025</time></div><h3>Visual Diary Cloud <small>可视化云端相册</small></h3><p data-zh="让云存储不只保存文件，而是把照片、视频、笔记与心情重新组织成一座动态记忆画廊。" data-en="A cloud media product that turns photos, videos, notes and moods into a dynamic memory gallery rather than a folder of files.">让云存储不只保存文件，而是把照片、视频、笔记与心情重新组织成一座动态记忆画廊。</p><div class="project-meta"><span><em data-zh="角色" data-en="Role">角色</em><b data-zh="全栈开发 / UX 设计" data-en="Full-stack / UX">全栈开发 / UX 设计</b></span><span><em data-zh="场景" data-en="Context">场景</em><b>UW · TECHIN 510</b></span><span><em data-zh="协作" data-en="Team">协作</em><b>Chenghao Wang · Diyun Lu</b></span></div><button class="project-toggle" type="button" aria-expanded="false"><span data-zh="展开项目详情" data-en="Open project details">展开项目详情</span><i>+</i></button><div class="project-detail"><div><div class="project-story"><p data-zh="使用 Next.js、React、TypeScript 与 Tailwind 构建交互式媒体平台。NextAuth 负责安全登录；CSS Grid 组织响应式瀑布流，Intersection Observer 完成懒加载；React Context 管理媒体状态，localStorage 保存笔记与心情标签；归档 / 隐藏功能用 Set 与不可变更新保证界面状态一致。" data-en="Built with Next.js, React, TypeScript and Tailwind. NextAuth secures access; CSS Grid and Intersection Observer power a responsive lazy-loaded masonry gallery; React Context manages media state while localStorage preserves notes and mood tags; Set-based immutable updates keep archive and hide interactions consistent.">使用 Next.js、React、TypeScript 与 Tailwind 构建交互式媒体平台。NextAuth 负责安全登录；CSS Grid 组织响应式瀑布流，Intersection Observer 完成懒加载；React Context 管理媒体状态，localStorage 保存笔记与心情标签；归档 / 隐藏功能用 Set 与不可变更新保证界面状态一致。</p><div class="detail-chips"><span>NEXT.JS</span><span>REACT</span><span>TYPESCRIPT</span><span>NEXTAUTH</span><span>STATE MANAGEMENT</span></div></div><div class="project-gallery"><img src="assets/images/projects/visual-diary-login.webp" alt="Visual Diary Cloud 登录界面" loading="lazy"><img src="assets/images/projects/visual-diary-gallery.webp" alt="Visual Diary Cloud 图库界面" loading="lazy"><img src="assets/images/projects/visual-diary-timeline.webp" alt="Visual Diary Cloud 时间线界面" loading="lazy"><img src="assets/images/projects/visual-diary-note.webp" alt="Visual Diary Cloud 笔记界面" loading="lazy"></div></div></div></div></article>
+        <article class="project-record reveal" id="project-ros"><div class="project-image"><img src="assets/images/projects/ros-delivery.webp" alt="ROS 2 智能配送机器人测试" loading="lazy"><span>02 / ROBOTICS</span></div><div class="project-copy"><div class="project-topline"><span data-zh="机器人感知 · 计算机视觉 · ROS 2" data-en="Robotic perception · Computer vision · ROS 2">机器人感知 · 计算机视觉 · ROS 2</span><time>2025</time></div><h3>ROS 2 Robotic Delivery <small>智能配送机器人</small></h3><p data-zh="从语音指令到目标识别、抓取、导航与递送的端到端机器人系统；负责让机器真正“看见”并找到物体。" data-en="An end-to-end robot system from voice command to perception, grasping, navigation and delivery. I worked on making the robot reliably see and locate objects.">从语音指令到目标识别、抓取、导航与递送的端到端机器人系统；负责让机器真正“看见”并找到物体。</p><div class="project-meta"><span><em data-zh="角色" data-en="Role">角色</em><b data-zh="感知组 / 视觉算法" data-en="Perception / vision">感知组 / 视觉算法</b></span><span><em data-zh="场景" data-en="Context">场景</em><b>UW GIX · TECHIN 517</b></span><span><em data-zh="结果" data-en="Outcome">结果</em><b>90% E2E · 98.7% mAP@.5</b></span></div><button class="project-toggle" type="button" aria-expanded="false"><span data-zh="展开项目详情" data-en="Open project details">展开项目详情</span><i>+</i></button><div class="project-detail"><div><div class="project-story"><p data-zh="以 YOLOv8、OAK-D RGB-D 相机与 ArUco 建立检测管线，并完成相机坐标到机械臂坐标的转换。六个子团队通过标准 ROS 2 消息与状态机协同；六类目标的 mAP@0.5 达 98.7%，坐标误差控制在 1–2 mm，完整任务成功率达到 90%。" data-en="Built a detection pipeline with YOLOv8, an OAK-D RGB-D camera and ArUco markers, including camera-to-arm coordinate transformation. Six subteams aligned through standardized ROS 2 messages and a state machine. The system reached 98.7% mAP@0.5 across six classes, 1–2 mm coordinate error and a 90% end-to-end task success rate.">以 YOLOv8、OAK-D RGB-D 相机与 ArUco 建立检测管线，并完成相机坐标到机械臂坐标的转换。六个子团队通过标准 ROS 2 消息与状态机协同；六类目标的 mAP@0.5 达 98.7%，坐标误差控制在 1–2 mm，完整任务成功率达到 90%。</p><div class="detail-chips"><span>ROS 2</span><span>YOLOV8</span><span>OAK-D</span><span>ARUCO</span><span>OPENCV</span><span>RVIZ</span></div></div></div></div></div></article>
+        <article class="project-record reveal" id="project-xwbt"><div class="project-image"><img src="assets/images/projects/xwbt.webp" alt="X-WBT 可穿戴湿球温度监测器" loading="lazy"><span>03 / WEARABLE</span></div><div class="project-copy"><div class="project-topline"><span data-zh="嵌入式系统 · 传感器 · 可穿戴硬件" data-en="Embedded systems · Sensors · Wearable hardware">嵌入式系统 · 传感器 · 可穿戴硬件</span><time>2024</time></div><h3>X-WBT <small>户外湿球温度监测器</small></h3><p data-zh="无需触屏，用手势控制的户外热风险监测器；把环境数据变成即时、可感知的安全提醒。" data-en="A gesture-controlled outdoor heat-risk monitor that turns environmental data into immediate, perceivable safety guidance.">无需触屏，用手势控制的户外热风险监测器；把环境数据变成即时、可感知的安全提醒。</p><div class="project-meta"><span><em data-zh="角色" data-en="Role">角色</em><b data-zh="独立设计与开发" data-en="Independent design & build">独立设计与开发</b></span><span><em data-zh="场景" data-en="Context">场景</em><b>UW GIX · TECHIN 512</b></span><span><em data-zh="精度" data-en="Accuracy">精度</em><b>±0.5°C · ±2% RH</b></span></div><button class="project-toggle" type="button" aria-expanded="false"><span data-zh="展开项目详情" data-en="Open project details">展开项目详情</span><i>+</i></button><div class="project-detail"><div><div class="project-story"><p data-zh="基于 QT PY RP2040、APDS-9960 与 BME280，将温湿度、湿球温度与多模态警报装进 3D 打印腕带。通过 10–130 的手势阈值过滤日常摆臂误触；27°C 进入警告、30°C 进入危险状态，并用屏幕、LED 与蜂鸣器同步反馈。" data-en="Built around QT PY RP2040, APDS-9960 and BME280, integrating temperature, humidity, wet-bulb calculation and multimodal alerts in a 3D-printed wearable. A 10–130 gesture threshold filters arm-swing false positives; 27°C triggers warning and 30°C danger, communicated through display, LEDs and buzzer.">基于 QT PY RP2040、APDS-9960 与 BME280，将温湿度、湿球温度与多模态警报装进 3D 打印腕带。通过 10–130 的手势阈值过滤日常摆臂误触；27°C 进入警告、30°C 进入危险状态，并用屏幕、LED 与蜂鸣器同步反馈。</p><div class="detail-chips"><span>RP2040</span><span>MICROPYTHON</span><span>SENSORS</span><span>3D PRINT</span><span>SIGNAL FILTERING</span></div></div></div></div></div></article>
+        <article class="project-record reveal" id="project-gottago"><div class="project-image portrait-project"><img src="assets/images/projects/gottago.webp" alt="GottaGo 智能卫生间计时器项目海报" loading="lazy"><span>04 / PHYGITAL</span></div><div class="project-copy"><div class="project-topline"><span data-zh="产品设计 · 传感电路 · 3D 原型" data-en="Product design · Sensor circuits · 3D prototype">产品设计 · 传感电路 · 3D 原型</span><time>2024</time></div><h3>GottaGo <small>共享卫生间智能计时器</small></h3><p data-zh="用幽默而不是训诫解决共享空间的时间冲突：一只会感知门锁、计时、提醒并“公开处刑”的智能沙漏。" data-en="Resolving time conflict in shared bathrooms with humor rather than rules: a smart hourglass that senses the lock, times usage, reminds and playfully calls out overtime.">用幽默而不是训诫解决共享空间的时间冲突：一只会感知门锁、计时、提醒并“公开处刑”的智能沙漏。</p><div class="project-meta"><span><em data-zh="角色" data-en="Role">角色</em><b data-zh="产品设计 / 硬件原型" data-en="Product / hardware prototype">产品设计 / 硬件原型</b></span><span><em data-zh="场景" data-en="Context">场景</em><b>UW · TECHIN 511A</b></span><span><em data-zh="协作" data-en="Team">协作</em><b>4-PERSON TEAM</b></span></div><button class="project-toggle" type="button" aria-expanded="false"><span data-zh="展开项目详情" data-en="Open project details">展开项目详情</span><i>+</i></button><div class="project-detail"><div><div class="project-story"><p data-zh="门锁上的霍尔传感器触发 10 / 20 分钟沙漏，光敏传感器判断计时结束并驱动蜂鸣器；超时则显示趣味 GIF。完成 ESP32 电路、磁铁触发、3D 打印、激光切割与外壳装配，把实体交互、行为设计与数字反馈做成闭环。" data-en="A Hall sensor on the lock triggers a 10/20-minute hourglass; a light sensor detects timeout and activates the buzzer, while playful GIFs provide social feedback. Built with ESP32, magnetic triggers, 3D printing and laser-cut parts to connect physical interaction, behavior design and digital response.">门锁上的霍尔传感器触发 10 / 20 分钟沙漏，光敏传感器判断计时结束并驱动蜂鸣器；超时则显示趣味 GIF。完成 ESP32 电路、磁铁触发、3D 打印、激光切割与外壳装配，把实体交互、行为设计与数字反馈做成闭环。</p><div class="detail-chips"><span>ESP32</span><span>HALL SENSOR</span><span>3D PRINT</span><span>LASER CUT</span><span>BEHAVIOR DESIGN</span></div></div></div></div></div></article>
+        <article class="project-record reveal" id="project-frame-flow"><div class="project-image"><img src="assets/images/projects/frame-flow.webp" alt="Frame Flow 多媒体日记界面" loading="lazy"><span>05 / CREATIVE TOOL</span></div><div class="project-copy"><div class="project-topline"><span data-zh="创意工具 · Web 开发 · 数据可视化" data-en="Creative tool · Web · Data visualization">创意工具 · Web 开发 · 数据可视化</span><time>2025</time></div><h3>Frame Flow <small>自由编排的多媒体日记</small></h3><p data-zh="不再被固定模板限制：在无限画布上拖拽、缩放、组合照片与文字，再沿时间与标签回看记忆。" data-en="A freeform multimedia journal where photos and text can be dragged, resized and composed on an open canvas, then revisited through time and tags.">不再被固定模板限制：在无限画布上拖拽、缩放、组合照片与文字，再沿时间与标签回看记忆。</p><div class="project-meta"><span><em data-zh="角色" data-en="Role">角色</em><b data-zh="全栈开发 / UX" data-en="Full-stack / UX">全栈开发 / UX</b></span><span><em data-zh="场景" data-en="Context">场景</em><b>UW · TECHIN 510</b></span><span><em data-zh="协作" data-en="Team">协作</em><b>Chenghao Wang · Diyun Lu</b></span></div><button class="project-toggle" type="button" aria-expanded="false"><span data-zh="展开项目详情" data-en="Open project details">展开项目详情</span><i>+</i></button><div class="project-detail"><div><div class="project-story"><p data-zh="用 React、TypeScript 与 MongoDB 构建坐标化多媒体画布，支持拖拽、缩放与模板复用；通过不可变撤销栈与 JSON 序列化保存编辑状态，用 D3 制作记忆时间线和标签系统，并支持 PDF / 图片 / JSON 导出及 JWT 私密分享。" data-en="Built a coordinate-based multimedia canvas with React, TypeScript and MongoDB, supporting drag, resize and reusable templates. An immutable undo stack and JSON serialization preserve edits; D3 powers the memory timeline and tags, with PDF/image/JSON export and JWT-protected sharing.">用 React、TypeScript 与 MongoDB 构建坐标化多媒体画布，支持拖拽、缩放与模板复用；通过不可变撤销栈与 JSON 序列化保存编辑状态，用 D3 制作记忆时间线和标签系统，并支持 PDF / 图片 / JSON 导出及 JWT 私密分享。</p><div class="detail-chips"><span>REACT</span><span>TYPESCRIPT</span><span>MONGODB</span><span>D3</span><span>JWT</span></div></div></div></div></div></article>
+        <article class="project-record reveal" id="project-bubble"><div class="project-image"><img src="assets/images/projects/bubble-verse.webp" alt="Bubble-Verse 城市公共家具品牌视觉" loading="lazy"><span>06 / URBAN DESIGN</span></div><div class="project-copy"><div class="project-topline"><span data-zh="城市家具 · IP 品牌 · 可持续设计" data-en="Urban furniture · IP brand · Sustainable design">城市家具 · IP 品牌 · 可持续设计</span><time>2021</time></div><h3>Bubble-Verse <small>泡泡宇宙</small></h3><p data-zh="把“泡泡”变成可以坐、停靠、照明与参与的城市语言，让公共空间多一点轻盈与共同创造。" data-en="A bubble-inspired urban language for sitting, gathering, lighting and participation—making public space lighter and more co-created.">把“泡泡”变成可以坐、停靠、照明与参与的城市语言，让公共空间多一点轻盈与共同创造。</p><div class="project-meta"><span><em data-zh="角色" data-en="Role">角色</em><b data-zh="城市设计 / 品牌策略" data-en="Urban design / brand strategy">城市设计 / 品牌策略</b></span><span><em data-zh="场景" data-en="Context">场景</em><b>24H SDG HACK10</b></span><span><em data-zh="荣誉" data-en="Award">荣誉</em><b data-zh="最具投资价值奖" data-en="Most Investable Award">最具投资价值奖</b></span></div><button class="project-toggle" type="button" aria-expanded="false"><span data-zh="展开项目详情" data-en="Open project details">展开项目详情</span><i>+</i></button><div class="project-detail"><div><div class="project-story"><p data-zh="在 24 小时开放创新挑战中提出 Bubble-Seat、Bubble-Station 与 Bubble-Light 三个模块，并设计产品运营、公共参与和品牌联名的商业模式。项目把 SDG、城市公共空间与 IP 叙事连接起来，获得“最具投资价值奖”。" data-en="Within a 24-hour open innovation challenge, designed three modular systems—Bubble-Seat, Bubble-Station and Bubble-Light—plus a business model connecting operations, public participation and brand collaboration. The project linked SDGs, public space and IP storytelling, winning the Most Investable Award.">在 24 小时开放创新挑战中提出 Bubble-Seat、Bubble-Station 与 Bubble-Light 三个模块，并设计产品运营、公共参与和品牌联名的商业模式。项目把 SDG、城市公共空间与 IP 叙事连接起来，获得“最具投资价值奖”。</p><div class="detail-chips"><span>SDG</span><span>URBAN FURNITURE</span><span>IP BRAND</span><span>BUSINESS MODEL</span></div></div></div></div></div></article>
+        <article class="project-record reveal" id="project-hyper"><div class="project-image wide-project"><img src="assets/images/projects/hyper-city.webp" alt="Hyper Student City 技术与空间研究图" loading="lazy"><span>07 / ARCHITECTURE</span></div><div class="project-copy"><div class="project-topline"><span data-zh="未来建筑 · 技术空间 · 参数化设计" data-en="Future architecture · Technology & space · Parametric design">未来建筑 · 技术空间 · 参数化设计</span><time>2023</time></div><h3>Hyper Student City <small>超学生城</small></h3><p data-zh="从赛博格、个人飞行与新材料出发，想象香港大学未来学生村：自由单元、开放立面与三维连接。" data-en="A speculative future student village for HKU shaped by cyborgs, personal flight and new materials: free units, open facades and 3D connections.">从赛博格、个人飞行与新材料出发，想象香港大学未来学生村：自由单元、开放立面与三维连接。</p><div class="project-meta"><span><em data-zh="角色" data-en="Role">角色</em><b data-zh="独立毕业设计" data-en="Independent thesis">独立毕业设计</b></span><span><em data-zh="场景" data-en="Context">场景</em><b>TSINGHUA ARCHITECTURE</b></span><span><em data-zh="研究" data-en="Research">研究</em><b data-zh="120 份有效问卷" data-en="120 valid surveys">120 份有效问卷</b></span></div><button class="project-toggle" type="button" aria-expanded="false"><span data-zh="展开项目详情" data-en="Open project details">展开项目详情</span><i>+</i></button><div class="project-detail"><div><div class="project-story"><p data-zh="以“技术范式革命”为研究主线，通过 120 份问卷识别学生对个性化、隐私、新型公共空间与交通的需求：87% 希望定制，76% 强调隐私，68% 期待新的公共空间，92% 指出交通问题。用 Rhino、Grasshopper 与 Lumion 将研究转化为新的宿舍类型与校园连接系统。" data-en="Used technological paradigm shifts as the research lens. A 120-response survey revealed demand for customization (87%), privacy (76%), new public space (68%) and better mobility (92%). Translated the findings into new residential typologies and campus connections with Rhino, Grasshopper and Lumion.">以“技术范式革命”为研究主线，通过 120 份问卷识别学生对个性化、隐私、新型公共空间与交通的需求：87% 希望定制，76% 强调隐私，68% 期待新的公共空间，92% 指出交通问题。用 Rhino、Grasshopper 与 Lumion 将研究转化为新的宿舍类型与校园连接系统。</p><div class="detail-chips"><span>RHINO</span><span>GRASSHOPPER</span><span>RESEARCH</span><span>FUTURES</span><span>TYPOLOGY</span></div></div></div></div></div></article>
+        <article class="project-record reveal" id="project-monolith"><div class="project-image"><img src="assets/images/projects/monolith.webp" alt="Monolith 攀岩摩天楼建筑效果图" loading="lazy"><span>08 / ARCHITECTURE</span></div><div class="project-copy"><div class="project-topline"><span data-zh="建筑设计 · 结构策略 · 运动空间" data-en="Architecture · Structural strategy · Sports space">建筑设计 · 结构策略 · 运动空间</span><time>2022</time></div><h3>Monolith <small>攀岩摩天楼</small></h3><p data-zh="在北京奥林匹克公园，把攀岩的裂隙、路线与身体运动嵌入一座商业、办公与酒店混合的高层建筑。" data-en="A mixed-use tower in Beijing Olympic Park that embeds climbing fissures, routes and bodily movement into commerce, offices and hospitality.">在北京奥林匹克公园，把攀岩的裂隙、路线与身体运动嵌入一座商业、办公与酒店混合的高层建筑。</p><div class="project-meta"><span><em data-zh="角色" data-en="Role">角色</em><b data-zh="建筑设计 / 研究 / 建模" data-en="Design / research / modeling">建筑设计 / 研究 / 建模</b></span><span><em data-zh="场景" data-en="Context">场景</em><b>TSINGHUA STUDIO</b></span><span><em data-zh="协作" data-en="Team">协作</em><b>Chenghao Wang · Pengyang Zhao</b></span></div><button class="project-toggle" type="button" aria-expanded="false"><span data-zh="展开项目详情" data-en="Open project details">展开项目详情</span><i>+</i></button><div class="project-detail"><div><div class="project-story"><p data-zh="从攀岩动作与高层建筑类型研究出发，将巨柱支撑结构与可攀爬“裂隙”叠合，让专业运动和日常使用共同塑造建筑。项目用 AutoCAD、SketchUp、Revit、Enscape、Grasshopper 与 Rhino 完成，并获 LAC Media 专访。" data-en="Starting from climbing movement and tower typology research, combined a mega-column braced structure with inhabitable climbing fissures so professional sport and daily life shape the building together. Developed through AutoCAD, SketchUp, Revit, Enscape, Grasshopper and Rhino, and featured by LAC Media.">从攀岩动作与高层建筑类型研究出发，将巨柱支撑结构与可攀爬“裂隙”叠合，让专业运动和日常使用共同塑造建筑。项目用 AutoCAD、SketchUp、Revit、Enscape、Grasshopper 与 Rhino 完成，并获 LAC Media 专访。</p><div class="detail-chips"><span>ARCHITECTURE</span><span>STRUCTURE</span><span>SPORTS</span><span>RHINO</span><span>REVIT</span></div></div></div></div></div></article>
+      </div></div>
+    </div></section>
+
+    <section class="section capabilities-section" id="capabilities"><canvas class="capability-canvas" aria-hidden="true"></canvas><div class="section-shell">
+      <div class="section-heading light reveal"><div class="section-index"><span>04</span><span data-zh="CAPABILITY SYSTEM / 动态能力图谱" data-en="CAPABILITY SYSTEM">CAPABILITY SYSTEM / 动态能力图谱</span></div><h2 data-zh="不是技能清单，<br>是一套完成复杂任务的系统。" data-en="Not a skill list.<br>A system for complex work.">不是技能清单，<br>是一套完成复杂任务的系统。</h2><p data-zh="六组能力围绕同一个核心旋转：理解真实问题，并把跨学科资源组织成可工作的产品。悬停或点击节点查看证据。" data-en="Six capability clusters orbit one core: understand the real problem and organize cross-disciplinary resources into a working product. Hover or tap a node for evidence.">六组能力围绕同一个核心旋转：理解真实问题，并把跨学科资源组织成可工作的产品。悬停或点击节点查看证据。</p></div>
+      <div class="capability-stage reveal"><div class="capability-orbit" aria-label="Interactive capability map"><div class="orbit-ring ring-1"></div><div class="orbit-ring ring-2"></div><div class="orbit-ring ring-3"></div><div class="capability-core"><span data-zh="把模糊问题" data-en="TURN AMBIGUITY">把模糊问题</span><b data-zh="做成产品" data-en="INTO PRODUCTS">做成产品</b><i>0 → 1 → SCALE</i></div><button class="cap-node node-1 active" type="button" data-cap="ai"><em>01</em><span data-zh="AI 产品系统" data-en="AI Product Systems">AI 产品系统</span></button><button class="cap-node node-2" type="button" data-cap="data"><em>02</em><span data-zh="应用 AI 与数据" data-en="Applied AI & Data">应用 AI 与数据</span></button><button class="cap-node node-3" type="button" data-cap="robotics"><em>03</em><span data-zh="机器人与硬件" data-en="Robotics & Hardware">机器人与硬件</span></button><button class="cap-node node-4" type="button" data-cap="prototype"><em>04</em><span data-zh="原型与交互" data-en="Prototype & Interaction">原型与交互</span></button><button class="cap-node node-5" type="button" data-cap="venture"><em>05</em><span data-zh="0→1 创业推进" data-en="0→1 Venture Building">0→1 创业推进</span></button><button class="cap-node node-6" type="button" data-cap="system"><em>06</em><span data-zh="空间与系统设计" data-en="Spatial & System Design">空间与系统设计</span></button></div><div class="capability-readout" aria-live="polite"><div class="readout-top"><span>SELECTED CAPABILITY</span><i>01 / 06</i></div><h3>AI 产品系统</h3><p>从客户访谈与问题拆解开始，定义 Agent / Skill 项目，用评测与 bad case 治理闭环，再推进到真实业务消费。</p><div class="readout-tags"><span>NEED DISCOVERY</span><span>AGENT / SKILL PRD</span><span>EVALUATION</span><span>BAD-CASE GOVERNANCE</span><span>ADOPTION</span></div><div class="readout-proof"><em>PROOF</em><p>Alibaba Accio Work · AI 英语内容引擎 · SkinPilot</p></div></div></div>
+    </div></section>
+
+    <section class="section honors-section" id="honors"><div class="honor-scan" aria-hidden="true"></div><div class="section-shell"><div class="section-heading reveal"><div class="section-index"><span>05</span><span data-zh="HONORS IN MOTION / 荣誉一览" data-en="HONORS IN MOTION">HONORS IN MOTION / 荣誉一览</span></div><h2 data-zh="让荣誉留在身后，<br>把下一页留给正在发生的事。" data-en="Let honors recede.<br>Keep the next page for what comes next.">让荣誉留在身后，<br>把下一页留给正在发生的事。</h2></div></div>
+      <div class="honor-stream stream-a" aria-label="Awards and honors"><div><span><b>2019</b> 北京八中优秀毕业生</span><span><b>2019</b> 金融街奖学金</span><span><b>2021</b> 最具投资价值奖</span><span><b>2022</b> 新雅书院特殊贡献奖</span><span><b>2023</b> 清华大学优秀共青团员</span><span><b>2024</b> HRI 第一作者</span><span><b>2019</b> 北京八中优秀毕业生</span><span><b>2019</b> 金融街奖学金</span><span><b>2021</b> 最具投资价值奖</span><span><b>2022</b> 新雅书院特殊贡献奖</span><span><b>2023</b> 清华大学优秀共青团员</span><span><b>2024</b> HRI 第一作者</span></div></div>
+      <div class="honor-stream stream-b" aria-label="Awards and honors"><div><span><b>TOP 10%</b> 清华数据科学</span><span><b>TOP 20%</b> UW GIX</span><span><b>1ST</b> 小米一等奖学金</span><span><b>2ND</b> 霸州人才奖学金</span><span><b>2026</b> 北京市优秀毕业生</span><span><b>$300K</b> 奇绩创坛种子融资</span><span><b>TOP 10%</b> 清华数据科学</span><span><b>TOP 20%</b> UW GIX</span><span><b>1ST</b> 小米一等奖学金</span><span><b>2ND</b> 霸州人才奖学金</span><span><b>2026</b> 北京市优秀毕业生</span><span><b>$300K</b> 奇绩创坛种子融资</span></div></div>
+      <div class="honor-stream stream-c" aria-label="Competition awards"><div><span>挑战杯 · 国家级银奖 / 铜奖</span><span>iCAN · 全国二等奖</span><span>中国国际大学生创新大赛 · 国家级银奖</span><span>新雅书院学生会副主席</span><span>星途计划</span><span>AW 讲师</span><span>挑战杯 · 国家级银奖 / 铜奖</span><span>iCAN · 全国二等奖</span><span>中国国际大学生创新大赛 · 国家级银奖</span><span>新雅书院学生会副主席</span><span>星途计划</span><span>AW 讲师</span></div></div>
     </section>
 
-    <section class="section ventures-section" id="ventures">
-      <div class="section-shell">
-        <div class="section-heading split reveal">
-          <div>
-            <div class="section-kicker"><span>02</span><span data-zh="重点项目" data-en="Selected ventures">重点项目</span></div>
-            <h2 data-zh="不是概念，<br>是做过的产品。" data-en="Not concepts.<br>Products built.">不是概念，<br>是做过的产品。</h2>
-          </div>
-          <p data-zh="三段创业实践，分别落在具身智能、AI 内容工作流与消费级智能硬件。这里强调我真正承担的角色、推进的系统和留下的结果。" data-en="Three venture chapters spanning embodied intelligence, AI content workflows and consumer hardware—focused on real ownership, systems and outcomes.">三段创业实践，分别落在具身智能、AI 内容工作流与消费级智能硬件。这里强调我真正承担的角色、推进的系统和留下的结果。</p>
-        </div>
-
-        <article class="venture-card tangwen-card reveal" data-tilt>
-          <div class="venture-media">
-            <img class="media-main" src="assets/images/tangwen-pitch.webp" alt="王城昊路演汤问智能机器人项目" loading="lazy" width="1800" height="1201">
-            <img class="media-float" src="assets/images/tangwen-product.webp" alt="汤问智能机器人产品介绍" loading="lazy" width="708" height="384">
-            <div class="media-caption"><span>BEIJING HIGH-TECH EXPO</span><span>2024</span></div>
-          </div>
-          <div class="venture-body">
-            <div class="venture-meta"><span>01 / 03</span><span data-zh="具身智能 · 创业实践" data-en="Embodied AI · Venture">具身智能 · 创业实践</span></div>
-            <h3><span class="cn">汤问</span><span class="en">TangWen</span></h3>
-            <p class="venture-subtitle" data-zh="让 IP 手办成为可感知、会动作、能长期陪伴的桌面机器人。" data-en="Turning an IP figurine into a perceptive, expressive desktop robot companion.">让 IP 手办成为可感知、会动作、能长期陪伴的桌面机器人。</p>
-            <p class="venture-role" data-zh="产品负责人 · 项目管理者 · 路演主讲人 / 2023—2025" data-en="Product Lead · Project Manager · Pitch Lead / 2023—2025">产品负责人 · 项目管理者 · 路演主讲人 / 2023—2025</p>
-            <div class="metric-row">
-              <div><strong data-count="4">4</strong><span data-zh="代样机迭代" data-en="prototype generations">代样机迭代</span></div>
-              <div><strong data-count="300" data-suffix="+">300+</strong><span data-zh="标准化动作" data-en="standardized actions">标准化动作</span></div>
-              <div><strong>$300K</strong><span data-zh="奇绩创坛种子融资" data-en="seed funding by MiraclePlus">奇绩创坛种子融资</span></div>
-            </div>
-            <p class="venture-summary" data-zh="主导交互方案、动作库、IP 人格与语音体系，以及 PRD / MVP 定义；协调跨校研发、供应链与合作方，把技术能力推进到样机、路演和商业验证。" data-en="Led interaction design, a 300+ motion library, IP personality and voice systems, plus PRD/MVP definition; aligned cross-university R&D, supply chain and partners from technology to prototypes and validation.">主导交互方案、动作库、IP 人格与语音体系，以及 PRD / MVP 定义；协调跨校研发、供应链与合作方，把技术能力推进到样机、路演和商业验证。</p>
-            <div class="venture-actions">
-              <a class="case-link magnetic" href="https://flowus.cn/share/36489b76-ca8c-46e4-94cf-5f2af3994713" target="_blank" rel="noopener"><span data-zh="完整案例" data-en="Full case">完整案例</span><i>↗</i></a>
-              <span class="press-note" data-zh="新华社 · 环球时报 · 央视网等报道" data-en="Covered by Xinhua, Global Times, CCTV and more">新华社 · 环球时报 · 央视网等报道</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="venture-card english-card-block reveal" data-tilt>
-          <div class="venture-media english-media">
-            <div class="material-stack">
-              <img class="material-back" src="assets/images/english-card.webp" alt="场景化英语学习资料示例" loading="lazy" width="777" height="1036">
-              <img class="material-front" src="assets/images/english-cover.webp" alt="K老师 Caelen 英语学习资料封面" loading="lazy" width="960" height="540">
-              <div class="automation-code" aria-hidden="true">
-                <div><span>01</span> INPUT / SCENE</div>
-                <div><span>02</span> GENERATE / JSON</div>
-                <div><span>03</span> RENDER / IMAGE</div>
-                <div><span>04</span> SYNTHESIZE / AUDIO</div>
-              </div>
-            </div>
-          </div>
-          <div class="venture-body">
-            <div class="venture-meta"><span>02 / 03</span><span data-zh="AI 应用 · 独立开发与运营" data-en="AI application · Solo build & operation">AI 应用 · 独立开发与运营</span></div>
-            <h3><span class="cn">K 老师</span><span class="en">AI English Studio</span></h3>
-            <p class="venture-subtitle" data-zh="一套从场景配置到图文、音频、发布素材的 AI 英语内容生产系统。" data-en="An AI content system that turns scenario configs into visual, audio and publish-ready English learning materials.">一套从场景配置到图文、音频、发布素材的 AI 英语内容生产系统。</p>
-            <p class="venture-role" data-zh="独立开发者与运营者 / 2025" data-en="Solo developer & operator / 2025">独立开发者与运营者 / 2025</p>
-            <div class="metric-row">
-              <div><strong data-count="20" data-suffix="+">20+</strong><span data-zh="篇 / 小时" data-en="pieces / hour">篇 / 小时</span></div>
-              <div><strong data-count="80" data-suffix="+">80+</strong><span data-zh="真实场景" data-en="real-life scenarios">真实场景</span></div>
-              <div><strong data-count="3000" data-suffix="+">3000+</strong><span data-zh="首月累计点赞" data-en="likes in month one">首月累计点赞</span></div>
-            </div>
-            <p class="venture-summary" data-zh="用 Python、GPT 与语音 API 搭建配置驱动工作流，把单套材料的制作从约 30 分钟压缩到 3 分钟；上线“小红书 K 老师 Caelen”，完成内容付费闭环。" data-en="Built a config-driven workflow with Python, GPT and a voice API, compressing production from roughly 30 minutes to 3; launched the K Teacher Caelen account and closed the loop with paid content.">用 Python、GPT 与语音 API 搭建配置驱动工作流，把单套材料的制作从约 30 分钟压缩到 3 分钟；上线“小红书 K 老师 Caelen”，完成内容付费闭环。</p>
-            <div class="venture-actions">
-              <a class="case-link magnetic" href="https://flowus.cn/share/881f66aa-a879-4b7e-ba4a-d1842d8bea38" target="_blank" rel="noopener"><span data-zh="完整案例" data-en="Full case">完整案例</span><i>↗</i></a>
-              <a class="secondary-case-link" href="https://github.com/wch1007/auto-english-material-for-rednote" target="_blank" rel="noopener"><span>GitHub</span><i>↗</i></a>
-            </div>
-          </div>
-        </article>
-
-        <article class="venture-card heros-card reveal" data-tilt>
-          <div class="venture-media mirror-media" aria-hidden="true">
-            <div class="mirror-orbit mirror-orbit-a"></div>
-            <div class="mirror-orbit mirror-orbit-b"></div>
-            <div class="smart-mirror">
-              <div class="mirror-shine"></div>
-              <div class="mirror-ui top"><span>08:42</span><span>SKIN / 78</span></div>
-              <div class="face-map"><i></i><i></i><i></i><i></i><i></i></div>
-              <div class="mirror-ui bottom"><span>ANALYZE</span><b>→</b><span>RECOMMEND</span></div>
-            </div>
-            <div class="mirror-caption">MIRROR × AI × BEAUTY</div>
-          </div>
-          <div class="venture-body">
-            <div class="venture-meta"><span>03 / 03</span><span data-zh="AI 硬件 · 创业实践" data-en="AI hardware · Venture">AI 硬件 · 创业实践</span></div>
-            <h3><span class="cn">HerOS</span><span class="en">Smart Beauty Mirror</span></h3>
-            <p class="venture-subtitle" data-zh="把镜面变成理解用户、提供美妆体验的智能硬件入口。" data-en="Reimagining the mirror as an intelligent entry point for personalized beauty experiences.">把镜面变成理解用户、提供美妆体验的智能硬件入口。</p>
-            <p class="venture-role" data-zh="硬件创业项目 / 阶段资料整理中" data-en="Hardware venture / Case material in progress">硬件创业项目 / 阶段资料整理中</p>
-            <div class="heros-pillars">
-              <span data-zh="用户需求" data-en="User insight">用户需求</span>
-              <span data-zh="产品定义" data-en="Product definition">产品定义</span>
-              <span data-zh="硬件原型" data-en="Hardware prototype">硬件原型</span>
-              <span data-zh="镜面交互" data-en="Mirror UX">镜面交互</span>
-            </div>
-            <p class="venture-summary" data-zh="在 HerOS 参与智能美妆镜硬件创业实践，围绕用户需求、产品定义、硬件原型与镜面交互体验展开探索。为避免过度包装，更多项目过程与阶段成果将在资料补齐后更新。" data-en="Worked on HerOS's smart beauty mirror venture across user needs, product definition, hardware prototyping and mirror interaction. More process and outcomes will be added as the case material is completed.">在 HerOS 参与智能美妆镜硬件创业实践，围绕用户需求、产品定义、硬件原型与镜面交互体验展开探索。为避免过度包装，更多项目过程与阶段成果将在资料补齐后更新。</p>
-            <div class="venture-actions"><span class="coming-soon"><i></i><span data-zh="案例待补充" data-en="Case study incoming">案例待补充</span></span></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section atlas-section" id="atlas">
-      <div class="section-shell">
-        <div class="section-heading split reveal">
-          <div>
-            <div class="section-kicker"><span>03</span><span data-zh="能力图谱" data-en="Capability atlas">能力图谱</span></div>
-            <h2 data-zh="一次次跨界，<br>长成同一个系统。" data-en="Many disciplines.<br>One operating system.">一次次跨界，<br>长成同一个系统。</h2>
-          </div>
-          <p data-zh="学生时代的建筑、数据、HCI、机器人与原型项目不再逐个堆砌；它们被重新组织为六种可迁移的能力，并持续服务于今天的产品工作。" data-en="Architecture, data, HCI, robotics and prototyping projects are recomposed into six transferable capabilities that continue to power my product work today.">学生时代的建筑、数据、HCI、机器人与原型项目不再逐个堆砌；它们被重新组织为六种可迁移的能力，并持续服务于今天的产品工作。</p>
-        </div>
-
-        <div class="atlas-grid">
-          <div class="capability-map reveal" data-tilt>
-            <div class="map-grid" aria-hidden="true"></div>
-            <div class="map-orbit orbit-a" aria-hidden="true"></div>
-            <div class="map-orbit orbit-b" aria-hidden="true"></div>
-            <div class="map-center"><small>CORE</small><strong data-zh="产品创新" data-en="PRODUCT<br>INNOVATION">产品创新</strong><span>DESIGN × TECH × BUSINESS</span></div>
-            <div class="map-node node-1"><i></i><strong data-zh="需求洞察" data-en="INSIGHT">需求洞察</strong><span>USER RESEARCH</span></div>
-            <div class="map-node node-2"><i></i><strong data-zh="AI 与数据" data-en="AI & DATA">AI 与数据</strong><span>AGENT / PIPELINE</span></div>
-            <div class="map-node node-3"><i></i><strong data-zh="机器人" data-en="ROBOTICS">机器人</strong><span>ROS / CONTROL</span></div>
-            <div class="map-node node-4"><i></i><strong data-zh="原型验证" data-en="PROTOTYPING">原型验证</strong><span>BUILD / TEST</span></div>
-            <div class="map-node node-5"><i></i><strong data-zh="空间与视觉" data-en="SPATIAL DESIGN">空间与视觉</strong><span>SYSTEM / STORY</span></div>
-            <div class="map-node node-6"><i></i><strong data-zh="商业落地" data-en="BUSINESS">商业落地</strong><span>0→1 / GROWTH</span></div>
-          </div>
-
-          <div class="capability-list reveal">
-            <article><span>01</span><div><h3 data-zh="发现值得解决的问题" data-en="Find the problem worth solving">发现值得解决的问题</h3><p data-zh="访谈、场景观察、机会识别与需求优先级。" data-en="Interviews, contextual inquiry, opportunity framing and prioritization.">访谈、场景观察、机会识别与需求优先级。</p></div></article>
-            <article><span>02</span><div><h3 data-zh="把复杂系统讲清楚" data-en="Make complex systems legible">把复杂系统讲清楚</h3><p data-zh="产品架构、信息设计、交互逻辑与跨团队语言。" data-en="Product architecture, information design, interaction logic and shared language.">产品架构、信息设计、交互逻辑与跨团队语言。</p></div></article>
-            <article><span>03</span><div><h3 data-zh="用原型快速碰撞现实" data-en="Collide ideas with reality, early">用原型快速碰撞现实</h3><p data-zh="从代码、智能体到硬件与空间，多介质快速验证。" data-en="Rapid validation through code, agents, hardware and spatial prototypes.">从代码、智能体到硬件与空间，多介质快速验证。</p></div></article>
-            <article><span>04</span><div><h3 data-zh="闭环到可持续价值" data-en="Close the loop to durable value">闭环到可持续价值</h3><p data-zh="评测、迭代、项目推进、路演与商业化。" data-en="Evaluation, iteration, delivery, storytelling and commercialization.">评测、迭代、项目推进、路演与商业化。</p></div></article>
-          </div>
-        </div>
-
-        <div class="archive-heading reveal">
-          <div><span data-zh="学生时代作品精选" data-en="Selected student work">学生时代作品精选</span><small>2020—2025</small></div>
-          <p data-zh="点击打开原始案例" data-en="Open the original case">点击打开原始案例 ↗</p>
-        </div>
-
-        <div class="project-index reveal">
-          <a class="project-row" href="https://flowus.cn/share/c658ade6-5808-4e14-a8cc-0384dfcf67ca" target="_blank" rel="noopener">
-            <span class="project-num">01</span><span class="project-title">ROS 2 Robotic Delivery</span><span class="project-cat">ROBOTICS · 2025</span><span class="project-arrow">↗</span>
-            <span class="project-preview"><img src="assets/images/robotics-prototype.webp" alt="ROS 2 delivery robot prototype" loading="lazy" width="1000" height="1169"></span>
-          </a>
-          <a class="project-row" href="https://flowus.cn/share/47be1033-2db5-43d3-9674-604cc1068289" target="_blank" rel="noopener">
-            <span class="project-num">02</span><span class="project-title">Visual Diary Cloud</span><span class="project-cat">DATA · CODING · 2025</span><span class="project-arrow">↗</span>
-          </a>
-          <a class="project-row" href="https://flowus.cn/share/d25beaca-1ff5-45f4-8802-1026bd9e47b9" target="_blank" rel="noopener">
-            <span class="project-num">03</span><span class="project-title">Frame Flow</span><span class="project-cat">DIGITAL JOURNAL · 2025</span><span class="project-arrow">↗</span>
-          </a>
-          <a class="project-row" href="https://flowus.cn/share/7420e646-a3a4-4570-aa7c-f58ba2d8c00e" target="_blank" rel="noopener">
-            <span class="project-num">04</span><span class="project-title">X-WBT</span><span class="project-cat">HCI · HARDWARE · 2024</span><span class="project-arrow">↗</span>
-          </a>
-          <a class="project-row" href="https://flowus.cn/share/b0fea0eb-1e09-48c1-91de-6c1ae042e010" target="_blank" rel="noopener">
-            <span class="project-num">05</span><span class="project-title">GottaGo</span><span class="project-cat">PRODUCT · PROTOTYPE · 2024</span><span class="project-arrow">↗</span>
-          </a>
-          <a class="project-row" href="https://flowus.cn/share/c1e38e8a-70a6-428b-8d05-377a373ac757" target="_blank" rel="noopener">
-            <span class="project-num">06</span><span class="project-title">Hyper Student City</span><span class="project-cat">ARCHITECTURE · 2023</span><span class="project-arrow">↗</span>
-          </a>
-          <a class="project-row" href="https://flowus.cn/share/1032295d-7f54-40ff-aaca-8c2deca2e6f4" target="_blank" rel="noopener">
-            <span class="project-num">07</span><span class="project-title">Monolith</span><span class="project-cat">COMPUTATIONAL DESIGN · 2022</span><span class="project-arrow">↗</span>
-          </a>
-          <a class="project-row" href="https://flowus.cn/share/495d8a4a-d329-4c82-819f-8374a8ea52f4" target="_blank" rel="noopener">
-            <span class="project-num">08</span><span class="project-title">Bubble-Verse</span><span class="project-cat">BUSINESS · URBAN IP · 2021</span><span class="project-arrow">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section about-section" id="about">
-      <div class="section-shell">
-        <div class="section-heading reveal">
-          <div class="section-kicker"><span>04</span><span data-zh="关于我" data-en="About me">关于我</span></div>
-          <h2 data-zh="Think as a poet.<br>Act as a scientist." data-en="Think as a poet.<br>Act as a scientist.">Think as a poet.<br>Act as a scientist.</h2>
-        </div>
-
-        <div class="about-layout">
-          <div class="photo-story reveal">
-            <figure class="photo-large"><img src="assets/images/tsinghua-graduation.webp" alt="王城昊清华大学毕业照" loading="lazy" width="1800" height="2700"><figcaption>TSINGHUA / 2023</figcaption></figure>
-            <figure class="photo-small"><img src="assets/images/campus-marathon.webp" alt="王城昊参加清华校园马拉松" loading="lazy" width="1000" height="1498"><figcaption>RUN / ITERATE</figcaption></figure>
-            <div class="photo-stamp" aria-hidden="true"><span>BUILD</span><span>LEARN</span><span>REPEAT</span></div>
-          </div>
-          <div class="about-copy reveal">
-            <p class="about-intro" data-zh="我是王城昊，也叫 Caelan。我的路径从建筑学的空间思维出发，经过数据科学、HCI 与机器人，最后汇入产品与创业。" data-en="I'm Chenghao, also known as Caelan. My path began with architectural systems thinking, moved through data science, HCI and robotics, and converged in product and entrepreneurship.">我是王城昊，也叫 Caelan。我的路径从建筑学的空间思维出发，经过数据科学、HCI 与机器人，最后汇入产品与创业。</p>
-            <p data-zh="这种看似跳跃的经历，训练了我在陌生领域快速建立模型的能力：先看人，再看系统；先抓关键矛盾，再决定用设计、代码、硬件还是组织协作去解。" data-en="That nonlinear path trained me to build useful mental models in unfamiliar domains: start with people, understand the system, identify the real constraint, then choose design, code, hardware or coordination as the medium.">这种看似跳跃的经历，训练了我在陌生领域快速建立模型的能力：先看人，再看系统；先抓关键矛盾，再决定用设计、代码、硬件还是组织协作去解。</p>
-
-            <div class="timeline">
-              <div class="timeline-item"><time>NOW</time><div><strong data-zh="阿里巴巴 · Accio Work" data-en="Alibaba · Accio Work">阿里巴巴 · Accio Work</strong><span data-zh="Agent / Skill 产品与工作流" data-en="Agent / skill product and workflows">Agent / Skill 产品与工作流</span></div></div>
-              <div class="timeline-item"><time>2023—26</time><div><strong data-zh="清华大学 × 华盛顿大学 GIX" data-en="Tsinghua × University of Washington GIX">清华大学 × 华盛顿大学 GIX</strong><span data-zh="数据科学、计算机与机器人交叉培养" data-en="Interdisciplinary training in data science, computing and robotics">数据科学、计算机与机器人交叉培养</span></div></div>
-              <div class="timeline-item"><time>2024</time><div><strong>ACM/IEEE HRI</strong><span data-zh="第一作者论文 · PI Lab" data-en="First-author paper · PI Lab">第一作者论文 · PI Lab</span></div></div>
-              <div class="timeline-item"><time>2019—23</time><div><strong data-zh="清华大学新雅书院" data-en="Tsinghua University, Xinya College">清华大学新雅书院</strong><span data-zh="建筑学工学学士" data-en="B.Eng. in Architecture">建筑学工学学士</span></div></div>
-            </div>
-
-            <div class="recognition">
-              <span data-zh="挑战杯全国银奖 / 铜奖" data-en="Challenge Cup · National Silver / Bronze">挑战杯全国银奖 / 铜奖</span>
-              <span data-zh="iCAN 全国二等奖" data-en="iCAN · National 2nd Prize">iCAN 全国二等奖</span>
-              <span data-zh="中国国际大学生创新大赛全国银奖" data-en="China International College Students' Innovation Competition · Silver">中国国际大学生创新大赛全国银奖</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-section" id="contact">
-      <div class="contact-orb orb-a" aria-hidden="true"></div>
-      <div class="contact-orb orb-b" aria-hidden="true"></div>
-      <div class="section-shell contact-inner reveal">
-        <div class="section-kicker light"><span>05</span><span data-zh="下一件值得做的事" data-en="What's worth building next">下一件值得做的事</span></div>
-        <h2 data-zh="一起把“应该存在”，<br>变成“已经发生”。" data-en="Let's turn “should exist”<br>into “already working.”">一起把“应该存在”，<br>变成“已经发生”。</h2>
-        <p data-zh="如果你正在做 AI 产品、智能硬件、机器人或一件尚未被定义的事，欢迎来聊。" data-en="If you're building in AI products, intelligent hardware, robotics—or something still undefined—let's talk.">如果你正在做 AI 产品、智能硬件、机器人或一件尚未被定义的事，欢迎来聊。</p>
-        <div class="contact-links">
-          <a class="contact-email magnetic" href="mailto:18501284401@163.com"><span>18501284401@163.com</span><i>↗</i></a>
-          <div class="social-links">
-            <a href="https://github.com/wch1007" target="_blank" rel="noopener">GitHub ↗</a>
-            <a href="https://flowus.cn/share/3e3108b0-6b78-4ec3-9e72-011baad222e9" target="_blank" rel="noopener">FlowUs ↗</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="contact-section" id="contact"><div class="contact-orb" aria-hidden="true"></div><div class="contact-top"><span>LAST PAGE / NEXT CONVERSATION</span><span>BEIJING · CHINA</span></div><div class="contact-copy"><p data-zh="如果你也在做一件<br>复杂但值得的事，" data-en="If you're building something<br>complex but worthwhile,">如果你也在做一件<br>复杂但值得的事，</p><h2><span data-zh="来聊聊。" data-en="let's talk.">来聊聊。</span><i>↗</i></h2></div><div class="contact-links"><a class="magnetic" href="mailto:18501284401@163.com"><em>EMAIL</em><span>18501284401@163.com</span><i>↗</i></a><button class="copy-contact magnetic" type="button" data-copy="18501284401"><em>WECHAT</em><span>18501284401</span><i data-zh="复制" data-en="COPY">复制</i></button><a class="magnetic" href="https://github.com/wch1007" target="_blank" rel="noopener"><em>GITHUB</em><span>@wch1007</span><i>↗</i></a></div><div class="contact-footer"><span>© 2026 CHENGHAO WANG</span><a href="#top" data-zh="返回顶部 ↑" data-en="BACK TO TOP ↑">返回顶部 ↑</a></div></section>
   </main>
-
-  <footer class="site-footer">
-    <a href="#home" class="footer-brand">CW<span>/</span></a>
-    <p>© 2026 CHENGHAO WANG</p>
-    <p>BEIJING · BUILT WITH CURIOSITY</p>
-    <a href="#top" data-zh="回到顶部 ↑" data-en="Back to top ↑">回到顶部 ↑</a>
-  </footer>
-
-  <noscript><div class="noscript">This site is best experienced with JavaScript enabled.</div></noscript>
-  <script src="assets/site.js" defer></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>
