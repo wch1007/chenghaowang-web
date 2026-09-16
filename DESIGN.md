@@ -9,13 +9,20 @@ future iterations unless the owner explicitly changes it.
 ## Content and interaction
 
 - Journey is reverse chronological and opens Alibaba by default.
-- Practice starts with Alibaba, followed by TangWen, K Teacher and HerOS.
-  SkinPilot is a separate AI skincare project, not an alias for HerOS.
+- Practice starts with Alibaba, followed by TangWen, K Teacher, HerOS and
+  Plateau Guard (高原智卫). One always-expanded case is selected at a time.
+- HerOS is SkinPilot, confirmed by the owner. Keep their work in one case.
+- The owner's English name is Caelen, not Caelan.
+- Journey, practice, student work, capabilities and honors occupy full-height
+  chapters with native scroll snapping. Small viewports prioritize readability
+  with scrollable panels. Never intercept wheel events over the honor carousel.
 - Student projects share one display stage and a rotatable index dial.
 - Project stories and media are local. FlowUs is only an optional archive link.
-- Honors enter as individual rows, newest first, without a large headline.
+- Honors loop vertically, newest first, without a large headline. Keep accessible
+  controls to pause and step; disable autoplay when reduced motion is requested.
 - Last page preserves the original narrative, motto and contact invitation,
-  with a personal-life photo story and WeChat added.
+  with a capability origin story, an infinite horizontal life photo journal,
+  WeChat and LinkedIn. Do not repeat the chronological résumé on this page.
 - Support keyboard operation, reduced motion and animation pause.
 
 ## Sources
@@ -23,6 +30,10 @@ future iterations unless the owner explicitly changes it.
 - Owner-provided résumé and 2024 / 2025 GIX scholarship decks (private originals,
   not published). Use the later deck for confirmed competition results.
 - Owner-provided photos and HerOS cover.
+- Owner corrections and new honors, September 2026; no exact months inferred
+  for awards only documented by year or study period.
+- Plateau Guard official website: https://www.gyzw.com.cn/ (project context and
+  supplied site imagery); responsibilities and thesis outcome from the owner.
 - Tsinghua logo: https://www.tsinghua.edu.cn/image/logo180.png
 - UW brand sprite: https://www.washington.edu/static/home/wp-content/themes/uw-2014/assets/svg/uw-sprite.svg
 - Alibaba logo: Alibaba Group official website, data.alibabagroup.com.

@@ -1,0 +1,352 @@
+/* Full-screen editorial chapters. Accio's ink + mint remain the foundation. */
+html { scroll-snap-type:y proximity; scroll-padding-top:0; }
+.hero,.chapter,.last-page { scroll-snap-align:start; scroll-margin-top:0; }
+.chapter { height:100svh; min-height:680px; padding:calc(var(--header) + 22px) 0 30px; overflow:hidden; }
+.chapter > .section-shell { height:100%; min-height:0; display:flex; flex-direction:column; }
+.chapter .section-heading { flex:none; grid-template-columns:1.2fr .8fr; gap:12px 50px; margin:0 0 25px; }
+.chapter .section-heading h2 { font-size:clamp(26px,2.6vw,40px); line-height:1.25; }
+.chapter .section-heading h2 br { display:none; }
+.chapter .section-heading > p { font-size:14px; line-height:1.7; margin:0; }
+.chapter .section-index { font-size:12px; letter-spacing:.05em; }
+.hero { min-height:100svh; }
+.hero-portrait { min-height:520px; }
+.portrait-photo { inset:0 -5% 0 1%; }
+.portrait-photo img { height:100%; width:100%; object-fit:contain; }
+.portrait-backdrop { border-radius:48% 48% 0 0; }
+.hero-signature { position:absolute; z-index:4; left:24%; bottom:7%; color:var(--ink); font:italic clamp(50px,6vw,88px)/1 Georgia,serif; transform:rotate(-8deg); text-shadow:0 3px 28px #000; }
+.hero-signature span { display:block; font:9px/1.6 Consolas,monospace; letter-spacing:.13em; margin-top:10px; transform:rotate(8deg); }
+.hero-memory { position:absolute; z-index:3; left:-6%; bottom:8%; width:28%; height:40%; transform:rotate(-8deg); border-bottom:1px solid #59f3c568; background:linear-gradient(transparent,#13251bbc); }
+.hero-memory img { height:100%; width:100%; object-fit:contain; object-position:bottom; }
+.hero-memory span { position:absolute; left:0; bottom:-24px; white-space:nowrap; font:8px Consolas,monospace; color:var(--muted); }
+.note-b { display:none; }
+.hero-lead { font-size:16px; }
+
+/* Four dates stay in view; the selected story changes on the right. */
+.journey-track { position:relative; display:grid; grid-template-columns:35% 1fr; grid-template-rows:repeat(4,minmax(0,1fr)); flex:1; min-height:0; border-top:0; }
+.journey-card { display:contents; }
+.journey-summary { grid-column:1; grid-template-columns:1fr 28px; gap:10px; min-height:0; padding:20px 24px 20px 0; border-bottom:1px solid var(--line); align-content:center; position:relative; }
+.journey-summary::before { content:""; position:absolute; left:-16px; top:25%; height:50%; width:2px; background:var(--mint); transform:scaleY(0); transition:transform .4s var(--ease); }
+.journey-card.is-open .journey-summary::before { transform:scaleY(1); }
+.journey-year { grid-column:1; font-size:13px; }
+.journey-title { grid-column:1; gap:5px; }
+.journey-title small { display:none; }
+.journey-title strong { font-size:clamp(18px,1.8vw,26px); color:var(--muted); }
+.journey-card.is-open .journey-title strong { color:var(--ink); }
+.journey-title em { font-size:12px; line-height:1.7; }
+.journey-toggle { grid-column:2; grid-row:1/3; width:28px; height:28px; }
+.journey-toggle i { top:13px; left:8px; width:10px; }
+.journey-detail { position:absolute; top:0; right:0; width:60%; height:100%; display:block; opacity:0; visibility:hidden; transform:translateY(20px); transition:opacity .45s var(--ease),transform .55s var(--ease),visibility .45s; overflow:auto; scrollbar-gutter:stable; }
+.journey-card.is-open .journey-detail { opacity:1; transform:none; }
+.journey-detail-inner { overflow:visible; }
+.journey-detail-layout { padding:0 12px 0 0; display:grid; grid-template-columns:44% 1fr; align-items:start; gap:26px; }
+.journey-photo { height:clamp(310px,48svh,520px); min-height:0; }
+.journey-photo img { object-position:center top; }
+.journey-detail-copy > p { font-size:16px; line-height:1.85; margin:22px 0; }
+.journey-detail-copy li { font-size:12px; padding:6px 9px; }
+.institution-logos { gap:16px; }
+.institution-logos .gix-logo { max-width:140px; height:32px; background:#fff; padding:5px; border-radius:2px; }
+.institution-logos .school-logo { width:65px; height:65px; }
+
+/* One always-open venture; navigation is horizontal and never auto-advances. */
+.venture-list { position:relative; flex:1; min-height:0; display:block; }
+.js .venture-record { height:100%; }
+.venture-record { grid-template-columns:48% 1fr; gap:40px; align-items:stretch; }
+.venture-visual,.heros-visual { min-height:0; height:100%; aspect-ratio:auto; border-radius:5px; }
+.venture-reverse .venture-visual { order:0; }
+.venture-copy { overflow:auto; scrollbar-gutter:stable; padding:0 12px 12px 0; }
+.venture-copy h3 { font-size:clamp(27px,3vw,44px); }
+.venture-number { font-size:12px; margin-bottom:13px; }
+.venture-role { font-size:14px; margin:13px 0 8px; }
+.venture-copy > p:not(.venture-role),.venture-detail p,.work-details { font-size:16px; line-height:1.8; }
+.venture-detail { display:block; visibility:visible; }
+.venture-detail > div { overflow:visible; }
+.venture-metrics,.work-loop { margin:18px 0; padding:12px 0; }
+.venture-metrics em,.work-loop > span { font-size:12px; }
+.venture-metrics b { font-size:25px; }
+.detail-chips span { font-size:11px; }
+.venture-navigation { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-top:24px; border-top:1px solid var(--line); padding-top:16px; }
+.venture-tabs { display:flex; gap:7px; min-width:0; overflow-x:auto; }
+.venture-tabs button { white-space:nowrap; padding:10px 14px; border:0; background:transparent; color:var(--muted); border-radius:3px; font-size:14px; }
+.venture-tabs button em { font:11px Consolas,monospace; margin-right:8px; color:var(--muted-2); }
+.venture-tabs button[aria-pressed="true"] { background:#59f3c514; color:var(--mint); }
+.venture-tabs button[aria-pressed="true"] em { color:var(--mint); }
+.venture-arrows,.honor-controls { display:flex; align-items:center; gap:14px; flex-shrink:0; }
+.venture-arrows button,.honor-controls button { width:38px; height:38px; border:1px solid var(--line); border-radius:50%; color:var(--mint); background:transparent; font-size:19px; }
+.venture-arrows button:hover,.honor-controls button:hover { background:#59f3c515; }
+.venture-counter { color:var(--muted); font:12px Consolas,monospace; }
+.heros-visual { background:#181423; }
+.heros-visual .venture-main-image { object-fit:contain; }
+.plateau-visual::after { content:""; position:absolute; inset:0; background:linear-gradient(transparent 15%,#030e15d9); }
+.plateau-label { position:absolute; z-index:1; bottom:35px; left:30px; right:30px; }
+.plateau-label img { width:240px; margin-bottom:18px; }
+.plateau-label span { font:11px Consolas,monospace; letter-spacing:.08em; }
+.case-source { display:inline-block; color:var(--mint); border-bottom:1px solid #59f3c566; font-size:14px; margin-top:20px; }
+.venture-detail .case-note { font-size:12px; color:var(--muted-2); }
+.case-note { color:var(--muted-2); font-size:12px; }
+
+/* The rotating work index and the unfolding case remain within one screen. */
+.project-layout { flex:1; min-height:0; grid-template-columns:295px minmax(0,1fr); gap:35px; }
+.project-rail { height:100%; display:flex; flex-direction:column; }
+.project-dial { height:auto; flex:1; min-height:0; }
+.project-stage { height:100%; }
+html[data-language="en"] .project-stage { height:100%; }
+html[data-language="en"] .project-dial { height:auto; }
+.project-record { grid-template-rows:minmax(160px,1fr) auto; overflow:auto; scrollbar-gutter:stable; }
+.project-copy { padding:14px 8px 0 0; }
+.project-copy > p { font-size:15px; }
+.project-topline,.project-meta em { font-size:12px; }
+.project-meta b,.project-copy h3 small { font-size:13px; }
+.project-copy h3 { font-size:28px; }
+.project-meta { margin-top:12px; }
+.project-toggle { font-size:14px; }
+.project-record.is-open { grid-template-rows:270px minmax(0,1fr); gap:16px 24px; overflow:hidden; }
+.project-record.is-open .project-copy { height:100%; overflow:auto; padding-right:8px; }
+.project-record.is-open .project-copy > p { font-size:14px; }
+.project-record.is-open .project-topline,.project-record.is-open .project-meta b,.project-record.is-open .project-toggle,.project-record.is-open .project-copy h3 small { font-size:12px; }
+.project-record.is-open .project-detail { max-height:none; }
+.project-story > p { font-size:16px; line-height:1.85; }
+.project-story h4 { font-size:14px; color:var(--mint); font-weight:500; margin:22px 0 8px; }
+.project-story ul { padding-left:20px; color:var(--muted); font-size:15px; line-height:1.9; }
+.project-gallery figure { margin:0; }
+.project-gallery figcaption { font-size:12px; color:var(--muted); margin-top:9px; }
+.project-gallery video { width:100%; max-height:300px; display:block; background:#000; }
+.rail-top,.dial-controls { font-size:12px; }
+.dial-controls { gap:8px; }
+.dial-item-inner { font-size:12px; }
+
+/* Six specific fields orbit a shared practice, without hiding the skills. */
+.skill-universe { min-height:0; flex:1; }
+.skill-core { width:145px; height:145px; }
+.skill-core b { font-size:33px; }
+.core-orbit { inset:-16px; }
+.core-orbit.second { inset:-31px; }
+.skill-cluster { max-width:none; width:32%; }
+.cluster-1 { top:0; left:0; }
+.cluster-2 { top:0; right:0; }
+.cluster-3 { top:36%; left:0; }
+.cluster-4 { top:36%; right:0; }
+.cluster-5 { bottom:0; left:0; }
+.cluster-6 { bottom:0; right:0; }
+.skill-select { font-size:19px; padding-bottom:9px; }
+.skill-tags { gap:5px 12px; margin-top:10px; }
+.skill-tags span { font-size:13px; }
+.skill-evidence { margin-top:25px; padding:14px 0; }
+.skill-evidence > span,.skill-proof { font-size:12px; }
+.skill-description { font-size:16px; }
+
+/* A continuous roll of honors; wheel input is deliberately left to the page. */
+.honors-section { background:radial-gradient(ellipse at 75% 50%,#1535283b,transparent 60%),var(--bg-soft); }
+.honors-label { padding-bottom:22px; font-size:12px; }
+.honor-window { flex:1; min-height:0; overflow:hidden; position:relative; mask-image:linear-gradient(transparent,#000 6%,#000 91%,transparent); }
+.honor-belt { will-change:transform; }
+.honors-list { border-top:0; }
+.js .honor-row { opacity:1; transform:none; min-height:86px; padding:23px 0; grid-template-columns:112px 1fr 160px 16px; }
+.honor-row time { font-size:13px; }
+.honor-row h3 { font-size:clamp(17px,1.7vw,25px); }
+.honor-row > span { font-size:11px; }
+.honors-bottom { display:flex; align-items:center; justify-content:space-between; gap:20px; padding-top:22px; }
+.honors-bottom > span { font-size:13px; color:var(--muted); }
+.honors-bottom a { font-size:14px; color:var(--mint); }
+.honor-pause { font-size:14px!important; }
+
+/* The last chapter links a life to a way of thinking, not to a second CV. */
+.last-page { position:relative; background:var(--bg); padding-top:calc(var(--header) + 30px); }
+.about-layout { align-items:start; gap:70px; grid-template-columns:.8fr 1.2fr; }
+.photo-story { position:sticky; top:calc(var(--header) + 40px); height:650px; }
+.origin-note { display:grid; grid-template-columns:28px 1fr; gap:14px; padding:23px 0; border-top:1px solid var(--line); }
+.origin-note > span { color:var(--mint); font:12px Consolas,monospace; padding-top:5px; }
+.origin-note h3 { font-size:19px; font-weight:500; margin:0 0 12px; }
+.origin-note p { font-size:16px; line-height:1.9; color:var(--muted); margin:0 0 13px; }
+.origin-note small { font-size:12px; color:var(--mint); }
+.about-copy > .about-intro { font-size:18px; margin-bottom:30px; }
+.life-film { scroll-snap-type:none; overflow-x:auto; scroll-behavior:auto; scrollbar-width:none; }
+.life-film::-webkit-scrollbar { display:none; }
+.life-frame { flex-basis:350px; scroll-snap-align:none; }
+.life-frame:nth-child(3n) { flex-basis:280px; }
+.life-image { height:370px; }
+.life-frame b { font-size:16px; }
+.life-frame p { font-size:14px; }
+.life-frame:nth-child(3n+1) .life-image { border-radius:80px 3px 3px 3px; }
+.life-controls .life-pause { font-size:14px; }
+.contact-links { grid-template-columns:1fr 1fr; }
+.contact-links > * { padding:24px; }
+.contact-links > *:nth-child(3) { border-left:0; padding-left:0; }
+.contact-links > *:nth-child(n+3) { border-top:1px solid var(--line); }
+.contact-links em { font-size:12px; }
+.contact-links span { font-size:14px; }
+
+@media (min-width:1101px) and (min-height:700px) {
+  html { scroll-snap-type:y mandatory; }
+  .hero { height:100svh; min-height:700px; }
+  .hero-portrait { min-height:0; }
+}
+@media (max-width:1100px) {
+  .chapter .section-heading { gap:10px 25px; }
+  .journey-track { grid-template-columns:32% 1fr; }
+  .journey-detail { width:64%; }
+  .journey-detail-layout { grid-template-columns:1fr; gap:18px; }
+  .journey-photo { height:220px; }
+  .journey-detail-copy > p { margin:16px 0; }
+  .venture-record { gap:28px; grid-template-columns:43% 1fr; }
+  .venture-tabs button { font-size:12px; padding:10px 8px; }
+  .venture-tabs button em { display:none; }
+  .project-layout { grid-template-columns:260px minmax(0,1fr); gap:20px; }
+  .project-record.is-open { grid-template-rows:290px minmax(0,1fr); }
+  .skill-core { width:120px; height:120px; }
+  .skill-cluster { width:35%; }
+  .skill-select { font-size:17px; }
+  .skill-tags span { font-size:12px; }
+  .skill-tags { gap:5px 9px; }
+  .skill-evidence { margin-top:20px; }
+  .honor-row > span { display:none; }
+  .js .honor-row { grid-template-columns:100px 1fr 16px; }
+  .about-layout { gap:35px; }
+  .photo-story { height:520px; }
+}
+@media (max-width:760px) {
+  :root { --header:64px; }
+  .chapter { padding:calc(var(--header) + 17px) 0 22px; min-height:700px; }
+  .chapter .section-heading { display:block; margin-bottom:18px; }
+  .chapter .section-index { font-size:10px; margin-bottom:10px; }
+  .chapter .section-heading h2 { font-size:25px; }
+  .chapter .section-heading > p { display:none; }
+  .hero { min-height:100svh; }
+  .hero-signature { font-size:56px; left:29%; }
+  .hero-memory { left:1%; width:26%; bottom:12%; }
+  .hero-memory span { font-size:6px; }
+  .hero-signature span { font-size:7px; }
+  .journey-track { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:100px 1fr; }
+  .journey-summary { grid-column:auto; grid-row:1; display:flex; flex-direction:column; justify-content:flex-start; gap:7px; align-items:flex-start; padding:10px 9px 12px 0; }
+  .journey-summary::before { left:0; bottom:0; top:auto; width:65%; height:2px; }
+  .journey-title strong { font-size:13px; }
+  .journey-title em,.journey-toggle { display:none; }
+  .journey-year { font-size:10px; }
+  .journey-year > i { margin-right:5px; width:5px; height:5px; }
+  .journey-detail { width:100%; top:120px; height:calc(100% - 120px); }
+  .journey-detail-layout { grid-template-columns:1fr; padding-right:5px; }
+  .journey-photo { height:210px; }
+  .journey-photo img { object-position:center 25%!important; }
+  .journey-card:first-child .journey-photo img { object-fit:contain; background:#101b17; }
+  .institution-logos img { height:34px; }
+  .journey-detail-copy > p { font-size:15px; }
+  .venture-list { overflow:hidden; }
+  .venture-record { display:flex; flex-direction:column; gap:16px; overflow:auto; scrollbar-width:thin; }
+  .venture-visual,.heros-visual { height:200px; min-height:200px; flex:none; width:100%; }
+  .venture-main-image { object-position:center 30%; }
+  .accio-visual .venture-main-image { object-fit:contain; background:#0f1b14; }
+  .accio-visual-label { bottom:15px; left:15px; }
+  .accio-visual-label b { font-size:27px; }
+  .accio-visual-label span { font-size:8px; }
+  .venture-copy { overflow:visible; padding-right:5px; }
+  .venture-copy h3 { font-size:27px; }
+  .venture-copy > p:not(.venture-role),.venture-detail p,.work-details { font-size:15px; }
+  .venture-number { font-size:10px; }
+  .venture-detail p { margin:14px 0; }
+  .venture-role { font-size:12px; }
+  .venture-navigation { flex-wrap:wrap; margin-top:14px; padding-top:12px; gap:10px; }
+  .venture-tabs { flex:1; width:100%; justify-content:space-between; }
+  .venture-tabs button { padding:9px 6px; font-size:11px; }
+  .venture-arrows { width:100%; justify-content:space-between; }
+  .venture-arrows button { width:32px; height:32px; }
+  .venture-counter { font-size:11px; }
+  .plateau-label { left:20px; bottom:20px; }
+  .plateau-label img { width:180px; margin-bottom:10px; }
+  .plateau-label span { font-size:9px; }
+  .english-cover { width:56%; left:20%; top:6%; }
+  .english-card { width:18%; right:12%; }
+  .project-layout { display:flex; flex-direction:column; gap:12px; }
+  .project-rail { height:110px; flex:none; position:relative; overflow:hidden; padding-left:145px; justify-content:center; }
+  .project-dial { width:132px; height:110px; min-height:110px; position:absolute; left:0; top:0; }
+  html[data-language="en"] .project-dial { height:110px; }
+  .dial-track,.dial-hub,.dial-rotor { left:50%; }
+  .dial-track { width:108px; height:108px; }
+  .dial-track i { transform:rotate(var(--tick)) translateX(54px); width:4px; }
+  .dial-track::before { inset:14px; }
+  .dial-track::after { inset:25px; }
+  .dial-hub { width:55px; height:55px; }
+  .dial-hub b { font-size:22px; }
+  .dial-hub span { display:none; }
+  .dial-item { width:25px; height:25px; margin-top:-12.5px; transform:rotate(var(--angle)) translateX(39px); }
+  .dial-item-inner { transform:rotate(calc(-1 * (var(--angle) + var(--rotation)))); }
+  .dial-item-inner > span { display:none; }
+  .dial-item em { width:23px; height:23px; font-size:9px; }
+  .dial-pointer { display:none; }
+  .dial-controls { font-size:10px; margin-top:12px; }
+  .dial-controls button { width:28px; height:28px; }
+  .rail-top { font-size:10px; }
+  .project-stage { flex:1; min-height:0; width:100%; overflow:auto; }
+  .project-record,.project-record.is-open { height:auto; min-height:100%; display:grid; grid-template-columns:1fr; grid-template-rows:180px auto; overflow:visible; row-gap:0; }
+  .project-record.is-open { grid-template-columns:34% 1fr; grid-template-rows:auto auto; column-gap:15px; }
+  .project-record.is-open .project-image { height:140px; }
+  .project-record.is-open .project-copy { height:auto; overflow:visible; }
+  .project-record.is-open .project-copy h3 { font-size:20px; }
+  .project-record.is-open .project-copy h3 small { font-size:12px; }
+  .project-record.is-open .project-copy > p { font-size:13px; }
+  .project-copy h3 { font-size:24px; }
+  .project-copy h3 small { display:block; margin:5px 0 0; }
+  .project-copy > p { font-size:14px; }
+  .project-meta b,.project-meta em { font-size:11px; }
+  .project-record.is-open .project-detail { grid-column:1/-1; overflow:visible; }
+  .project-story > p,.project-story ul { font-size:15px; }
+  .skill-universe { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:repeat(3,1fr); padding:0; gap:18px 20px; overflow:auto; align-content:start; }
+  .skill-core,.skill-connections { display:none; }
+  .skill-cluster { position:static; width:100%; }
+  .skill-select { font-size:16px; gap:6px; }
+  .skill-select em { font-size:9px; }
+  .skill-select i { display:none; }
+  .skill-tags { gap:5px 10px; margin-top:10px; }
+  .skill-tags span { font-size:12px; }
+  .skill-evidence { margin-top:15px; padding:12px 0; gap:8px; grid-template-columns:1fr 24px; }
+  .skill-evidence > span { display:none; }
+  .skill-description { font-size:14px; }
+  .skill-proof { font-size:11px; }
+  .honors-label { font-size:10px; }
+  .js .honor-row { grid-template-columns:70px 1fr; gap:14px; min-height:95px; padding:20px 0; }
+  .honor-row time { font-size:11px; }
+  .honor-row h3 { font-size:16px; }
+  .honor-row > i { display:none; }
+  .honors-bottom { flex-wrap:wrap; gap:15px; }
+  .honors-bottom > span { width:100%; font-size:12px; }
+  .honors-bottom a { font-size:13px; }
+  .honor-controls button { width:32px; height:32px; }
+  .about-layout { display:flex; flex-direction:column; gap:45px; }
+  .photo-story { position:relative; top:auto; height:440px; max-width:430px; }
+  .origin-note { padding:20px 0; gap:8px; }
+  .origin-note h3 { font-size:18px; }
+  .origin-note p { font-size:15px; }
+  .life-frame { flex-basis:300px; }
+  .life-frame:nth-child(3n) { flex-basis:250px; }
+  .life-image { height:320px; }
+  .life-frame b { font-size:14px; }
+  .life-frame p { font-size:13px; }
+  .contact-links { grid-template-columns:1fr; }
+  .contact-links > * { padding:20px 0; border-left:0!important; }
+  .contact-links > * + * { border-top:1px solid var(--line); }
+  .contact-links span { font-size:14px; }
+}
+@media (max-height:699px) and (min-width:761px) {
+  .chapter { min-height:650px; }
+  .chapter .section-heading h2 { font-size:25px; }
+  .skill-tags span { font-size:12px; }
+  .skill-select { font-size:17px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-snap-type:none; }
+  .honor-belt { will-change:auto; }
+}
+@media print {
+  html { scroll-snap-type:none; }
+  .chapter { height:auto; min-height:0; overflow:visible; break-before:page; }
+  .venture-record[hidden],.project-record[hidden] { display:grid!important; }
+  .honor-window { overflow:visible; mask-image:none; }
+  .honor-belt { transform:none!important; }
+  [data-loop-clone] { display:none!important; }
+}
+html:not(.js) .chapter { height:auto; overflow:visible; }
+html:not(.js) .journey-track { display:block; }
+html:not(.js) .journey-card { display:block; }
+html:not(.js) .journey-detail { position:static; width:100%; height:auto; opacity:1; visibility:visible; transform:none; }
+html:not(.js) .journey-detail[inert] { display:none; }
+html:not(.js) .venture-list { display:grid; }
+html:not(.js) .venture-visual { min-height:340px; }
+html:not(.js) .honor-window { overflow:visible; mask-image:none; }

@@ -32,7 +32,7 @@
   function setLanguage(value, updateUrl = true) {
     root.dataset.language = value;
     root.lang = value === 'en' ? 'en' : 'zh-CN';
-    doc.title = value === 'en' ? 'Chenghao Wang — AI Product Builder' : '王城昊 Chenghao Wang — AI Product Builder';
+    doc.title = value === 'en' ? 'Caelen · Chenghao Wang — AI Product Builder' : '王城昊 Caelen — AI Product Builder';
     doc.querySelectorAll('[data-zh][data-en]').forEach(node => { node.innerHTML = node.dataset[value]; });
     languageButton.textContent = value === 'en' ? '中文' : 'EN';
     languageButton.setAttribute('aria-label', value === 'en' ? '切换中文' : 'Switch to English');
@@ -110,37 +110,57 @@
     button.setAttribute('aria-expanded', String(open));
     panel.inert = !open;
     button.addEventListener('click', () => {
-      const willOpen = !card.classList.contains('is-open');
+      const willOpen = true;
       journeyCards.forEach(other => {
         const active = other === card && willOpen;
         other.classList.toggle('is-open', active);
         other.querySelector('.journey-summary').setAttribute('aria-expanded', String(active));
         other.querySelector('.journey-detail').inert = !active;
       });
-      // Keep the selected chapter below the header when an earlier one collapses.
-      if (willOpen) {
-        setTimeout(() => {
-          const top = button.getBoundingClientRect().top;
-          if (top < 90) window.scrollBy({ top: top - 100, behavior: motionAllowed() ? 'smooth' : 'instant' });
-        }, motionAllowed() ? 670 : 0);
-      }
+      panel.scrollTop = 0;
     });
   });
-  doc.querySelectorAll('.venture-record').forEach((record, i) => {
-    const button = record.querySelector('.inline-toggle');
-    const panel = record.querySelector('.venture-detail');
-    panel.id = 'venture-details-' + i;
-    panel.inert = !record.classList.contains('is-open');
-    button.setAttribute('aria-controls', panel.id);
-    button.setAttribute('aria-expanded', String(!panel.inert));
-    button.addEventListener('click', () => {
-      const open = !record.classList.contains('is-open');
-      record.classList.toggle('is-open', open);
-      panel.inert = !open;
-      button.setAttribute('aria-expanded', String(open));
-      translateControls();
+  const ventures = [...doc.querySelectorAll('.venture-record')];
+  const ventureButtons = [...doc.querySelectorAll('[data-venture]')];
+  let ventureIndex = 0;
+  function selectVenture(index, animate = true) {
+    const previous = ventureIndex;
+    ventureIndex = ((index % ventures.length) + ventures.length) % ventures.length;
+    ventures.forEach((record, i) => {
+      record.hidden = i !== ventureIndex;
+      record.inert = i !== ventureIndex;
+      record.classList.add('is-open');
+      record.querySelector('.venture-detail').inert = false;
+      ventureButtons[i].setAttribute('aria-pressed', String(i === ventureIndex));
     });
+    const current = ventures[ventureIndex];
+    current.scrollTop = 0;
+    current.querySelector('.venture-copy').scrollTop = 0;
+    doc.querySelector('.venture-counter').textContent = String(ventureIndex + 1).padStart(2,'0') + ' / 05';
+    if (animate && previous !== ventureIndex && motionAllowed()) {
+      const direction = Math.sign(index - previous) || 1;
+      current.getAnimations().forEach(a => a.cancel());
+      current.animate([{ opacity:0, transform:'translateX(' + direction * 50 + 'px)' }, { opacity:1, transform:'none' }], { duration:600, easing:'cubic-bezier(.22,.75,.18,1)' });
+    }
+  }
+  ventureButtons.forEach((button,i) => button.addEventListener('click', () => selectVenture(i)));
+  doc.querySelectorAll('[data-venture-direction]').forEach(button => button.addEventListener('click', () => selectVenture(ventureIndex + Number(button.dataset.ventureDirection))));
+  doc.querySelector('.venture-tabs').addEventListener('keydown', event => {
+    if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+    event.preventDefault();
+    selectVenture(event.key === 'Home' ? 0 : event.key === 'End' ? ventures.length - 1 : ventureIndex + (event.key === 'ArrowRight' ? 1 : -1));
+    ventureButtons[ventureIndex].focus();
   });
+  let ventureTouch = null;
+  const ventureList = doc.querySelector('.venture-list');
+  ventureList.addEventListener('touchstart', e => { const t=e.touches[0]; ventureTouch={x:t.clientX,y:t.clientY}; }, {passive:true});
+  ventureList.addEventListener('touchend', e => {
+    if (!ventureTouch) return;
+    const t=e.changedTouches[0], dx=t.clientX-ventureTouch.x, dy=t.clientY-ventureTouch.y;
+    if (Math.abs(dx)>65 && Math.abs(dx)>Math.abs(dy)*1.5) selectVenture(ventureIndex + (dx<0 ? 1 : -1));
+    ventureTouch=null;
+  }, {passive:true});
+  selectVenture(0, false);
 
   // A single local case-study stage, controlled by a continuous, snapping dial.
   const projects = [...doc.querySelectorAll('.project-record')];
@@ -148,6 +168,7 @@
   const dialButtons = [...doc.querySelectorAll('.dial-item')];
   const rotor = doc.querySelector('.dial-rotor');
   const count = projects.length;
+  const step = 360 / count;
   let selected = 0, rotation = 0, suppressClickUntil = 0;
   const announcement = doc.createElement('span');
   announcement.className = 'sr-only';
@@ -156,7 +177,7 @@
   function selectProject(index, options = {}) {
     const next = ((index % count) + count) % count;
     const old = selected;
-    const desired = -next * 45;
+    const desired = -next * step;
     if (options.rotation !== undefined) rotation = options.rotation;
     rotation = desired + Math.round((rotation - desired) / 360) * 360;
     dial.style.setProperty('--rotation', rotation + 'deg');
@@ -164,6 +185,7 @@
     projects.forEach((record, i) => {
       record.hidden = i !== selected;
       record.classList.toggle('is-selected', i === selected);
+      if (i !== selected) record.querySelectorAll('video').forEach(video => { if (!video.paused) video.pause(); });
       if (i !== old || selected !== old) {
         record.classList.remove('is-open');
         record.querySelector('.project-toggle').setAttribute('aria-expanded', 'false');
@@ -172,7 +194,7 @@
       dialButtons[i].classList.toggle('active', i === selected);
       dialButtons[i].setAttribute('aria-pressed', String(i === selected));
     });
-    doc.querySelector('.project-counter').textContent = String(selected + 1).padStart(2, '0') + ' / 08';
+    doc.querySelector('.project-counter').textContent = String(selected + 1).padStart(2, '0') + ' / ' + String(count).padStart(2, '0');
     announcement.textContent = projects[selected].querySelector('h3').textContent;
     if (motionAllowed() && old !== selected) projects[selected].animate(
       [{ opacity: 0, transform: 'translateY(15px)' }, { opacity: 1, transform: 'none' }],
@@ -191,6 +213,7 @@
       event.preventDefault();
       selectProject(event.key === 'Home' ? 0 : event.key === 'End' ? count - 1 :
         selected + (['ArrowDown','ArrowRight'].includes(event.key) ? 1 : -1));
+      dialButtons[selected].focus();
     }
   });
   let wheelAmount = 0, lastWheel = 0;
@@ -208,7 +231,7 @@
   let drag = null;
   const angleAt = event => {
     const rect = dial.getBoundingClientRect();
-    const centerX = innerWidth <= 640 ? rect.left + rect.width / 2 : rect.left + 35;
+    const centerX = innerWidth <= 760 ? rect.left + rect.width / 2 : rect.left + 35;
     return Math.atan2(event.clientY - rect.top - rect.height / 2, event.clientX - centerX) * 180 / Math.PI;
   };
   dial.addEventListener('pointerdown', event => {
@@ -241,7 +264,7 @@
     if (previous.moved) {
       suppressClickUntil = performance.now() + 150;
       const turned = previous.base + previous.total;
-      selectProject(Math.round(-turned / 45), { rotation: turned });
+      selectProject(Math.round(-turned / step), { rotation: turned });
     }
   };
   dial.addEventListener('pointerup', finishDrag);
@@ -252,9 +275,7 @@
     const button = record.querySelector('.project-toggle');
     const panel = record.querySelector('.project-detail');
     button.addEventListener('click', () => {
-      const pageY = innerWidth > 640
-        ? doc.querySelector('#projects').getBoundingClientRect().top + window.scrollY - 90
-        : record.parentElement.getBoundingClientRect().top + window.scrollY - 90;
+      const pageY = window.scrollY;
       const animated = [record.querySelector('.project-image'), record.querySelector('.project-copy')];
       animated.forEach(node => node.getAnimations().forEach(animation => animation.cancel()));
       const before = animated.map(node => node.getBoundingClientRect());
@@ -265,7 +286,6 @@
       button.setAttribute('aria-expanded', String(open));
       translateControls();
       window.scrollTo({ top: pageY, behavior: 'instant' });
-      requestAnimationFrame(() => window.scrollTo({ top: pageY, behavior: 'instant' }));
       if (!motionAllowed()) return;
       animated.forEach((node, i) => {
         const after = node.getBoundingClientRect();
@@ -326,10 +346,87 @@
   }
   doc.querySelectorAll('.skill-select').forEach(button => button.addEventListener('click', () => renderSkill(button.dataset.cap)));
 
+  // Endless, readable carousels. No wheel interception: honors never trap page scrolling.
+  const honorWindow = doc.querySelector('.honor-window');
+  const honorBelt = doc.querySelector('.honor-belt');
+  const honorList = doc.querySelector('.honors-list');
+  const honorClone = honorList.cloneNode(true);
+  honorClone.setAttribute('aria-hidden','true');
+  honorClone.dataset.loopClone = 'true';
+  honorBelt.append(honorClone);
   const film = doc.querySelector('.life-film');
-  doc.querySelectorAll('[data-life-direction]').forEach(button => button.addEventListener('click', () => {
-    film.scrollBy({ left: Number(button.dataset.lifeDirection) * (film.querySelector('figure').offsetWidth + 24), behavior: motionAllowed() ? 'smooth' : 'instant' });
+  const originalFrames = [...film.children];
+  originalFrames.forEach(frame => {
+    const clone=frame.cloneNode(true);
+    clone.setAttribute('aria-hidden','true');
+    clone.dataset.loopClone='true';
+    film.append(clone);
+  });
+  let honorOffset=0, lifeOffset=0, honorPeriod=1, lifePeriod=1;
+  const loopState = { honor:{visible:false,hover:false,focus:false,paused:false}, life:{visible:false,hover:false,focus:false,paused:false} };
+  function measureLoops() {
+    honorPeriod = Math.max(1, honorList.getBoundingClientRect().height);
+    lifePeriod = Math.max(1, film.children[originalFrames.length].offsetLeft - film.children[0].offsetLeft);
+  }
+  const modulo=(n,d)=>((n%d)+d)%d;
+  function renderHonor() { honorOffset=modulo(honorOffset,honorPeriod); honorBelt.style.transform='translateY(-'+honorOffset+'px)'; }
+  function renderLife() { lifeOffset=modulo(lifeOffset,lifePeriod); film.scrollLeft=lifeOffset; }
+  const loopObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+    loopState[entry.target===honorWindow?'honor':'life'].visible=entry.isIntersecting;
+  }), {threshold:.01});
+  [[honorWindow,'honor'],[film,'life']].forEach(([element,key]) => {
+    loopObserver.observe(element);
+    element.addEventListener('mouseenter',()=>{loopState[key].hover=true;});
+    element.addEventListener('mouseleave',()=>{loopState[key].hover=false;});
+    element.addEventListener('focusin',()=>{loopState[key].focus=true;});
+    element.addEventListener('focusout',event=>{if(!element.contains(event.relatedTarget))loopState[key].focus=false;});
+  });
+  let lifeManualUntil=0;
+  const manualLife=()=>{ lifeManualUntil=performance.now()+4000; };
+  ['wheel','touchstart','pointerdown','keydown'].forEach(type=>film.addEventListener(type,manualLife,{passive:true}));
+  film.addEventListener('scroll',()=>{
+    if(performance.now()<lifeManualUntil) lifeOffset=film.scrollLeft;
+  },{passive:true});
+  function pauseLoop(key,button) {
+    loopState[key].paused=!loopState[key].paused;
+    button.setAttribute('aria-pressed',String(loopState[key].paused));
+    button.textContent=loopState[key].paused?'▷':'Ⅱ';
+    button.setAttribute('aria-label',loopState[key].paused?'继续轮播 / Resume carousel':'暂停轮播 / Pause carousel');
+  }
+  const honorPause=doc.querySelector('.honor-pause'), lifePause=doc.querySelector('.life-pause');
+  honorPause.addEventListener('click',()=>pauseLoop('honor',honorPause));
+  lifePause.addEventListener('click',()=>pauseLoop('life',lifePause));
+  function stepHonor(direction) {
+    loopState.honor.paused=true;
+    honorPause.setAttribute('aria-pressed','true'); honorPause.textContent='▷';
+    honorPause.setAttribute('aria-label','继续轮播 / Resume carousel');
+    const rowHeight=honorList.firstElementChild.getBoundingClientRect().height;
+    honorOffset+=direction*rowHeight; renderHonor();
+  }
+  doc.querySelectorAll('[data-honor-direction]').forEach(button=>button.addEventListener('click',()=>stepHonor(Number(button.dataset.honorDirection))));
+  honorWindow.addEventListener('keydown',event=>{
+    if(event.key==='ArrowDown'||event.key==='ArrowUp') {event.preventDefault();stepHonor(event.key==='ArrowDown'?1:-1);}
+    if(event.key==='Home') {event.preventDefault();honorOffset=0;renderHonor();}
+  });
+  doc.querySelectorAll('[data-life-direction]').forEach(button=>button.addEventListener('click',()=>{
+    lifeManualUntil=0;
+    lifeOffset=film.scrollLeft+Number(button.dataset.lifeDirection)*(originalFrames[0].offsetWidth+24);
+    renderLife();
   }));
+  new ResizeObserver(measureLoops).observe(honorList);
+  new ResizeObserver(measureLoops).observe(film);
+  measureLoops();
+  let loopTime=0;
+  function animateLoops(now) {
+    const elapsed=Math.min(now-loopTime,40); loopTime=now;
+    if(motionAllowed()&&!doc.hidden) {
+      const canPlay=state=>state.visible&&!state.hover&&!state.focus&&!state.paused;
+      if(canPlay(loopState.honor)) {honorOffset+=elapsed*.021;renderHonor();}
+      if(canPlay(loopState.life)&&now>=lifeManualUntil) {lifeOffset+=elapsed*.032;renderLife();}
+    }
+    requestAnimationFrame(animateLoops);
+  }
+  requestAnimationFrame(animateLoops);
   const copyButton = doc.querySelector('.copy-contact');
   copyButton.addEventListener('click', async () => {
     const indicator = copyButton.querySelector('i');

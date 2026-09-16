@@ -16,15 +16,30 @@ for (const [, value] of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
   }
 }
 const projects = section('projects');
-assert.equal((projects.match(/class="project-record/g) || []).length, 8);
-assert.equal((projects.match(/class="dial-item/g) || []).length, 16); // button and inner label
-assert.equal((projects.match(/class="project-record[^>]* hidden/g) || []).length, 7);
+assert.equal((projects.match(/class="project-record/g) || []).length, 9);
+assert.equal((projects.match(/class="dial-item/g) || []).length, 18); // button and inner label
+assert.equal((projects.match(/class="project-record[^>]* hidden/g) || []).length, 8);
+assert.equal((projects.match(/class="project-gallery"/g) || []).length, 9);
 assert(!projects.includes('href="https://flowus.cn'), 'Case studies must stay local');
 const journey = section('journey');
 const chronological = ['NOW', '2023—2026', '2019—2023', '2013—2019'].map(year => journey.indexOf(year));
 assert(chronological.every((value, i) => value >= 0 && (!i || value > chronological[i - 1])));
 assert(journey.includes('journey-now reveal is-open'));
-assert.equal((section('ventures').match(/class="venture-record/g) || []).length, 4);
+assert.equal((section('ventures').match(/class="venture-record/g) || []).length, 5);
+assert(!section('ventures').includes('inline-toggle'), 'Practice details are always open');
+assert(section('ventures').includes('HerOS（SkinPilot）'));
+assert(section('ventures').includes('高原智卫'));
+assert.equal((section('honors').match(/class="honor-row"/g) || []).length, 22);
+assert(section('honors').includes('HRI 2026'));
+assert(section('honors').includes('1:30:31'));
+assert(section('honors').includes('<time>2019</time><h3 data-zh="北京八中'));
+assert(!section('contact').includes('about-timeline'), 'About should map experiences to capabilities');
+assert(section('contact').includes('linkedin.com/in/chenghao-wang-caelen/'));
+assert(!html.includes('Caelan') && !html.includes('CAELAN'));
+assert.equal((section('contact').match(/class="life-frame"/g) || []).length, 19);
+for (const id of ['journey','ventures','projects','capabilities','honors']) {
+  assert(section(id).split('>')[0].includes('chapter'));
+}
 assert(!section('honors').includes('<h2'), 'Honors have no oversized headline');
 for (const title of ['设计与人机交互','路演与创业创新','AI应用与产品','数据分析与编程','机器人与硬件','跨境电商B2B']) {
   assert(section('capabilities').includes(title));
@@ -36,4 +51,4 @@ assert(section('contact').includes('Think as a poet.'));
 assert(section('contact').includes('18501284401'));
 assert(css.includes('--bg:#050807') && css.includes('--mint:#59f3c5'), 'Preserve the Accio palette');
 assert(css.includes('prefers-reduced-motion'));
-console.log('PASS: local assets, anchors, chronology, 8-project stage, 4 ventures, 6 capabilities, ticker, contact and palette.');
+console.log('PASS: assets, anchors, five full-screen chapters, 9 local projects and galleries, 5 ventures, 22 honors, 19 life photos, contact and Accio palette.');
