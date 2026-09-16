@@ -7,11 +7,11 @@
 ## 内容结构
 
 - **Journey**：倒序履历，阿里巴巴默认展开，附各阶段照片与机构标识
-- **Practice & Ventures**：横向切换阿里巴巴 Accio Work、汤问、K老师 AI 英语资料、HerOS / SkinPilot、高原智卫、Pyroscope，详情常驻
+- **Practice & Ventures**：横向切换阿里巴巴 Accio Work、汤问致新 / TechWend、K老师 AI 英语资料、HerOS / SkinPilot、高原智卫、Pyroscope，详情常驻
 - **Selected Work**：旋转齿盘切换十一个学生项目，包含 HOW MASTER（2022）与 Foodio（2024），在同一舞台展开本地详情、图片、视频及相关链接
 - **Capabilities**：六个能力维度、具体方法与工具、对应项目证据
 - **Honors**：22 项荣誉按时间倒序纵向循环，支持暂停与逐条浏览
-- **Last Page**：经历如何塑造能力、19 张生活照片横向循环、完整联系方式
+- **Last Page**：经历如何塑造能力、20 张生活照片横向循环、完整联系方式
 
 ## 体验
 

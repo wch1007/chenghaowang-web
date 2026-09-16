@@ -43,6 +43,15 @@ html { scroll-snap-type:y proximity; scroll-padding-top:0; }
 .venture-metrics,.work-loop { margin:18px 0; padding:12px 0; }
 .venture-metrics em,.work-loop > span { font-size:12px; }
 .venture-metrics b { font-size:25px; }
+.accio-metrics { grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+.accio-metrics b { font-size:clamp(20px,2vw,27px); white-space:nowrap; }
+.venture-detail h4 { font-size:16px; line-height:1.6; font-weight:500; margin:26px 0 8px; color:var(--ink); }
+.venture-detail h4 + p { margin:8px 0 20px; }
+.english-visual { background:radial-gradient(at top left,#214136,#0d1713); }
+.english-list { position:absolute; width:84%; height:90%; left:8%; top:4%; object-fit:contain; filter:drop-shadow(0 15px 30px #0007); cursor:zoom-in; }
+.english-visual .english-cover { width:25%; left:2%; top:auto; bottom:8%; }
+.english-visual .english-card { width:21%; right:2%; bottom:8%; }
+.english-visual .pipeline-labels { bottom:14px; }
 .detail-chips span { font-size:11px; }
 .venture-navigation { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-top:24px; border-top:1px solid var(--line); padding-top:16px; }
 .venture-tabs { display:flex; gap:7px; min-width:0; overflow-x:auto; }
@@ -251,6 +260,10 @@ html[data-language="en"] .project-dial { height:auto; }
   .plateau-label span { font-size:9px; }
   .english-cover { width:56%; left:20%; top:6%; }
   .english-card { width:18%; right:12%; }
+  .english-list { width:64%; left:18%; height:88%; top:3%; }
+  .english-visual .english-cover { width:23%; left:3%; bottom:15%; }
+  .english-visual .english-card { width:18%; right:4%; bottom:15%; }
+  .english-visual .pipeline-labels { bottom:8px; left:14px; right:14px; }
   .project-layout { display:flex; flex-direction:column; gap:12px; }
   .project-rail { height:110px; flex:none; position:relative; overflow:hidden; padding-left:145px; justify-content:center; }
   .project-dial { width:132px; height:110px; min-height:110px; position:absolute; left:0; top:0; }

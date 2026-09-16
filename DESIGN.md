@@ -11,7 +11,7 @@ future iterations unless the owner explicitly changes it.
 - Journey is reverse chronological and opens Alibaba by default. Restore the
   previous vertically expanding accordion (35aa275), with in-flow photos and
   optional collapse. Its height follows its content instead of a fixed screen.
-- Practice starts with Alibaba, followed by TangWen, K Teacher, HerOS and
+- Practice starts with Alibaba, followed by TechWend (汤问致新), K Teacher, HerOS and
   Plateau Guard (高原智卫) and Pyroscope. One always-expanded case is selected
   at a time; video playback stops when switching to another case.
 - HerOS is SkinPilot, confirmed by the owner. Keep their work in one case.
@@ -30,7 +30,7 @@ future iterations unless the owner explicitly changes it.
   controls to pause and step; disable autoplay when reduced motion is requested.
   Accelerate smoothly over 2.4 seconds to 63 pixels/second (three times 21).
 - Last page preserves the original narrative, motto and contact invitation,
-  with a capability origin story, an infinite horizontal life photo journal,
+  with a capability origin story, an infinite horizontal life photo journal (including the 1,000 km / 10-day Hainan challenge),
   WeChat and LinkedIn. Do not repeat the chronological résumé on this page.
 - Support keyboard operation, reduced motion and animation pause.
 

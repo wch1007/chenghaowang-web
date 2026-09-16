@@ -54,6 +54,13 @@ for(const reduced of [false,true]) {
   player.pause=()=>{videoPaused=true;};
   click('[data-venture="0"]');
   assert(videoPaused,'Switching projects stops the previous demo');
+  click('[data-venture="2"]');
+  key('.english-list','Enter');
+  assert(q('.image-lightbox').open,'English product directory opens with keyboard');
+  assert(q('.image-lightbox img').src.endsWith('/assets/images/english-list.webp'));
+  click('.image-lightbox button');
+  assert(!q('.image-lightbox').open);
+  click('[data-venture="0"]');
   for(let i=0;i<11;i++) {
     qa('.dial-item')[i].click();
     const record=qa('.project-record')[i];
@@ -69,8 +76,8 @@ for(const reduced of [false,true]) {
   for(const b of qa('.skill-select')){b.click();assert.equal(b.getAttribute('aria-pressed'),'true');}
   assert.equal(qa('.honors-list').length,2);
   assert.equal(qa('.honors-list')[1].getAttribute('aria-hidden'),'true');
-  assert.equal(qa('.life-frame').length,38);
-  assert.equal(qa('.life-frame[data-loop-clone]').length,19);
+  assert.equal(qa('.life-frame').length,40);
+  assert.equal(qa('.life-frame[data-loop-clone]').length,20);
   click('[data-honor-direction="1"]');
   assert.equal(q('.honor-pause').getAttribute('aria-pressed'),'true');
   click('.honor-pause');

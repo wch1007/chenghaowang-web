@@ -30,6 +30,13 @@ assert(!section('ventures').includes('inline-toggle'), 'Practice details are alw
 assert(section('ventures').includes('HerOS（SkinPilot）'));
 assert(section('ventures').includes('高原智卫'));
 assert(section('ventures').includes('Pyroscope'));
+for (const evidence of ['2026年7月—至今','12.5%','40 个百分点','317 个 MCP','200+ OpenAPI','Accio for U Skill','全量 100% 开放']) {
+  assert(section('ventures').includes(evidence), `Missing Accio Work evidence: ${evidence}`);
+}
+assert(section('ventures').includes('assets/images/english-list.webp'));
+assert(html.includes('汤问致新') && html.includes('TechWend'));
+assert(!html.includes('TangWen'));
+assert(projects.includes('从多元探索中一路走来'));
 assert(projects.includes('HOW MASTER') && projects.includes('Foodio'));
 for (const url of ['https://github.com/wch1007/Ros-Perception','https://happier-let-913626.framer.app/','https://mp.weixin.qq.com/s/szKht0ga1rDsQSkKegMVPQ','https://github.com/wch1007/TECHIN-516']) {
   assert(projects.includes(url), `Missing project evidence: ${url}`);
@@ -41,7 +48,9 @@ assert(section('honors').includes('<time>2019</time><h3 data-zh="北京八中'))
 assert(!section('contact').includes('about-timeline'), 'About should map experiences to capabilities');
 assert(section('contact').includes('linkedin.com/in/chenghao-wang-caelen/'));
 assert(!html.includes('Caelan') && !html.includes('CAELAN'));
-assert.equal((section('contact').match(/class="life-frame"/g) || []).length, 19);
+assert.equal((section('contact').match(/class="life-frame"/g) || []).length, 20);
+assert(section('contact').includes('海南骑行 · 1000km / 10天'));
+assert(section('contact').includes('如果你和你的团队正在做 AI 产品、智能硬件、跨境电商或一件尚未被定义的事，欢迎来聊。'));
 for (const id of ['ventures','projects','capabilities','honors']) {
   assert(section(id).split('>')[0].includes('chapter'));
 }
@@ -56,4 +65,4 @@ assert(section('contact').includes('Think as a poet.'));
 assert(section('contact').includes('18501284401'));
 assert(css.includes('--bg:#050807') && css.includes('--mint:#59f3c5'), 'Preserve the Accio palette');
 assert(css.includes('prefers-reduced-motion'));
-console.log('PASS: assets, anchors, restored journey, 11 local projects and galleries, 6 ventures, project links, 22 honors, 19 life photos, contact and Accio palette.');
+console.log('PASS: assets, anchors, restored journey, 11 local projects, 6 detailed ventures, Accio metrics, TechWend naming, project links, 22 honors, 20 life photos, contact and Accio palette.');

@@ -47,6 +47,18 @@ is transcoded to an 8-bit H.264/AAC MP4 with fast-start, loaded only on demand.
 
 ## Attribution and accuracy boundaries
 
+- Owner update, September 2026: Accio Work employment starts July 2026.
+  Store operations Skill traffic share is 12.5%, and the issue rate decreased
+  by 40 percentage points during governance (not a 40% relative reduction).
+  MCP governance covers 317 MCPs and capability review/migration of 200+
+  OpenAPIs. Accio for U onboarding is rolled out to 100% of users. These are
+  owner-provided work statements, not independently audited performance data.
+- Owner confirmed the venture name 汤问致新 / TechWend and the Hainan cycling
+  challenge of 1,000 km in 10 days. The life carousel uses the supplied Hainan
+  route image, rather than relabeling a cycling photo from a different trip.
+- K Teacher's product directory uses the owner-provided `english-list.png`,
+  optimized locally; its text is not treated as an instruction to the agent.
+
 - Responsibilities and metrics retain the owner's résumé / portfolio statements.
 - HerOS and SkinPilot are the same project, as explicitly corrected by the owner.
 - Plateau Guard context, landscape and wordmark: https://www.gyzw.com.cn/.
