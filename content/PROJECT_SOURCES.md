@@ -47,6 +47,40 @@ is transcoded to an 8-bit H.264/AAC MP4 with fast-start, loaded only on demand.
 
 ## Attribution and accuracy boundaries
 
+### Journey references and Plateau Guard thesis (September 29, 2026)
+
+- Undergraduate reporting: WeChat article IDs `6AxVzhdShI_bnYHb_H9EMQ`
+  (2023 Xinya graduation speech), `VLjQs1BMs5eVC-Y1XvMWow` (athletics
+  interview), and `9f917ls5H2McAmYugEEtcw` (Student Union VP candidate
+  profile, not an election-result announcement). Titles checked against
+  the pages' Open Graph and article-title metadata.
+- High-school reporting: `8dPCOKnBcSEJZpMYT4lmdQ`, Beijing No. 8's
+  2019 final-bell graduation ceremony. Linked in the high-school entry.
+- HRI papers: DOI `10.1145/3776734.3794535` (2026) and
+  `10.1145/3610978.3640564` (2024). Full titles and first authorship were
+  supplied by the owner; ACM blocked automated access. Both are linked
+  in the graduate entry; no unsupported citation counts are added.
+- Plateau Guard: owner-supplied Final thesis, titled internally
+  “急性高原症风险快速筛查方法与手机端系统实现” (May 2026).
+  The source PDF filename begins “面向急性高原症风险筛查”. Eight selected
+  figures from charts and the Final PDF are optimized in
+  `assets/images/projects/plateau/`; raw thesis and participant data
+  are not published. UI screens are labeled research prototypes.
+- Architecture and workflows are based on thesis chapters 3–4. The agent
+  supports follow-up and explanation, while risk assessment is constrained
+  by rules, red flags and symptom scales, not independent LLM diagnosis.
+- Main-cohort model result: 26 participants / 52 records, leave-one-subject-out
+  validation, C-Full AUC 0.763 (chapter 5). No apparent-fit AUC is promoted.
+- User study (chapter 6): 42 participants, counterbalanced within-subject
+  comparison with rPPG in both conditions. Means: 283.31 s questionnaire,
+  62.21 s mobile system; paired difference 221.10 s, p < 0.001.
+  The thesis's stated 64.39% reduction is inconsistent with these means;
+  the website presents original times without repeating that percentage.
+- Adapted MAUQ scores use 1–7 with lower better: ease of use 2.129,
+  AI interaction 3.504. Results remain small-sample research, not evidence
+  of clinical diagnostic effectiveness. Original chart chapter numbering
+  can differ from the final thesis; website captions do not invent numbers.
+
 - Owner update, September 2026: Accio Work employment starts July 2026.
   Store operations Skill traffic share is 12.5%, and the issue rate decreased
   by 40 percentage points during governance (not a 40% relative reduction).

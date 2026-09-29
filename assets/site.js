@@ -318,7 +318,7 @@
   body.appendChild(lightbox);
   lightbox.querySelector('button').addEventListener('click', () => lightbox.close());
   lightbox.addEventListener('click', event => { if (event.target === lightbox) lightbox.close(); });
-  doc.querySelectorAll('.project-gallery img, .case-gallery img, .english-list').forEach(img => {
+  doc.querySelectorAll('.project-gallery img, .case-gallery img, .english-list, .plateau-overview').forEach(img => {
     img.tabIndex = 0;
     img.setAttribute('role', 'button');
     img.setAttribute('aria-label', img.alt + '，查看大图');
