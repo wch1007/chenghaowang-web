@@ -49,6 +49,13 @@ is transcoded to an 8-bit H.264/AAC MP4 with fast-start, loaded only on demand.
 
 ### Journey references and Plateau Guard thesis (September 29, 2026)
 
+- Owner correction: the cycling photo formerly labeled Qinghai is from
+  Hainan. Its displayed Chinese/English labels and local image reference
+  now use Hainan; the existing 1,000 km / 10-day route card remains.
+- Plateau Guard cover is optimized from the owner's exact `高原智卫.png`
+  website screenshot, with a prominent official-site link at the start
+  of the case. The screening-flow figure remains in the detail gallery.
+
 - Undergraduate reporting: WeChat article IDs `6AxVzhdShI_bnYHb_H9EMQ`
   (2023 Xinya graduation speech), `VLjQs1BMs5eVC-Y1XvMWow` (athletics
   interview), and `9f917ls5H2McAmYugEEtcw` (Student Union VP candidate
